@@ -1,0 +1,4 @@
+"name","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","defense"
+"Small Shield",90,true,true,false,true,false,0,4
+"Large Shield",800,true,true,false,false,false,0,10
+"Silver Shield",14800,true,true,false,true,false,0,25

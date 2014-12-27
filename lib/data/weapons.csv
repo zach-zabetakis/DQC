@@ -1,0 +1,7 @@
+"name","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","defense"
+"Bamboo Pole",10,true,true,true,true,true,2,0
+"Club",60,true,true,false,true,false,4,0
+"Copper Sword",180,true,true,false,true,false,10,0
+"Hand Axe",560,true,true,false,false,false,15,0
+"Broad Sword",1500,true,true,false,false,false,20,0
+"Flame Sword",9800,true,true,false,false,false,28,0

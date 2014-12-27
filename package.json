@@ -1,0 +1,20 @@
+{
+  "name" : "DragonQuestCosmos",
+  "version" : "0.0.1",
+  "description" : "Dragon Quest Cosmos Battle Simulator",
+  "author" : "zenithian66",
+  "contributors" : [
+    { "name" : "x_loto" },
+    { "name" : "Voltgloss" },
+    { "name" : "Dastari" }
+  ],
+  "repository" : {
+    "type" : "git",
+    "url"  : "https://github.com/zach-zabetakis/DQC"
+  },
+  "dependencies" : {
+    "async" : "0.9.0",
+    "csvtojson" : "0.3.17",
+    "lodash" : "2.4.1"
+  }
+}
