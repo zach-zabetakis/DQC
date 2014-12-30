@@ -5,28 +5,29 @@ var async     = require('async');
 var fs        = require('fs');
 var _         = require('lodash');
 
-// PATH TO DATA FILES
-var PATH = nconf.get('data');
-if (PATH === '/lib/data/') {
-  PATH = process.cwd() + PATH;
-}
-
 /*
  * Initialize 
  */
 module.exports = function (next) {
+  // PATH TO DATA FILES
+  var path = nconf.get('data');
+  if (path === '/lib/data/') {
+    path = process.cwd() + path;
+  }
+
   async.parallel({
     weapons     : data('weapons'),
     armor       : data('armor'),
     shields     : data('shields'),
     helmets     : data('helmets'),
     accessories : data('accessories'),
-    experience  : dataArray('experience')
+    experience  : dataArray('experience'),
+    monsters    : data('monsters')
   }, next);
 
   function data (filename) {
     return function (callback) {
-      var fileStream   = fs.createReadStream(PATH + filename + '.csv');
+      var fileStream   = fs.createReadStream(path + filename + '.csv');
       var csvConverter = new Converter({});
 
       csvConverter.on('end_parsed', function (data) {
@@ -41,7 +42,7 @@ module.exports = function (next) {
 
   function dataArray (filename) {
     return function (callback) {
-      var fileStream   = fs.createReadStream(PATH + filename + '.csv');
+      var fileStream   = fs.createReadStream(path + filename + '.csv');
       var csvConverter = new Converter({});
       var result       = {};
 
