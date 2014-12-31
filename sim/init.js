@@ -21,9 +21,12 @@ module.exports = function (next) {
     shields     : data('shields'),
     helmets     : data('helmets'),
     accessories : data('accessories'),
+    hearts      : data('hearts'),
     experience  : dataArray('experience'),
-    monsters    : data('monsters')
+    monsters    : data('monsters'),
+    characters  : data('characters')
   }, next);
+  
 
   function data (filename) {
     return function (callback) {
@@ -34,7 +37,7 @@ module.exports = function (next) {
         return callback(null, data);
       });
 
-      csvConverter.on('record_parsed', helpers.fixBoolean);
+      csvConverter.on('record_parsed', helpers.fixData);
 
       fileStream.pipe(csvConverter);
     }

@@ -19,6 +19,5 @@ sim.init(function (error, data) {
   }
 
   DQC.data = data;
-  console.log(DQC.data.monsters.pop());
 });
 
