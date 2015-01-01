@@ -1,23 +1,21 @@
 console.log('UPDATE~!');
 
-var nconf = require('nconf');
-var sim   = require(process.cwd() + '/sim');
+var worker = require(process.cwd() + '/worker');
+var nconf  = require('nconf');
 
 // GLOBAL SIMULATOR OBJECT
 var DQC = {};
 
+nconf.argv({
+  'd' : {
+    alias    : 'data',
+    describe : 'Location of the data files',
+    demand   : false
+  }
+}, 'Usage: $0');
 nconf.env();
 nconf.file('config.json', process.cwd() + '/config.json');
 nconf.file('package.json', process.cwd() + '/package.json');
 
-/*
- * Initialize saved data
- */
-sim.init(function (error, data) {
-  if (error) {
-    throw new Error('CURSED! Could not init data');
-  }
-
-  DQC.data = data;
-});
-
+// Hand off to the worker
+worker(DQC);

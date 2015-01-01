@@ -1,4 +1,4 @@
-"name","can_transform","transform.experience","transform.name","description","maxHP","maxMP","strength","agility","critical","dodge","saver.burn","saver.phys","saver.ment"
+"name","can_transform","transform.experience","transform.name","description","HP","MP","strength","agility","critical","dodge","saver.burn","saver.phys","saver.ment"
 "Slime",TRUE,100,"Red Slime","Dodge + 4; Eau de Slime once per day",0,0,0,0,0,4,FALSE,FALSE,FALSE
 "Red Slime",TRUE,400,"???","Dodge + 4; Eau de Uberslime once per day",0,0,0,0,0,4,FALSE,FALSE,FALSE
 "Snaily",FALSE,0,,"Dodge + 4; AGI + 1; Upper once per day; Eau de Uberslime once per day",0,0,0,1,0,4,FALSE,FALSE,FALSE

@@ -1,3 +1,4 @@
 var exports = module.exports = {};
 
-exports.init = require('./init');
+exports.calculate = require('./calculate');
+exports.init      = require('./init');

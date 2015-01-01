@@ -6,7 +6,7 @@ var fs        = require('fs');
 var _         = require('lodash');
 
 /*
- * Initialize 
+ * Initialize saved data from external data files.
  */
 module.exports = function (next) {
   // PATH TO DATA FILES
@@ -16,15 +16,15 @@ module.exports = function (next) {
   }
 
   async.parallel({
-    weapons     : data('weapons'),
-    armor       : data('armor'),
-    shields     : data('shields'),
-    helmets     : data('helmets'),
-    accessories : data('accessories'),
-    hearts      : data('hearts'),
-    experience  : dataArray('experience'),
-    monsters    : data('monsters'),
-    characters  : data('characters')
+    weapon     : data('weapon'),
+    armor      : data('armor'),
+    shield     : data('shield'),
+    helmet     : data('helmet'),
+    accessory  : data('accessory'),
+    heart      : data('heart'),
+    experience : dataArray('experience'),
+    monster    : data('monster'),
+    character  : data('character')
   }, next);
   
 

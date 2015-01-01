@@ -1,6 +1,6 @@
-The following documentation will explain what each column represents in the various data files. All cells are case sensitive unless otherwise specified.
+The following documentation will explain what each column represents in the various data files. Column names MUST NOT be changed under any circumstances. All cells are case sensitive unless otherwise specified.
 
-## Accessories
+## Accessory
 
 Multiple ACCESSORY items can be equipped.  All accessories count toward a character's six item carry limit.
 
@@ -44,7 +44,7 @@ Items which can be equipped in a character's ARMOR slot.
 
 `(I) defense` - defense bonus
 
-## Characters
+## Character
 
 The brave heroes fighting to free the world from evil's grasp.
 All base values can be modified by equipment, heart, etc.
@@ -53,7 +53,7 @@ All base values can be modified by equipment, heart, etc.
 
 `(B) name` - character's name
 
-`(C) class` - character's class
+`(C) job` - character's job class
 
 `(D) level` - character's experience level
 
@@ -61,51 +61,51 @@ All base values can be modified by equipment, heart, etc.
 
 `(F) gold` - gold coins in this character's possession
 
-`(G) maxHP` - base maximum HP value. When HP reaches 0 the character dies
+`(G) base_HP` - base maximum HP value. When HP reaches 0 the character dies
 
-`(H) maxMP` - base maximum MP value. Required to cast spells
+`(H) base_MP` - base maximum MP value. Required to cast spells
 
-`(I) strength` - base strength value
+`(I) base_strength` - base strength value
 
-`(J) agility` - base agility value
+`(J) base_agility` - base agility value
 
-`(K) attack` - attack value, used for physical attacks
+`(K) attack` - total attack value, stored for convenience only
 
-`(L) defense` - defense value, protection against physical attacks
+`(L) defense` - total defense value, stored for convenience only
 
-`(M) critical` - base rate (out of 32) of performing a critical hit
+`(M) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(N) dodge` - base rate (out of 256) of evading a physical attack
+`(N) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(O) resist.burn` - resistance (out of 16) for BURN attacks
+`(O) base_resist.burn` - resistance (out of 16) for BURN attacks
 
-`(P) resist.beat` - resistance (out of 16) for instant death spells
+`(P) base_resist.beat` - resistance (out of 16) for instant death spells
 
-`(Q) resist.numb` - resistance (out of 16) for paralysis
+`(Q) base_resist.numb` - resistance (out of 16) for paralysis
 
-`(R) resist.poison` - resistance (out of 16) for poison
+`(R) base_resist.poison` - resistance (out of 16) for poison
 
-`(S) resist.sap` - resistance (out of 16) for defense lowering spells
+`(S) base_resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(T) resist.slow` - resistance (out of 16) for agility lowering spells
+`(T) base_resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(U) resist.chaos` - resistance (out of 16) for confusion
+`(U) base_resist.chaos` - resistance (out of 16) for confusion
 
-`(V) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(V) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(W) resist.sleep` - resistance (out of 16) for sleep
+`(W) base_resist.sleep` - resistance (out of 16) for sleep
 
-`(X) resist.stopspell` - resistance (out of 16) for stopspell
+`(X) base_resist.stopspell` - resistance (out of 16) for stopspell
 
-`(Y) resist.surround` - resistance (out of 16) for surround
+`(Y) base_resist.surround` - resistance (out of 16) for surround
 
-`(Z) resist.fear` - resistance (out of 16) from being frozen in fear
+`(Z) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AA) saver.burn` - does this character have BURN SAVER?
+`(AA) base_saver.burn` - does this character have BURN SAVER?
 
-`(AB) saver.phys` - does this character have PHYS SAVER?
+`(AB) base_saver.phys` - does this character have PHYS SAVER?
 
-`(AC) saver.ment` - does this character have MENT SAVER?
+`(AC) base_saver.ment` - does this character have MENT SAVER?
 
 `(AD) equip.weapon` - character's equipped weapon
 
@@ -127,7 +127,7 @@ All base values can be modified by equipment, heart, etc.
 
 ## Experience
 
-The experience required to advance to level N is found in row N-1 of the array.
+The experience required to advance to level N is found in array index N-1.
 
 `(A) ranger` - experience table for Rangers
 
@@ -139,7 +139,7 @@ The experience required to advance to level N is found in row N-1 of the array.
 
 `(E) wizard` - experience table for Wizards
 
-## Hearts
+## Heart
 
 Monster hearts which grant the essence of the defeated monster
 Note that description is for display purposes only.
@@ -154,9 +154,9 @@ Note that description is for display purposes only.
 
 `(E) description` - plain text version of the monster heart powers
 
-`(F) maxHP` - bonus to the maxHP stat
+`(F) HP` - bonus to the maximum HP stat
 
-`(G) maxMP` - bonus to the maxMP stat
+`(G) MP` - bonus to the maximum MP stat
 
 `(H) strength` - bonus to the strength stat
 
@@ -172,7 +172,7 @@ Note that description is for display purposes only.
 
 `(N) saver.ment` - does this heart grant MENT saver?
 
-## Helmets
+## Helmet
 
 Items which can be equipped in a character's HELMET slot.
 
@@ -194,7 +194,7 @@ Items which can be equipped in a character's HELMET slot.
 
 `(I) defense` - defense bonus
 
-## Monsters
+## Monster
 
 Monsters you may run into during your travels. Beware!
 Note that flavor text is for display purposes only.
@@ -267,7 +267,7 @@ Note that flavor text is for display purposes only.
 
 `(AV) flavor.dodge` - flavor text when this monster dodges a physical attack
 
-## Shields
+## Shield
 
 Items which can be equipped in a character's SHIELD slot.
 
@@ -289,7 +289,7 @@ Items which can be equipped in a character's SHIELD slot.
 
 `(I) defense` - defense bonus
 
-## Weapons
+## Weapon
 
 Items which can be equipped in a character's WEAPON slot.
 
