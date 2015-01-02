@@ -1,4 +1,4 @@
-"name","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","defense"
-"Leather Hat",80,false,true,false,false,false,0,1
-"Iron Helmet",2000,false,true,false,false,false,0,8
-"Iron Mask",3500,false,true,false,false,false,0,12
+"name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","defense"
+"Leather Hat","Simple headgear fashioned from leather",80,"false","true","false","false","false",1
+"Iron Helmet","Expensive, but well worth the price to keep one's head",2000,"false","true","false","false","false",8
+"Iron Mask","A full face mask complete with visor",3500,"false","true","false","false","false",12

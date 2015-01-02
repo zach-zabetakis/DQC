@@ -65,6 +65,11 @@ function calculateCharacterData(data) {
       character.resist[key] = helpers.calculateAdjustedStat('resist_' + key, base_value, data, character);
     });
 
-    // TODO: saver
+    // saver
+    _.each(character.saver, function (value, key) {
+      character.saver[key] = helpers.calculateSaver(key, data, character);
+    })
+
+    // TODO: is_cursed
   });
 }

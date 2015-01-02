@@ -2,52 +2,79 @@ The following documentation will explain what each column represents in the vari
 
 ## Accessory
 
-Multiple ACCESSORY items can be equipped.  All accessories count toward a character's six item carry limit.
+Multiple ACCESSORY items can be equipped.  All accessories count toward a character's six item carry limit. Note that description is used for display purposes only.
 
 `(A) name` - accessory name
 
-`(B) buy_price` - price of this item if bought from a shop
+`(B) description` - flavor description for this accessory
 
-`(C) equip.ranger` - can this be equipped by Rangers?
+`(C) buy_price` - price of this item if bought from a shop
 
-`(D) equip.soldier` - can this be equipped by Soldiers?
+`(D) equip.ranger` - can this be equipped by Rangers?
 
-`(E) equip.fighter` - can this be equipped by Fighters?
+`(E) equip.soldier` - can this be equipped by Soldiers?
 
-`(F) equip.priest` - can this be equipped by Priests?
+`(F) equip.fighter` - can this be equipped by Fighters?
 
-`(G) equip.wizard` - can this be equipped by Wizards?
+`(G) equip.priest` - can this be equipped by Priests?
 
-`(H) attack` - attack bonus
+`(H) equip.wizard` - can this be equipped by Wizards?
 
-`(I) defense` - defense bonus
+`(I) attack` - attack bonus
+
+`(J) defense` - defense bonus
+
+`(K) strength` - strength bonus
+
+`(L) agility` - agility bonus
+
+`(M) critical` - critical bonus
+
+`(N) dodge` - dodge bonus
+
+`(O) resist_burn` - resistance against burn spells and skills
+
+`(P) resist_numb` - resistance against paralysis
+
+`(Q) saver.phys` - does this accessory have PHYS SAVER?
+
+`(R) is_cursed` - is this accessory cursed?
 
 ## Armor
 
-Items which can be equipped in a character's ARMOR slot.
+Items which can be equipped in a character's ARMOR slot. Note that description is used for display purposes only.
 
 `(A) name` - body armor name
 
-`(B) buy_price` - price of this item if bought from a shop
+`(B) description` - flavor description for this body armor
 
-`(C) equip.ranger` - can this be equipped by Rangers?
+`(C) buy_price` - price of this item if bought from a shop
 
-`(D) equip.soldier` - can this be equipped by Soldiers?
+`(D) equip.ranger` - can this be equipped by Rangers?
 
-`(E) equip.fighter` - can this be equipped by Fighters?
+`(E) equip.soldier` - can this be equipped by Soldiers?
 
-`(F) equip.priest` - can this be equipped by Priests?
+`(F) equip.fighter` - can this be equipped by Fighters?
 
-`(G) equip.wizard` - can this be equipped by Wizards?
+`(G) equip.priest` - can this be equipped by Priests?
 
-`(H) attack` - attack bonus
+`(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) defense` - defense bonus
 
+`(J) dodge` - dodge bonus
+
+`(K) strength` - strength bonus
+
+`(L) agility` - agility bonus
+
+`(M) resist_beat` - resistance against instant death spells
+
+`(N) saver.burn` - does this armor have BURN SAVER?
+
 ## Character
 
-The brave heroes fighting to free the world from evil's grasp.
-All base values can be modified by equipment, heart, etc.
+The brave heroes fighting to free the world from evil's grasp. All base values can be modified by equipment, heart, etc. `attack`, `defense`, and `saver` values are stored for convenience only and are recalculated based on other data.
 
 `(A) player` - name of the player who controls this character
 
@@ -174,23 +201,23 @@ Note that description is for display purposes only.
 
 ## Helmet
 
-Items which can be equipped in a character's HELMET slot.
+Items which can be equipped in a character's HELMET slot. Note that description is for display purposes only.
 
 `(A) name` - helmet name
 
-`(B) buy_price` - price of this item if bought from a shop
+`(B) description` - flavor description for this helmet
 
-`(C) equip.ranger` - can this be equipped by Rangers?
+`(C) buy_price` - price of this item if bought from a shop
 
-`(D) equip.soldier` - can this be equipped by Soldiers?
+`(D) equip.ranger` - can this be equipped by Rangers?
 
-`(E) equip.fighter` - can this be equipped by Fighters?
+`(E) equip.soldier` - can this be equipped by Soldiers?
 
-`(F) equip.priest` - can this be equipped by Priests?
+`(F) equip.fighter` - can this be equipped by Fighters?
 
-`(G) equip.wizard` - can this be equipped by Wizards?
+`(G) equip.priest` - can this be equipped by Priests?
 
-`(H) attack` - attack bonus
+`(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) defense` - defense bonus
 
@@ -269,44 +296,44 @@ Note that flavor text is for display purposes only.
 
 ## Shield
 
-Items which can be equipped in a character's SHIELD slot.
+Items which can be equipped in a character's SHIELD slot. Note that description is for display purposes only.
 
 `(A) name` - shield name
 
-`(B) buy_price` - price of this item if bought from a shop
+`(B) description` - flavor description for this shield
 
-`(C) equip.ranger` - can this be equipped by Rangers?
+`(C) buy_price` - price of this item if bought from a shop
 
-`(D) equip.soldier` - can this be equipped by Soldiers?
+`(D) equip.ranger` - can this be equipped by Rangers?
 
-`(E) equip.fighter` - can this be equipped by Fighters?
+`(E) equip.soldier` - can this be equipped by Soldiers?
 
-`(F) equip.priest` - can this be equipped by Priests?
+`(F) equip.fighter` - can this be equipped by Fighters?
 
-`(G) equip.wizard` - can this be equipped by Wizards?
+`(G) equip.priest` - can this be equipped by Priests?
 
-`(H) attack` - attack bonus
+`(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) defense` - defense bonus
 
 ## Weapon
 
-Items which can be equipped in a character's WEAPON slot.
+Items which can be equipped in a character's WEAPON slot. Note that description is for display purposes only.
 
 `(A) name` - weapon name
 
-`(B) buy_price` - price of this item if bought from a shop
+`(B) description` - flavor description for this weapon
 
-`(C) equip.ranger` - can this be equipped by Rangers?
+`(C) buy_price` - price of this item if bought from a shop
 
-`(D) equip.soldier` - can this be equipped by Soldiers?
+`(D) equip.ranger` - can this be equipped by Rangers?
 
-`(E) equip.fighter` - can this be equipped by Fighters?
+`(E) equip.soldier` - can this be equipped by Soldiers?
 
-`(F) equip.priest` - can this be equipped by Priests?
+`(F) equip.fighter` - can this be equipped by Fighters?
 
-`(G) equip.wizard` - can this be equipped by Wizards?
+`(G) equip.priest` - can this be equipped by Priests?
 
-`(H) attack` - attack bonus
+`(H) equip.wizard` - can this be equipped by Wizards?
 
-`(I) defense` - defense bonus
+`(I) attack` - attack bonus
