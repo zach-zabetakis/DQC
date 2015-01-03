@@ -24,24 +24,24 @@ function calculateCharacterData(data) {
     character.level = helpers.checkLevel(data.experience, character.job, character.experience);
 
     // adj_HP
-    character.adj_HP = helpers.calculateAdjustedStat('HP', character.base_HP, data, character);
+    character.adj_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
 
     // adj_MP
-    character.adj_MP = helpers.calculateAdjustedStat('MP', character.base_MP, data, character);
+    character.adj_MP = helpers.calculateStatBoost('MP', character.base_MP, data, character);
 
     // adj_strength
-    character.adj_strength = helpers.calculateAdjustedStat('strength', character.base_strength, data, character);
+    character.adj_strength = helpers.calculateStatBoost('strength', character.base_strength, data, character);
 
     // adj_agility
-    character.adj_agility = helpers.calculateAdjustedStat('agility', character.base_agility, data, character);
+    character.adj_agility = helpers.calculateStatBoost('agility', character.base_agility, data, character);
 
     // attack
-    character.attack = helpers.calculateAdjustedStat('attack', character.adj_strength, data, character);
+    character.attack = helpers.calculateStatBoost('attack', character.adj_strength, data, character);
 
     // defense
     // base defense is agility / 2
     var base_defense = parseInt(character.adj_agility / 2, 10);
-    character.defense = helpers.calculateAdjustedStat('defense', base_defense, data, character);
+    character.defense = helpers.calculateStatBoost('defense', base_defense, data, character);
 
     // adj_critical
     // 'fighter' job gets a level-based critical bonus
@@ -49,7 +49,7 @@ function calculateCharacterData(data) {
     if (character.job === 'fighter') {
       base_critical += parseInt(character.level / 4, 10);
     }
-    character.adj_critical = helpers.calculateAdjustedStat('critical', base_critical, data, character);
+    character.adj_critical = helpers.calculateStatBoost('critical', base_critical, data, character);
 
     // adj_dodge
     // 'fighter' job gets an agility-based dodge bonus
@@ -57,19 +57,21 @@ function calculateCharacterData(data) {
     if (character.job === 'fighter') {
       base_dodge += parseInt(character.adj_agility / 16, 10);
     }
-    character.adj_dodge = helpers.calculateAdjustedStat('dodge', base_dodge, data, character);
+    character.adj_dodge = helpers.calculateStatBoost('dodge', base_dodge, data, character);
 
     // resist
     character.resist = {};
     _.each(character.base_resist, function (base_value, key) {
-      character.resist[key] = helpers.calculateAdjustedStat('resist_' + key, base_value, data, character);
+      character.resist[key] = helpers.calculateStatBoost('resist.' + key, base_value, data, character);
     });
 
     // saver
+    character.saver = { burn : false, phys : false, ment : false };
     _.each(character.saver, function (value, key) {
-      character.saver[key] = helpers.calculateSaver(key, data, character);
-    })
+      character.saver[key] = helpers.calculateStatBoost('saver.' + key, false, data, character);
+    });
 
-    // TODO: is_cursed
+    // is_cursed
+    character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
   });
 }

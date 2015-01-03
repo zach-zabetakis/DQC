@@ -2,6 +2,7 @@ console.log('UPDATE~!');
 
 var worker = require(process.cwd() + '/worker');
 var nconf  = require('nconf');
+require(process.cwd() + '/lib/lodash_mixins');
 
 // GLOBAL SIMULATOR OBJECT
 var DQC = {};

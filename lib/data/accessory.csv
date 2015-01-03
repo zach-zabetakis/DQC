@@ -1,11 +1,11 @@
-"name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","defense","strength","agility","critical","dodge","resist_burn","resist_numb","saver.phys","is_cursed"
-"Dragon's Scale","The scale of a dragon is rumored to offer protection to its bearer",20,"TRUE","TRUE","TRUE","TRUE","TRUE",0,2,0,0,0,0,,0,FALSE,FALSE
-"Dragon's Charm","A good luck charm previously owned by a dragon?",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,2,0,0,0,0,2,0,FALSE,FALSE
-"Charm of Viron","Memento of a legendary priest from a past age",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,2,0,0,0,0,0,0,TRUE,FALSE
-"Carapace Charm","Bits of a creature's shell fashioned into a charm",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,0,0,0,12,0,0,FALSE,FALSE
-"Shadow Charm","Cloaks the bearer in a shadowy aura",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,"*0.75",0,0,0,60,0,0,FALSE,FALSE
-"Wolf's Bane","Proof of courage against wolves",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,0,0,0,0,0,8,FALSE,FALSE
-"Scorpion's Bane","Proof of courage against scorpions. CURSED",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,0,0,0,0,0,0,FALSE,TRUE
-"Amulet","An old, forgotten amulet.  Boosts power, but at what cost? CURSED",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,"*2",0,0,0,0,0,FALSE,TRUE
-"Droll Mask","A scary visage which makes monsters flee in fear. CURSED",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,0,0,0,0,0,0,FALSE,TRUE
-"Cursed Belt","This belt constantly tightens around the user. CURSED",0,TRUE,TRUE,TRUE,TRUE,TRUE,0,0,0,"*2",4,0,0,0,FALSE,TRUE
+"name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","defense","strength","agility","critical","dodge","resist.burn","resist.numb","saver.burn","saver.phys","saver.ment","is_cursed"
+"Dragon's Scale","The scale of a dragon is rumored to offer protection to its bearer",20,"TRUE","TRUE","TRUE","TRUE","TRUE",0,2,0,0,0,0,,0,"FALSE","FALSE","false","FALSE"
+"Dragon's Charm","A good luck charm previously owned by a dragon?",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,2,0,0,0,0,2,0,"FALSE","FALSE","false","FALSE"
+"Charm of Viron","Memento of a legendary priest from a past age",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,2,0,0,0,0,0,0,"FALSE","TRUE","false","FALSE"
+"Carapace Charm","Bits of a creature's shell fashioned into a charm",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,0,0,0,12,0,0,"FALSE","FALSE","false","FALSE"
+"Shadow Charm","Cloaks the bearer in a shadowy aura",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,"*0.75",0,0,0,60,0,0,"FALSE","FALSE","false","FALSE"
+"Wolf's Bane","Proof of courage against wolves",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,0,0,0,0,0,8,"FALSE","FALSE","false","FALSE"
+"Scorpion's Bane","Proof of courage against scorpions. CURSED",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,0,0,0,0,0,0,"FALSE","FALSE","false","TRUE"
+"Amulet","An old, forgotten amulet.  Boosts power, but at what cost? CURSED",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,"*2",0,0,0,0,0,"FALSE","FALSE","false","TRUE"
+"Droll Mask","A scary visage which makes monsters flee in fear. CURSED",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,0,0,0,0,0,0,"FALSE","FALSE","false","TRUE"
+"Cursed Belt","This belt constantly tightens around the user. CURSED",0,"TRUE","TRUE","TRUE","TRUE","TRUE",0,0,0,"*2",4,0,0,0,"FALSE","FALSE","false","TRUE"

@@ -32,9 +32,9 @@ Multiple ACCESSORY items can be equipped.  All accessories count toward a charac
 
 `(N) dodge` - dodge bonus
 
-`(O) resist_burn` - resistance against burn spells and skills
+`(O) resist.burn` - resistance against burn spells and skills
 
-`(P) resist_numb` - resistance against paralysis
+`(P) resist.numb` - resistance against paralysis
 
 `(Q) saver.phys` - does this accessory have PHYS SAVER?
 
@@ -68,13 +68,13 @@ Items which can be equipped in a character's ARMOR slot. Note that description i
 
 `(L) agility` - agility bonus
 
-`(M) resist_beat` - resistance against instant death spells
+`(M) resist.beat` - resistance against instant death spells
 
 `(N) saver.burn` - does this armor have BURN SAVER?
 
 ## Character
 
-The brave heroes fighting to free the world from evil's grasp. All base values can be modified by equipment, heart, etc. `attack`, `defense`, and `saver` values are stored for convenience only and are recalculated based on other data.
+The brave heroes fighting to free the world from evil's grasp. All base values can be modified by equipment, heart, etc. `attack` and `defense` values are stored for convenience only and are recalculated based on other data.
 
 `(A) player` - name of the player who controls this character
 
@@ -128,29 +128,23 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(Z) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AA) base_saver.burn` - does this character have BURN SAVER?
+`(AA) equip.weapon` - character's equipped weapon
 
-`(AB) base_saver.phys` - does this character have PHYS SAVER?
+`(AB) equip.armor` - character's equipped body armor
 
-`(AC) base_saver.ment` - does this character have MENT SAVER?
+`(AC) equip.shield` - character's equipped shield
 
-`(AD) equip.weapon` - character's equipped weapon
+`(AD) equip.helmet` - character's equipped helmet
 
-`(AE) equip.armor` - character's equipped body armor
+`(AE) heart.name` - character's equipped monster heart
 
-`(AF) equip.shield` - character's equipped shield
+`(AF) heart.experience` - monster heart experience value
 
-`(AG) equip.helmet` - character's equipped helmet
+`(AG-AL) inventory` - items in this character's possession. Limit of 6
 
-`(AH) heart.name` - character's equipped monster heart
+`(AM) deaths` - number of times this character has been defeated
 
-`(AI) heart.experience` - monster heart experience value
-
-`(AJ-AO) inventory` - items in this character's possession. Limit of 6
-
-`(AP) deaths` - number of times this character has been defeated
-
-`(AQ) active` - is this character actively participating in the game? 
+`(AN) active` - is this character actively participating in the game? 
 
 ## Experience
 
