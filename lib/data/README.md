@@ -314,6 +314,50 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 
 `(I) defense` - defense bonus
 
+## Spell
+
+Magical spells which will be learned at the appropriate experience level. Note that invocation and description are for display purposes only.
+
+`(A) name` - spell name
+
+`(B) invocation` - magical word used to cast this spell
+
+`(C) description` - flavor description for this spell
+
+`(D) MP` - MP required to cast this spell
+
+`(E) level` - experience level required to learn this spell
+
+`(F) learned.ranger` - can this spell be learned by Rangers?
+
+`(G) learned.soldier` - can this spell be learned by Soldiers?
+
+`(H) learned.fighter` - can this spell be learned by Fighters?
+
+`(I) learned.priest` - can this spell be learned by Priests?
+
+`(J) learned.wizard` - can this spell be learned by Wizards?
+
+`(K) type` - classification for this spell's effects
+
+`(L) target` - how many targets does this spell affect?
+
+`(M) minimum` - minimum value of damage/healing for this spell
+
+`(N) range` - range of damage/healing for this spell
+
+`(O) rate` - rate (out of 16) that this spell succeeds in being cast
+
+`(P) status` - status inflicted if this spell lands on the target
+
+`(Q) resist` - resistance type used to defend against this spell
+
+`(R) stat_from` - multiply FROM this stat and add/subtract TO the next one
+
+`(S) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+
+`(T) multiplier` - stat multiplier used for calculation (null if not used)
+
 ## Weapon
 
 Items which can be equipped in a character's WEAPON slot. Note that description is for display purposes only.

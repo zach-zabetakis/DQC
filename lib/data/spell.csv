@@ -1,0 +1,33 @@
+"name","invocation","description","MP","level","learned.ranger","learned.soldier","learned.fighter","learned.priest","learned.wizard","type","target","minimum","range","rate","status","resist","stat_from","stat_to","multiplier"
+"Heal","Hoimi","Restores a small amount of HP",4,3,TRUE,TRUE,TRUE,TRUE,TRUE,"healing","single",10,8,16,,,,,"null"
+"Antidote","Kiarih","Cures poison status",2,8,FALSE,FALSE,FALSE,TRUE,FALSE,"healing","single",0,0,16,,,,,"null"
+"Numboff","Kiariku","Cures paralysis status",6,11,FALSE,FALSE,FALSE,TRUE,FALSE,"healing","group",0,0,16,,,,,"null"
+"Awake","Zameha","Cures sleep status",3,12,FALSE,FALSE,FALSE,TRUE,FALSE,"healing","group",0,0,16,,,,,"null"
+"Healmore","Behoimi","Restores a large amount of HP",10,17,FALSE,FALSE,FALSE,TRUE,FALSE,"healing","single",85,16,16,,,,,"null"
+"Healus","Behomarah","Restores HP to an entire group",18,22,TRUE,FALSE,FALSE,TRUE,FALSE,"healing","group",63,16,16,,,,,"null"
+"Vivify","Zaoraru","May revive a fallen ally, but at half HP",8,19,FALSE,FALSE,FALSE,TRUE,FALSE,"revival","single",0,0,8,,,"max_HP","curr_HP",0.5
+"Revive","Zaoriku","Will revive and completely heal a fallen ally",20,24,FALSE,FALSE,FALSE,TRUE,FALSE,"revival","single",0,0,16,,,"max_HP","curr_HP",1
+"Blaze","Mera","Burns an enemy with a small burst of flame",2,4,TRUE,TRUE,TRUE,TRUE,TRUE,"offensive","single",5,8,16,,"burn",,,"null"
+"Fireball","Gira","Burns a group of enemies with a small burst of flame",4,6,FALSE,FALSE,FALSE,FALSE,TRUE,"offensive","group",5,8,16,,"burn",,,"null"
+"Bang","Io","Engulfs all enemies in a series of  small explosions",5,8,FALSE,FALSE,FALSE,FALSE,TRUE,"offensive","all",5,8,16,,"burn",,,"null"
+"Firebane","Begirama","Burns a group of enemies in a large firestorm",6,10,FALSE,FALSE,FALSE,FALSE,TRUE,"offensive","group",23,8,16,,"burn",,,"null"
+"Blazemore","Merami","Burns an enemy in a large firestorm",5,19,TRUE,FALSE,FALSE,FALSE,TRUE,"offensive","single",58,8,16,,"burn",,,"null"
+"Beat","Zaki","May kill an enemy outright",7,15,FALSE,FALSE,FALSE,TRUE,FALSE,"status","single",0,0,16,,"beat",,,"null"
+"Defeat","Zaraki","May kill an entire group of foes",12,21,FALSE,FALSE,FALSE,TRUE,FALSE,"status","group",0,0,16,,"beat",,,"null"
+"Sleep","Ralihoh","Puts a group of foes to sleep",2,7,TRUE,FALSE,FALSE,TRUE,FALSE,"status","group",0,0,16,"SL","sleep",,,"null"
+"Surround","Manuhsa","Surrounds a group of foes in illusions",4,9,FALSE,FALSE,FALSE,TRUE,FALSE,"status","group",0,0,16,"SU","surround",,,"null"
+"Stopspell","Mahotohn","Prevents spell usage in a group of foes",2,10,TRUE,FALSE,FALSE,TRUE,FALSE,"status","group",0,0,16,"ST","stopspell",,,"null"
+"Chaos","Medapani","Induces confusion in a single foe",5,22,FALSE,FALSE,FALSE,FALSE,TRUE,"status","single",0,0,16,"CH","chaos",,,"null"
+"SpeedUP","Priorim","Increases the agility of a group of allies",3,6,FALSE,FALSE,FALSE,TRUE,FALSE,"buff","group",0,0,16,,,"adj_agility","curr_agility",1
+"Upper","Skara","Increases the defense of a single ally",3,7,FALSE,TRUE,FALSE,FALSE,FALSE,"buff","single",0,0,16,,,"defense","curr_defense",0.5
+"Increase","Skuruto","Increases the defense of a group of allies",4,9,FALSE,TRUE,FALSE,FALSE,TRUE,"buff","group",0,0,16,,,"defense","curr_defense",0.5
+"Bounce","Mahokanta","Reflects magic back at the caster",8,17,FALSE,FALSE,FALSE,FALSE,TRUE,"buff","single",0,0,16,"BO",,,,"null"
+"Ironize","Astron","Turns a group of allies into a lump of metal",6,20,FALSE,TRUE,FALSE,FALSE,FALSE,"buff","group",0,0,16,"IR",,,,"null"
+"Slow","Vomioth","Decreases the agility of a group of foes",3,7,FALSE,FALSE,FALSE,FALSE,TRUE,"debuff","group",0,0,16,,"slow","adj_agility","curr_agility",1
+"Sap","Lukani","Decreases the defense of a single foe",3,10,FALSE,FALSE,FALSE,FALSE,FALSE,"debuff","single",0,0,16,,"sap","curr_defense","curr_defense",0.5
+"Defense","Lukanan","Decreases the defense of a group of foes",4,13,FALSE,FALSE,FALSE,TRUE,FALSE,"debuff","group",0,0,16,,"sap","curr_defense","curr_defense",0.5
+"Robmagic","Mahotora","Steals the MP of a foe to replenish the caster's supply",0,11,FALSE,FALSE,FALSE,FALSE,TRUE,"debuff","single",5,8,16,,"robmagic","curr_MP","curr_MP",1
+"Radiant","Remihra","Fully illuminate dark places",3,9,TRUE,FALSE,FALSE,FALSE,FALSE,"travel","all",0,0,16,,,,,"null"
+"Outside","Liremito","Exit a cave or structure",3,12,TRUE,FALSE,FALSE,FALSE,TRUE,"travel","custom",0,0,16,,,,,"null"
+"Return","Ruhla","Return to Tantegel",4,13,TRUE,FALSE,FALSE,FALSE,TRUE,"travel","custom",0,0,16,,,,,"null"
+"Repel","Toheroth","Prevents encounters against weak monsters, or makes them flee battle",2,15,TRUE,TRUE,FALSE,FALSE,FALSE,"travel","all",0,0,16,,,,,"null"
