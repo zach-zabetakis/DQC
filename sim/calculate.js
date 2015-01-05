@@ -23,11 +23,17 @@ function calculateCharacterData(data) {
     // Level should be based on current experience value
     character.level = helpers.checkLevel(data.experience, character.job, character.experience);
 
-    // adj_HP
-    character.adj_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
+    // max_HP
+    character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
 
-    // adj_MP
-    character.adj_MP = helpers.calculateStatBoost('MP', character.base_MP, data, character);
+    // curr_HP cannot be greater than max_HP
+    character.curr_HP = Math.min(character.curr_HP, character.max_HP);
+
+    // max_MP
+    character.max_MP = helpers.calculateStatBoost('MP', character.base_MP, data, character);
+
+    // curr_MP cannot be greater than max_MP
+    character.curr_MP = Math.min(character.curr_MP, character.max_MP);
 
     // adj_strength
     character.adj_strength = helpers.calculateStatBoost('strength', character.base_strength, data, character);

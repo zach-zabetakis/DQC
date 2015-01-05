@@ -1,4 +1,4 @@
-The following documentation will explain what each column represents in the various data files. Column names MUST NOT be changed under any circumstances. All cells are case sensitive unless otherwise specified.
+The following documentation will explain what each column represents in the various CSV data files. Column names MUST NOT be changed under any circumstances. All cells are case sensitive unless otherwise specified.
 
 ## Accessory
 
@@ -88,63 +88,69 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(F) gold` - gold coins in this character's possession
 
-`(G) base_HP` - base maximum HP value. When HP reaches 0 the character dies
+`(G) curr_HP` - current HP value. When HP reaches 0 the character dies
 
-`(H) base_MP` - base maximum MP value. Required to cast spells
+`(H) curr_MP` - current MP value. Required to cast spells
 
-`(I) base_strength` - base strength value
+`(I) status` - semicolon separated list of status ailments
 
-`(J) base_agility` - base agility value
+`(J) base_HP` - base maximum HP value.
 
-`(K) attack` - total attack value, stored for convenience only
+`(K) base_MP` - base maximum MP value.
 
-`(L) defense` - total defense value, stored for convenience only
+`(L) base_strength` - base strength value
 
-`(M) base_critical` - base rate (out of 32) of performing a critical hit
+`(M) base_agility` - base agility value
 
-`(N) base_dodge` - base rate (out of 256) of evading a physical attack
+`(N) attack` - total attack value, stored for convenience only
 
-`(O) base_resist.burn` - resistance (out of 16) for BURN attacks
+`(O) defense` - total defense value, stored for convenience only
 
-`(P) base_resist.beat` - resistance (out of 16) for instant death spells
+`(P) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(Q) base_resist.numb` - resistance (out of 16) for paralysis
+`(Q) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(R) base_resist.poison` - resistance (out of 16) for poison
+`(R) base_resist.burn` - resistance (out of 16) for BURN attacks
 
-`(S) base_resist.sap` - resistance (out of 16) for defense lowering spells
+`(S) base_resist.beat` - resistance (out of 16) for instant death spells
 
-`(T) base_resist.slow` - resistance (out of 16) for agility lowering spells
+`(T) base_resist.numb` - resistance (out of 16) for paralysis
 
-`(U) base_resist.chaos` - resistance (out of 16) for confusion
+`(U) base_resist.poison` - resistance (out of 16) for poison
 
-`(V) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(V) base_resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(W) base_resist.sleep` - resistance (out of 16) for sleep
+`(W) base_resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(X) base_resist.stopspell` - resistance (out of 16) for stopspell
+`(X) base_resist.chaos` - resistance (out of 16) for confusion
 
-`(Y) base_resist.surround` - resistance (out of 16) for surround
+`(Y) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(Z) base_resist.fear` - resistance (out of 16) from being frozen in fear
+`(Z) base_resist.sleep` - resistance (out of 16) for sleep
 
-`(AA) equip.weapon` - character's equipped weapon
+`(AA) base_resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AB) equip.armor` - character's equipped body armor
+`(AB) base_resist.surround` - resistance (out of 16) for surround
 
-`(AC) equip.shield` - character's equipped shield
+`(AC) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AD) equip.helmet` - character's equipped helmet
+`(AD) equip.weapon` - character's equipped weapon
 
-`(AE) heart.name` - character's equipped monster heart
+`(AE) equip.armor` - character's equipped body armor
 
-`(AF) heart.experience` - monster heart experience value
+`(AF) equip.shield` - character's equipped shield
 
-`(AG-AL) inventory` - items in this character's possession. Limit of 6
+`(AG) equip.helmet` - character's equipped helmet
 
-`(AM) deaths` - number of times this character has been defeated
+`(AH) heart.name` - character's equipped monster heart
 
-`(AN) active` - is this character actively participating in the game? 
+`(AI) heart.experience` - monster heart experience value
+
+`(AJ-AO) inventory` - items in this character's possession. Limit of 6
+
+`(AP) deaths` - number of times this character has been defeated
+
+`(AQ) active` - is this character actively participating in the game? 
 
 ## Experience
 
@@ -162,8 +168,7 @@ The experience required to advance to level N is found in array index N-1.
 
 ## Heart
 
-Monster hearts which grant the essence of the defeated monster
-Note that description is for display purposes only.
+Monster hearts which grant the essence of the defeated monster. Note that description is for display purposes only.
 
 `(A) name` - heart name
 
@@ -217,14 +222,13 @@ Items which can be equipped in a character's HELMET slot. Note that description 
 
 ## Monster
 
-Monsters you may run into during your travels. Beware!
-Note that flavor text is for display purposes only.
+Monsters you may run into during your travels. Beware! Note that flavor text is for display purposes only.
 
 `(A) name` - monster's name
 
-`(B) maxHP` - maximum HP value. When HP reaches 0 the monster is defeated!
+`(B) max_HP` - maximum HP value. When HP reaches 0 the monster is defeated!
 
-`(C) maxMP` - maximum MP value. Required to cast spells
+`(C) max_MP` - maximum MP value. Required to cast spells
 
 `(D) attack` - attack value, used for physical attacks
 
