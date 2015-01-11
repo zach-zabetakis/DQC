@@ -346,7 +346,7 @@ Magical spells which will be learned at the appropriate experience level. Note t
 
 `(N) range` - range of damage/healing for this spell
 
-`(O) rate` - rate (out of 16) that this spell succeeds in being cast
+`(O) miss` - rate (out of 32) that this spell fails in being cast
 
 `(P) status` - status inflicted if this spell lands on the target
 
@@ -379,3 +379,7 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 `(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) attack` - attack bonus
+
+`(J) miss` - rate (out of 32) that a physical attack will fail
+
+`(K) critical` - critical hit bonus
