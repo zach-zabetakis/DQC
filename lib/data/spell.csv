@@ -23,6 +23,7 @@
 "Increase","Skuruto","Increases the defense of a group of allies",4,9,"FALSE","TRUE","FALSE","FALSE","TRUE","buff","group",0,0,0,,,"defense","curr_defense",0.5
 "Bounce","Mahokanta","Reflects magic back at the caster",8,17,"FALSE","FALSE","FALSE","FALSE","TRUE","buff","single",0,0,0,"BO",,,,"null"
 "Ironize","Astron","Turns a group of allies into a lump of metal",6,20,"FALSE","TRUE","FALSE","FALSE","FALSE","buff","group",0,0,0,"IR",,,,"null"
+"Bikill","Baikiruto","Doubles the attack of a single ally",8,20,"FALSE","FALSE","FALSE","FALSE","FALSE","buff","single",0,0,0,,,"attack","curr_attack",1
 "Slow","Vomioth","Decreases the agility of a group of foes",3,7,"FALSE","FALSE","FALSE","FALSE","TRUE","debuff","group",0,0,0,,"slow","adj_agility","curr_agility",1
 "Sap","Lukani","Decreases the defense of a single foe",3,10,"FALSE","FALSE","FALSE","FALSE","FALSE","debuff","single",0,0,0,,"sap","curr_defense","curr_defense",0.5
 "Defense","Lukanan","Decreases the defense of a group of foes",4,13,"FALSE","FALSE","FALSE","TRUE","FALSE","debuff","group",0,0,0,,"sap","curr_defense","curr_defense",0.5

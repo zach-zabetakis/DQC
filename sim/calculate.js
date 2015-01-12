@@ -20,9 +20,6 @@ module.exports = function (data, next) {
 // Character Data
 function calculateCharacterData(data) {
   _.each(data.character, function (character) {
-    // Level should be based on current experience value
-    character.level = helpers.checkLevel(data.experience, character.job, character.experience);
-
     // max_HP
     character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
     character.max_HP = Math.max(character.max_HP, 0);
@@ -45,17 +42,17 @@ function calculateCharacterData(data) {
 
     // adj_agility
     character.adj_agility = helpers.calculateStatBoost('agility', character.base_agility, data, character);
-    character.adj_agility = Math.max(character.adj_agility, 0);
+    character.curr_agility = character.adj_agility = Math.max(character.adj_agility, 0);
 
     // attack
     character.attack = helpers.calculateStatBoost('attack', character.adj_strength, data, character);
-    character.attack = Math.max(character.attack, 0);
+    character.curr_attack = character.attack = Math.max(character.attack, 0);
 
     // defense
     // base defense is agility / 2
     var base_defense = parseInt(character.adj_agility / 2, 10);
     character.defense = helpers.calculateStatBoost('defense', base_defense, data, character);
-    character.defense = Math.max(character.defense, 0);
+    character.curr_defense = character.defense = Math.max(character.defense, 0);
 
     // miss
     character.miss = helpers.calculateStatBoost('miss', 0, data, character);
@@ -94,5 +91,7 @@ function calculateCharacterData(data) {
 
     // is_cursed
     character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
+  
+    // TODO: apply spells from previous update(s)
   });
 }

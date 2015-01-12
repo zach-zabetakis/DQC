@@ -88,69 +88,71 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(F) gold` - gold coins in this character's possession
 
-`(G) curr_HP` - current HP value. When HP reaches 0 the character dies
+`(G) status` - semicolon separated list of status ailments
 
-`(H) curr_MP` - current MP value. Required to cast spells
+`(H) effects` - semicolon separated list of current in-battle spell effects
 
-`(I) status` - semicolon separated list of status ailments
+`(I) curr_HP` - current HP value. When HP reaches 0 the character dies
 
-`(J) base_HP` - base maximum HP value.
+`(J) curr_MP` - current MP value. Required to cast spells
 
-`(K) base_MP` - base maximum MP value.
+`(K) base_HP` - base maximum HP value.
 
-`(L) base_strength` - base strength value
+`(L) base_MP` - base maximum MP value.
 
-`(M) base_agility` - base agility value
+`(M) base_strength` - base strength value
 
-`(N) attack` - total attack value, stored for convenience only
+`(N) base_agility` - base agility value
 
-`(O) defense` - total defense value, stored for convenience only
+`(O) attack` - total attack value, stored for convenience only
 
-`(P) base_critical` - base rate (out of 32) of performing a critical hit
+`(P) defense` - total defense value, stored for convenience only
 
-`(Q) base_dodge` - base rate (out of 256) of evading a physical attack
+`(Q) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(R) base_resist.burn` - resistance (out of 16) for BURN attacks
+`(R) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(S) base_resist.beat` - resistance (out of 16) for instant death spells
+`(S) base_resist.burn` - resistance (out of 16) for BURN attacks
 
-`(T) base_resist.numb` - resistance (out of 16) for paralysis
+`(T) base_resist.beat` - resistance (out of 16) for instant death spells
 
-`(U) base_resist.poison` - resistance (out of 16) for poison
+`(U) base_resist.numb` - resistance (out of 16) for paralysis
 
-`(V) base_resist.sap` - resistance (out of 16) for defense lowering spells
+`(V) base_resist.poison` - resistance (out of 16) for poison
 
-`(W) base_resist.slow` - resistance (out of 16) for agility lowering spells
+`(W) base_resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(X) base_resist.chaos` - resistance (out of 16) for confusion
+`(X) base_resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(Y) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(Y) base_resist.chaos` - resistance (out of 16) for confusion
 
-`(Z) base_resist.sleep` - resistance (out of 16) for sleep
+`(Z) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(AA) base_resist.stopspell` - resistance (out of 16) for stopspell
+`(AA) base_resist.sleep` - resistance (out of 16) for sleep
 
-`(AB) base_resist.surround` - resistance (out of 16) for surround
+`(AB) base_resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AC) base_resist.fear` - resistance (out of 16) from being frozen in fear
+`(AC) base_resist.surround` - resistance (out of 16) for surround
 
-`(AD) equip.weapon` - character's equipped weapon
+`(AD) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AE) equip.armor` - character's equipped body armor
+`(AE) equip.weapon` - character's equipped weapon
 
-`(AF) equip.shield` - character's equipped shield
+`(AF) equip.armor` - character's equipped body armor
 
-`(AG) equip.helmet` - character's equipped helmet
+`(AG) equip.shield` - character's equipped shield
 
-`(AH) heart.name` - character's equipped monster heart
+`(AH) equip.helmet` - character's equipped helmet
 
-`(AI) heart.experience` - monster heart experience value
+`(AI) heart.name` - character's equipped monster heart
 
-`(AJ-AO) inventory` - items in this character's possession. Limit of 6
+`(AJ) heart.experience` - monster heart experience value
 
-`(AP) deaths` - number of times this character has been defeated
+`(AK-AP) inventory` - items in this character's possession. Limit of 6
 
-`(AQ) active` - is this character actively participating in the game? 
+`(AQ) deaths` - number of times this character has been defeated
+
+`(AR) active` - is this character actively participating in the game? 
 
 ## Experience
 
@@ -286,11 +288,13 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(AE) saver.ment` - does this monster have MENT SAVER?
 
-`(AF-AN) pattern` - monster's attack pattern. Equal chance of each action
+`(AF) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(AN-AU) flavor.attack` - flavor text for this monster's physical attack
+`(AG-AO) pattern` - monster's attack pattern. Equal chance of each action
 
-`(AV) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AO-AV) flavor.attack` - flavor text for this monster's physical attack
+
+`(AW) flavor.dodge` - flavor text when this monster dodges a physical attack
 
 ## Shield
 

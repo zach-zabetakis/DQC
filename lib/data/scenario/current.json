@@ -11,15 +11,14 @@
           {
             "groups" : [
               {
-                "type" : "character",
                 "members" : [
                   {
-                    "name" : "Zephyr",
-                    "effects" : []
+                    "type" : "character",
+                    "name" : "Zephyr"
                   },
                   {
-                    "name" : "Anduin",
-                    "effects" : []
+                    "type" : "character",
+                    "name" : "Anduin"
                   }
                 ]
               }
@@ -28,9 +27,9 @@
           {
             "groups" : [
               {
-                "type" : "monster",
                 "members" : [
                   {
+                    "type" : "monster",
                     "name" : "Slime",
                     "curr_HP" : "3",
                     "curr_MP" : "0",
@@ -38,6 +37,7 @@
                     "effects" : []
                   },
                   {
+                    "type" : "monster",
                     "name" : "Slime",
                     "curr_HP" : "3",
                     "curr_MP" : "0",
@@ -47,9 +47,9 @@
                 ]
               },
               {
-                "type" : "monster",
                 "members" : [
                   {
+                    "type" : "monster",
                     "name" : "Red Slime",
                     "curr_HP" : "3",
                     "curr_MP" : "0",
