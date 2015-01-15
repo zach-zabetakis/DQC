@@ -13,12 +13,13 @@ module.exports = function (data, next) {
   });
 
   calculateCharacterData(data);
+  populateScenario(data);
 
   return next(null, data);
 };
 
-// Character Data
-function calculateCharacterData(data) {
+// calculated/additonal data attached to each character
+function calculateCharacterData (data) {
   _.each(data.character, function (character) {
     // max_HP
     character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
@@ -93,5 +94,23 @@ function calculateCharacterData(data) {
     character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
   
     // TODO: apply spells from previous update(s)
+  });
+}
+
+// Fill characters and monsters into the scenario
+function populateScenario (data) {
+  _.each(data.scenario.quests, function (quest) {
+    if (quest.in_battle) {
+      _.each(quest.battle.sides, function (side) {
+        _.each(side.groups, function (group) {
+          _.each(group.members, function (member, index) {
+            var match = _.find(data[member.type], { name : member.name });
+            if (match) {
+              group.members[index] = _.merge(match, member);
+            }
+          });
+        });
+      });
+    }
   });
 }

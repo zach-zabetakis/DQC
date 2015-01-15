@@ -24,7 +24,8 @@ module.exports = function (next) {
     heart      : data('heart'),
     experience : dataArray('experience'),
     monster    : data('monster'),
-    character  : data('character')
+    character  : data('character'),
+    scenario   : loadScenario
   }, next);
   
 
@@ -64,5 +65,19 @@ module.exports = function (next) {
 
       fileStream.pipe(csvConverter);
     }
+  }
+
+  function loadScenario (callback) {
+    var scenario = nconf.get('scenario');
+    var json;
+
+    try {
+      json = fs.readFileSync(path + '/scenario/' + scenario);
+      json = JSON.parse(json);
+    } catch (e) {
+      return callback(new Error('Could not load scenario file'));
+    }
+
+    return callback(null, json);
   }
 };
