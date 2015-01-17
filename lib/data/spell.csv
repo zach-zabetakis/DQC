@@ -1,8 +1,8 @@
 "name","invocation","description","MP","level","learned.ranger","learned.soldier","learned.fighter","learned.priest","learned.wizard","type","target","minimum","range","miss","status","resist","stat_from","stat_to","multiplier"
 "Heal","Hoimi","Restores a small amount of HP",4,3,"TRUE","TRUE","TRUE","TRUE","TRUE","healing","single",10,8,0,,,,,"null"
-"Antidote","Kiarih","Cures poison status",2,8,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","single",0,0,0,,,,,"null"
-"Numboff","Kiariku","Cures paralysis status",6,11,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","group",0,0,0,,,,,"null"
-"Awake","Zameha","Cures sleep status",3,12,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","group",0,0,0,,,,,"null"
+"Antidote","Kiarih","Cures poison status",2,8,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","single",0,0,0,"PO",,,,"null"
+"Numboff","Kiariku","Cures paralysis status",6,11,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","group",0,0,0,"NU",,,,"null"
+"Awake","Zameha","Cures sleep status",3,12,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","group",0,0,0,"SL",,,,"null"
 "Healmore","Behoimi","Restores a large amount of HP",10,17,"FALSE","FALSE","FALSE","TRUE","FALSE","healing","single",85,16,0,,,,,"null"
 "Healus","Behomarah","Restores HP to an entire group",18,22,"TRUE","FALSE","FALSE","TRUE","FALSE","healing","group",63,16,0,,,,,"null"
 "Vivify","Zaoraru","May revive a fallen ally, but at half HP",8,19,"FALSE","FALSE","FALSE","TRUE","FALSE","revival","single",0,0,16,,,"max_HP","curr_HP",0.5

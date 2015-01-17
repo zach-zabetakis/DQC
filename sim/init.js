@@ -22,6 +22,7 @@ module.exports = function (next) {
     helmet     : data('helmet'),
     accessory  : data('accessory'),
     heart      : data('heart'),
+    spell      : data('spell'),
     experience : dataArray('experience'),
     monster    : data('monster'),
     character  : data('character'),

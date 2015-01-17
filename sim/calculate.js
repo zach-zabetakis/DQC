@@ -1,11 +1,12 @@
 var helpers = require(process.cwd() + '/lib/helpers');
+var Spells  = require(process.cwd() + '/sim/spells');
 var _       = require('lodash');
 
 /*
  * Calculate additional data based on the data passed in.
  */
 module.exports = function (data, next) {
-  var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'shield', 'weapon'];
+  var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'shield', 'spell', 'weapon'];
   _.each(initDataKeys, function (key) {
     if (!data[key]) {
       throw new Error(key + ' data not found!');
@@ -13,13 +14,38 @@ module.exports = function (data, next) {
   });
 
   calculateCharacterData(data);
+  calculateMonsterData(data);
   populateScenario(data);
 
   return next(null, data);
 };
 
-// calculated/additonal data attached to each character
+// calculated/additional data attached to each monster
+function calculateMonsterData (data) {
+  _.each(data.monster, function (monster) {
+    // This will be overwritten later when new monsters are generated for a battle
+    monster.curr_HP = monster.max_HP;
+
+    monster.curr_MP = monster.max_MP;
+
+    monster.curr_attack = monster.attack;
+
+    monster.curr_defense = monster.defense;
+
+    monster.curr_agility = monster.adj_agility = monster.agility;
+
+    monster.miss = 0;
+
+    monster.adj_critical = monster.critical;
+
+    monster.adj_dodge = monster.dodge;
+  });
+}
+
+// calculated/additional data attached to each character
 function calculateCharacterData (data) {
+  var spells = new Spells(data.spell);
+
   _.each(data.character, function (character) {
     // max_HP
     character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
@@ -93,12 +119,20 @@ function calculateCharacterData (data) {
     // is_cursed
     character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
   
-    // TODO: apply spells from previous update(s)
+    // apply spell effects from previous update(s)
+    if (character.effects) {
+      character.effects = character.effects.split(';');
+      _.each(character.effects, function (effect) {
+        spells.applySpellEffect(effect.trim(), character);
+      });
+    }
   });
 }
 
 // Fill characters and monsters into the scenario
 function populateScenario (data) {
+  var spells = new Spells(data.spell);
+
   _.each(data.scenario.quests, function (quest) {
     if (quest.in_battle) {
       _.each(quest.battle.sides, function (side) {
@@ -106,7 +140,13 @@ function populateScenario (data) {
           _.each(group.members, function (member, index) {
             var match = _.find(data[member.type], { name : member.name });
             if (match) {
-              group.members[index] = _.merge(match, member);
+              var new_member = _.merge(match, member);
+              if (member.type === 'monster') {
+                _.each(new_member.effects, function (effect) {
+                  spells.applySpellEffect(effect, new_member);
+                });
+              }
+              group.members[index] = new_member;
             }
           });
         });
