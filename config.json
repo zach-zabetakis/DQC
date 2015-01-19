@@ -1,4 +1,16 @@
 {
   "data" : "/lib/data/",
-  "scenario" : "current.json"
+  "scenario" : "current.json",
+  "max_stat" : {
+    "base_strength" : "255",
+    "adj_strength" : "255",
+    "curr_strength" : "255",
+    "base_agility" : "255",
+    "adj_agility" : "255",
+    "curr_agility" : "255",
+    "attack" : "999",
+    "curr_attack" : "999",
+    "defense" : "999",
+    "curr_defense" : "999"
+  }
 }

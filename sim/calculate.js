@@ -1,5 +1,6 @@
 var helpers = require(process.cwd() + '/lib/helpers');
 var Spells  = require(process.cwd() + '/sim/spells');
+var nconf   = require('nconf');
 var _       = require('lodash');
 
 /*
@@ -21,6 +22,7 @@ module.exports = function (data, next) {
 };
 
 // calculated/additional data attached to each monster
+// TODO: sanitize monster stat values
 function calculateMonsterData (data) {
   _.each(data.monster, function (monster) {
     // This will be overwritten later when new monsters are generated for a battle
@@ -45,6 +47,7 @@ function calculateMonsterData (data) {
 // calculated/additional data attached to each character
 function calculateCharacterData (data) {
   var spells = new Spells(data.spell);
+  var max_stat = nconf.get('max_stat');
 
   _.each(data.character, function (character) {
     // max_HP
@@ -63,23 +66,43 @@ function calculateCharacterData (data) {
     character.curr_MP = Math.min(character.curr_MP, character.max_MP);
     character.curr_MP = Math.max(character.curr_MP, 0);
 
+    // base_strength
+    character.base_strength = Math.min(character.base_strength, max_stat['base_strength']);
+
     // adj_strength
     character.adj_strength = helpers.calculateStatBoost('strength', character.base_strength, data, character);
     character.adj_strength = Math.max(character.adj_strength, 0);
+    character.adj_strength = Math.min(character.adj_strength, max_stat['adj_strength']);
+
+    // curr_strength
+    character.curr_strength = character.adj_strength;
+
+    // base_agility
+    character.base_agility = Math.min(character.base_agility, max_stat['base_agility']);
 
     // adj_agility
     character.adj_agility = helpers.calculateStatBoost('agility', character.base_agility, data, character);
-    character.curr_agility = character.adj_agility = Math.max(character.adj_agility, 0);
+    character.adj_agility = Math.max(character.adj_agility, 0);
+    character.adj_agility = Math.min(character.adj_agility, max_stat['adj_agility']);
+
+    // curr_agility
+    character.curr_agility = character.adj_agility;
 
     // attack
     character.attack = helpers.calculateStatBoost('attack', character.adj_strength, data, character);
-    character.curr_attack = character.attack = Math.max(character.attack, 0);
+    character.attack = Math.max(character.attack, 0);
+    character.attack = Math.min(character.attack, max_stat['attack']);
+
+    character.curr_attack = character.attack;
 
     // defense
     // base defense is agility / 2
     var base_defense = parseInt(character.adj_agility / 2, 10);
     character.defense = helpers.calculateStatBoost('defense', base_defense, data, character);
-    character.curr_defense = character.defense = Math.max(character.defense, 0);
+    character.defense = Math.max(character.defense, 0);
+    character.defense = Math.min(character.defense, max_stat['defense']);
+
+    character.curr_defense = character.defense;
 
     // miss
     character.miss = helpers.calculateStatBoost('miss', 0, data, character);
