@@ -22,18 +22,25 @@ module.exports = function (data, next) {
 };
 
 // calculated/additional data attached to each monster
-// TODO: sanitize monster stat values
 function calculateMonsterData (data) {
+  var max_stat = nconf.get('max_stat');
+  
   _.each(data.monster, function (monster) {
     // This will be overwritten later when new monsters are generated for a battle
     monster.curr_HP = monster.max_HP;
 
     monster.curr_MP = monster.max_MP;
 
+    monster.attack = Math.max(monster.attack, 0);
+    monster.attack = Math.min(monster.attack, max_stat['attack']);
     monster.curr_attack = monster.attack;
 
+    monster.defense = Math.max(monster.defense, 0);
+    monster.defense = Math.min(monster.defense, max_stat['defense']);
     monster.curr_defense = monster.defense;
 
+    monster.agility = Math.max(monster.agility, 0);
+    monster.agility = Math.min(monster.agility, max_stat['base_agility']);
     monster.curr_agility = monster.adj_agility = monster.agility;
 
     monster.miss = 0;
@@ -41,6 +48,9 @@ function calculateMonsterData (data) {
     monster.adj_critical = monster.critical;
 
     monster.adj_dodge = monster.dodge;
+
+    monster.experience = Math.max(monster.experience, 0);
+    monster.gold = Math.max(monster.gold, 0);
   });
 }
 
