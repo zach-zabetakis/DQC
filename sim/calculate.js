@@ -60,6 +60,9 @@ function calculateCharacterData (data) {
   var max_stat = nconf.get('max_stat');
 
   _.each(data.character, function (character) {
+    character.experience = Math.max(character.experience, 0);
+    character.gold = Math.max(character.gold, 0);
+
     // max_HP
     character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
     character.max_HP = Math.max(character.max_HP, 0);

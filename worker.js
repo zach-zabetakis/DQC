@@ -3,6 +3,7 @@ var async = require('async');
 
 module.exports = function (DQC) {
   async.waterfall([
+    sim.random,
     sim.init,
     sim.calculate
   ], function (error, results) {

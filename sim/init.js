@@ -8,7 +8,7 @@ var _         = require('lodash');
 /*
  * Initialize saved data from external data files.
  */
-module.exports = function (next) {
+module.exports = function (rng, next) {
   // PATH TO DATA FILES
   var path = nconf.get('data');
   if (path === '/lib/data/') {
@@ -27,7 +27,13 @@ module.exports = function (next) {
     monster    : data('monster'),
     character  : data('character'),
     scenario   : loadScenario
-  }, next);
+  }, function (error, results) {
+    if (results) {
+      results.RNG = rng;
+    }
+
+    return next(error, results);
+  });
   
 
   function data (filename) {
