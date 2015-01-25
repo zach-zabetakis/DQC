@@ -4,59 +4,54 @@
       "name" : "Test",
       "location" : "Unknown",
       "quest" : "Quest Name",
-      "battles_remaining" : "1",
-      "in_battle" : true,
-      "battle" : {
-        "sides" : [
+      "characters" : {
+        "groups" : [
           {
-            "groups" : [
+            "members" : [
               {
-                "members" : [
-                  {
-                    "type" : "character",
-                    "name" : "Zephyr"
-                  },
-                  {
-                    "type" : "character",
-                    "name" : "Anduin"
-                  }
-                ]
+                "name" : "Zephyr"
+              },
+              {
+                "name" : "Anduin"
+              }
+            ]
+          }
+        ]
+      },
+      "allies" : {},
+      "battles_remaining" : 1,
+      "in_battle" : true,
+      "enemies" : {
+        "groups" : [
+          {
+            "members" : [
+              {
+                "type" : "monster",
+                "name" : "Slime",
+                "curr_HP" : "3",
+                "curr_MP" : "0",
+                "status" : [],
+                "effects" : ["Bikill"]
+              },
+              {
+                "type" : "monster",
+                "name" : "Slime",
+                "curr_HP" : "2",
+                "curr_MP" : "0",
+                "status" : [],
+                "effects" : ["Defense"]
               }
             ]
           },
           {
-            "groups" : [
+            "members" : [
               {
-                "members" : [
-                  {
-                    "type" : "monster",
-                    "name" : "Slime",
-                    "curr_HP" : "3",
-                    "curr_MP" : "0",
-                    "status" : [],
-                    "effects" : []
-                  },
-                  {
-                    "type" : "monster",
-                    "name" : "Slime",
-                    "curr_HP" : "3",
-                    "curr_MP" : "0",
-                    "status" : [],
-                    "effects" : []
-                  }
-                ]
-              },
-              {
-                "members" : [
-                  {
-                    "type" : "monster",
-                    "name" : "Red Slime",
-                    "curr_HP" : "3",
-                    "curr_MP" : "0",
-                    "status" : [],
-                    "effects" : []
-                  }
-                ]
+                "type" : "monster",
+                "name" : "Red Slime",
+                "curr_HP" : "3",
+                "curr_MP" : "0",
+                "status" : [],
+                "effects" : []
               }
             ]
           }

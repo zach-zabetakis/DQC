@@ -56,7 +56,6 @@ function calculateMonsterData (data) {
 
 // calculated/additional data attached to each character
 function calculateCharacterData (data) {
-  var spells = new Spells(data.spell);
   var max_stat = nconf.get('max_stat');
 
   _.each(data.character, function (character) {
@@ -155,12 +154,14 @@ function calculateCharacterData (data) {
     // is_cursed
     character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
   
-    // apply spell effects from previous update(s)
+    // status should be an array
+    if (character.status) {
+      character.status = _.map(character.status.split(';'), function (status) { return status.trim(); });
+    }
+
+    // effects should be an array
     if (character.effects) {
-      character.effects = character.effects.split(';');
-      _.each(character.effects, function (effect) {
-        spells.applySpellEffect(effect.trim(), character);
-      });
+      character.effects = _.map(character.effects.split(';'), function (effect) { return effect.trim(); });
     }
   });
 }
@@ -170,23 +171,22 @@ function populateScenario (data) {
   var spells = new Spells(data.spell);
 
   _.each(data.scenario.quests, function (quest) {
-    if (quest.in_battle) {
-      _.each(quest.battle.sides, function (side) {
-        _.each(side.groups, function (group) {
-          _.each(group.members, function (member, index) {
-            var match = _.find(data[member.type], { name : member.name });
-            if (match) {
-              var new_member = _.merge(match, member);
-              if (member.type === 'monster') {
-                _.each(new_member.effects, function (effect) {
-                  spells.applySpellEffect(effect, new_member);
-                });
-              }
-              group.members[index] = new_member;
-            }
-          });
-        });
-      });
-    }
+    _.each(quest.characters.groups, populateGroup);
+    _.each(quest.allies.groups, populateGroup);
+    _.each(quest.enemies.groups, populateGroup);
   });
+
+  function populateGroup (group) {
+    _.each(group.members, function (member, index) {
+      var type  = member.type || 'character';
+      var match = _.find(data[type], { name : member.name });
+      if (match) {
+        var new_member = _.merge(member, match);
+        _.each(new_member.effects, function (effect) {
+          spells.applySpellEffect(effect, new_member);
+        });
+        group.members[index] = new_member;
+      }
+    });
+  }
 }
