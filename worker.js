@@ -1,7 +1,7 @@
 var sim   = require(process.cwd() + '/sim');
 var async = require('async');
 
-module.exports = function (DQC) {
+module.exports = function () {
   async.waterfall([
     sim.random,
     sim.init,
@@ -11,6 +11,15 @@ module.exports = function (DQC) {
       throw new Error('CURSED!');
     }
 
+    var DQC = {};
+
+    DQC.RNG  = results.RNG;
+    delete results.RNG;
+
+    DQC.scenario = results.scenario;
+    delete results.scenario;
+
     DQC.data = results;
+
   });
 };

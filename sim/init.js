@@ -25,6 +25,7 @@ module.exports = function (rng, next) {
     spell      : data('spell'),
     experience : dataArray('experience'),
     monster    : data('monster'),
+    npc        : data('npc'),
     character  : data('character'),
     scenario   : loadScenario
   }, function (error, results) {
@@ -38,29 +39,31 @@ module.exports = function (rng, next) {
 
   function data (filename) {
     return function (callback) {
-      var fileStream   = fs.createReadStream(path + filename + '.csv');
       var csvConverter = new Converter({});
+      var fileStream;
 
+      csvConverter.on('record_parsed', helpers.fixData);
       csvConverter.on('end_parsed', function (data) {
         return callback(null, data);
       });
 
-      csvConverter.on('record_parsed', helpers.fixData);
-
-      fileStream.pipe(csvConverter);
+      try {
+        fileStream = fs.createReadStream(path + filename + '.csv');
+        fileStream.pipe(csvConverter);
+      } catch (e) {
+        return callback(new Error('Could not load data file: ' + filename));
+      }
     }
   }
 
   function dataArray (filename) {
     return function (callback) {
-      var fileStream   = fs.createReadStream(path + filename + '.csv');
       var csvConverter = new Converter({});
       var result       = {};
 
       csvConverter.on('end_parsed', function (data) {
         return callback(null, result);
       });
-
       csvConverter.on('record_parsed', function (resultRow, rawRow, rowIndex) {
         _.each(resultRow, function (value, key) {
           if (!result[key] || !result[key] instanceof Array) {
@@ -70,7 +73,12 @@ module.exports = function (rng, next) {
         });
       });
 
-      fileStream.pipe(csvConverter);
+      try {
+        fileStream  = fs.createReadStream(path + filename + '.csv');
+        fileStream.pipe(csvConverter);
+      } catch (e) {
+        return callback(new Error('Could not load data file: ' + filename));
+      }
     }
   }
 

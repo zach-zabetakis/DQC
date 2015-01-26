@@ -18,7 +18,22 @@
           }
         ]
       },
-      "allies" : {},
+      "allies" : {
+        "groups" : [
+          {
+            "members" : [
+              {
+                "type" : "npc",
+                "name" : "Hexologist",
+                "curr_HP" : "29",
+                "curr_MP" : "14",
+                "status" : [],
+                "effects" : ["Increase"]
+              }
+            ]
+          }
+        ]
+      },
       "battles_remaining" : 1,
       "in_battle" : true,
       "enemies" : {

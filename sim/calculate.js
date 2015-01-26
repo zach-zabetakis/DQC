@@ -14,8 +14,9 @@ module.exports = function (data, next) {
     }
   });
 
-  calculateCharacterData(data);
   calculateMonsterData(data);
+  calculateData(data, 'npc');
+  calculateData(data, 'character');
   populateScenario(data);
 
   return next(null, data);
@@ -26,11 +27,6 @@ function calculateMonsterData (data) {
   var max_stat = nconf.get('max_stat');
   
   _.each(data.monster, function (monster) {
-    // This will be overwritten later when new monsters are generated for a battle
-    monster.curr_HP = monster.max_HP;
-
-    monster.curr_MP = monster.max_MP;
-
     monster.attack = Math.max(monster.attack, 0);
     monster.attack = Math.min(monster.attack, max_stat['attack']);
     monster.curr_attack = monster.attack;
@@ -54,114 +50,120 @@ function calculateMonsterData (data) {
   });
 }
 
-// calculated/additional data attached to each character
-function calculateCharacterData (data) {
+// calculated/additional data attached to each character or NPC.
+function calculateData (data, type) {
   var max_stat = nconf.get('max_stat');
 
-  _.each(data.character, function (character) {
-    character.experience = Math.max(character.experience, 0);
-    character.gold = Math.max(character.gold, 0);
+  _.each(data[type], function (member) {
+    member.type = type;
+
+    member.experience = Math.max(member.experience, 0);
+    member.gold = Math.max(member.gold, 0);
 
     // max_HP
-    character.max_HP = helpers.calculateStatBoost('HP', character.base_HP, data, character);
-    character.max_HP = Math.max(character.max_HP, 0);
+    member.max_HP = helpers.calculateStatBoost('HP', member.base_HP, data, member);
+    member.max_HP = Math.max(member.max_HP, 0);
 
-    // curr_HP cannot be greater than max_HP
-    character.curr_HP = Math.min(character.curr_HP, character.max_HP);
-    character.curr_HP = Math.max(character.curr_HP, 0);
+    if (type === 'character') {
+      // curr_HP cannot be greater than max_HP
+      member.curr_HP = Math.min(member.curr_HP, member.max_HP);
+      member.curr_HP = Math.max(member.curr_HP, 0);
+    }
 
     // max_MP
-    character.max_MP = helpers.calculateStatBoost('MP', character.base_MP, data, character);
-    character.max_MP = Math.max(character.max_MP, 0);
+    member.max_MP = helpers.calculateStatBoost('MP', member.base_MP, data, member);
+    member.max_MP = Math.max(member.max_MP, 0);
 
-    // curr_MP cannot be greater than max_MP
-    character.curr_MP = Math.min(character.curr_MP, character.max_MP);
-    character.curr_MP = Math.max(character.curr_MP, 0);
+    if (type === 'character') {
+      // curr_MP cannot be greater than max_MP
+      member.curr_MP = Math.min(member.curr_MP, member.max_MP);
+      member.curr_MP = Math.max(member.curr_MP, 0);
+    }
 
     // base_strength
-    character.base_strength = Math.min(character.base_strength, max_stat['base_strength']);
+    member.base_strength = Math.min(member.base_strength, max_stat['base_strength']);
 
     // adj_strength
-    character.adj_strength = helpers.calculateStatBoost('strength', character.base_strength, data, character);
-    character.adj_strength = Math.max(character.adj_strength, 0);
-    character.adj_strength = Math.min(character.adj_strength, max_stat['adj_strength']);
+    member.adj_strength = helpers.calculateStatBoost('strength', member.base_strength, data, member);
+    member.adj_strength = Math.max(member.adj_strength, 0);
+    member.adj_strength = Math.min(member.adj_strength, max_stat['adj_strength']);
 
     // curr_strength
-    character.curr_strength = character.adj_strength;
+    member.curr_strength = member.adj_strength;
 
     // base_agility
-    character.base_agility = Math.min(character.base_agility, max_stat['base_agility']);
+    member.base_agility = Math.min(member.base_agility, max_stat['base_agility']);
 
     // adj_agility
-    character.adj_agility = helpers.calculateStatBoost('agility', character.base_agility, data, character);
-    character.adj_agility = Math.max(character.adj_agility, 0);
-    character.adj_agility = Math.min(character.adj_agility, max_stat['adj_agility']);
+    member.adj_agility = helpers.calculateStatBoost('agility', member.base_agility, data, member);
+    member.adj_agility = Math.max(member.adj_agility, 0);
+    member.adj_agility = Math.min(member.adj_agility, max_stat['adj_agility']);
 
     // curr_agility
-    character.curr_agility = character.adj_agility;
+    member.curr_agility = member.adj_agility;
 
     // attack
-    character.attack = helpers.calculateStatBoost('attack', character.adj_strength, data, character);
-    character.attack = Math.max(character.attack, 0);
-    character.attack = Math.min(character.attack, max_stat['attack']);
+    member.attack = helpers.calculateStatBoost('attack', member.adj_strength, data, member);
+    member.attack = Math.max(member.attack, 0);
+    member.attack = Math.min(member.attack, max_stat['attack']);
 
-    character.curr_attack = character.attack;
+    member.curr_attack = member.attack;
 
     // defense
     // base defense is agility / 2
-    var base_defense = parseInt(character.adj_agility / 2, 10);
-    character.defense = helpers.calculateStatBoost('defense', base_defense, data, character);
-    character.defense = Math.max(character.defense, 0);
-    character.defense = Math.min(character.defense, max_stat['defense']);
+    var base_defense = parseInt(member.adj_agility / 2, 10);
+    member.defense = helpers.calculateStatBoost('defense', base_defense, data, member);
+    member.defense = Math.max(member.defense, 0);
+    member.defense = Math.min(member.defense, max_stat['defense']);
 
-    character.curr_defense = character.defense;
+    member.curr_defense = member.defense;
 
     // miss
-    character.miss = helpers.calculateStatBoost('miss', 0, data, character);
-    character.miss = Math.max(character.miss, 0);
+    member.miss = helpers.calculateStatBoost('miss', 0, data, member);
+    member.miss = Math.max(member.miss, 0);
 
     // adj_critical
     // 'fighter' job gets a level-based critical bonus
-    var base_critical = character.base_critical;
-    if (character.job === 'fighter') {
-      base_critical += parseInt(character.level / 4, 10);
+    var base_critical = member.base_critical;
+    if (member.job === 'fighter') {
+      base_critical += parseInt(member.level / 4, 10);
     }
-    character.adj_critical = helpers.calculateStatBoost('critical', base_critical, data, character);
-    character.adj_critical = Math.max(character.adj_critical, 0);
+    member.adj_critical = helpers.calculateStatBoost('critical', base_critical, data, member);
+    member.adj_critical = Math.max(member.adj_critical, 0);
 
     // adj_dodge
     // 'fighter' job gets an agility-based dodge bonus
-    var base_dodge = character.base_dodge;
-    if (character.job === 'fighter') {
-      base_dodge += parseInt(character.adj_agility / 16, 10);
+    var base_dodge = member.base_dodge;
+    if (member.job === 'fighter') {
+      base_dodge += parseInt(member.adj_agility / 16, 10);
     }
-    character.adj_dodge = helpers.calculateStatBoost('dodge', base_dodge, data, character);
-    character.adj_dodge = Math.max(character.adj_dodge, 0);
+    member.adj_dodge = helpers.calculateStatBoost('dodge', base_dodge, data, member);
+    member.adj_dodge = Math.max(member.adj_dodge, 0);
 
     // resist
-    character.resist = {};
-    _.each(character.base_resist, function (base_value, key) {
-      character.resist[key] = helpers.calculateStatBoost('resist.' + key, base_value, data, character);
-      character.resist[key] = Math.max(character.resist[key], 0);
+    member.resist = {};
+    _.each(member.base_resist, function (base_value, key) {
+      member.resist[key] = helpers.calculateStatBoost('resist.' + key, base_value, data, member);
+      member.resist[key] = Math.max(member.resist[key], 0);
     });
 
     // saver
-    character.saver = { burn : false, phys : false, ment : false };
-    _.each(character.saver, function (value, key) {
-      character.saver[key] = helpers.calculateStatBoost('saver.' + key, false, data, character);
+    member.saver = { burn : false, phys : false, ment : false };
+    _.each(member.saver, function (value, key) {
+      member.saver[key] = helpers.calculateStatBoost('saver.' + key, false, data, member);
     });
 
     // is_cursed
-    character.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, character);
+    member.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, member);
   
     // status should be an array
-    if (character.status) {
-      character.status = _.map(character.status.split(';'), function (status) { return status.trim(); });
+    if (member.status) {
+      member.status = _.map(member.status.split(';'), function (status) { return status.trim(); });
     }
 
     // effects should be an array
-    if (character.effects) {
-      character.effects = _.map(character.effects.split(';'), function (effect) { return effect.trim(); });
+    if (member.effects) {
+      member.effects = _.map(member.effects.split(';'), function (effect) { return effect.trim(); });
     }
   });
 }
@@ -186,6 +188,8 @@ function populateScenario (data) {
           spells.applySpellEffect(effect, new_member);
         });
         group.members[index] = new_member;
+      } else {
+        throw new Error('Data for ' + member.name + ' not found!');
       }
     });
   }
