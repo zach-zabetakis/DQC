@@ -3,4 +3,4 @@ var exports = module.exports = {};
 exports.calculate = require('./calculate');
 exports.init      = require('./init');
 exports.random    = require('./random');
-exports.spells    = require('./spells');
+exports.update    = require('./update');

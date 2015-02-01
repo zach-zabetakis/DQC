@@ -21,5 +21,7 @@ module.exports = function () {
 
     DQC.data = results;
 
+    // run the update
+    sim.update(DQC);
   });
 };

@@ -11,22 +11,23 @@ var _         = require('lodash');
 module.exports = function (rng, next) {
   // PATH TO DATA FILES
   var path = nconf.get('data');
-  if (path === '/lib/data/') {
+  if (path === '/data/') {
     path = process.cwd() + path;
   }
 
   async.parallel({
-    weapon     : data('weapon'),
-    armor      : data('armor'),
-    shield     : data('shield'),
-    helmet     : data('helmet'),
     accessory  : data('accessory'),
-    heart      : data('heart'),
-    spell      : data('spell'),
+    armor      : data('armor'),
+    character  : data('character'),
     experience : dataArray('experience'),
+    heart      : data('heart'),
+    helmet     : data('helmet'),
     monster    : data('monster'),
     npc        : data('npc'),
-    character  : data('character'),
+    quest      : data('quest'),
+    shield     : data('shield'),
+    spell      : data('spell'),
+    weapon     : data('weapon'),
     scenario   : loadScenario
   }, function (error, results) {
     if (results) {

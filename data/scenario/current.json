@@ -1,9 +1,10 @@
 {
-  "quests" : [
+  "scenarios" : [
     {
       "name" : "Test",
       "location" : "Unknown",
-      "quest" : "Quest Name",
+      "in_quest" : true,
+      "quest_name" : "BrHx1",
       "characters" : {
         "groups" : [
           {

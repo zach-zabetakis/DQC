@@ -1,5 +1,5 @@
 {
-  "data" : "/lib/data/",
+  "data" : "/data/",
   "scenario" : "current.json",
   "max_stat" : {
     "base_strength" : "255",

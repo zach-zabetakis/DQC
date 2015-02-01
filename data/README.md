@@ -358,6 +358,27 @@ Citizens of the land who may help you on your quest.
 `(AG-AN) pattern` - monster's attack pattern. Equal chance of each action
 
 
+## Quest
+
+Perform quests to test your strength or gain a variety of rewards. Note that name and employer are for display purposes only. If a number of battles is omitted then the quest is based on exploration and does not have a fixed progression.
+
+`(A) id` - unique quest identifier
+
+`(B) name` - quest display name
+
+`(C) location` - town or area where this quest can be accepted
+
+`(D) employer` - who is offering this quest
+
+`(E) battles` - (optional) total number of battles in this quest
+
+`(F) reward.experience` - experience reward upon quest completion
+
+`(G) reward.gold` - gold reward upon quest completion
+
+`(H) reward.item` - item reward upon quest completion
+
+
 ## Shield
 
 Items which can be equipped in a character's SHIELD slot. Note that description is for display purposes only.

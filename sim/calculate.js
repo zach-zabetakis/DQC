@@ -1,5 +1,5 @@
 var helpers = require(process.cwd() + '/lib/helpers');
-var Spells  = require(process.cwd() + '/sim/spells');
+var Spells  = require(process.cwd() + '/lib/spells');
 var nconf   = require('nconf');
 var _       = require('lodash');
 

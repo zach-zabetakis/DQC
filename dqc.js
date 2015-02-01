@@ -9,6 +9,11 @@ nconf.argv({
     alias    : 'data',
     describe : 'Location of the data files',
     demand   : false
+  },
+  's' : {
+    alias    : 'scenario',
+    describe : 'Current scenario to load',
+    demand   : false
   }
 }, 'Usage: $0');
 nconf.env();

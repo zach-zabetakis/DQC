@@ -1,0 +1,14 @@
+"id","name","location","employer","battles","reward.experience","reward.gold","reward.item"
+"BrAp1","The Herb Patch","Brecconary","Apothecary",3,0,0,"Herb"
+"BrAp2","Further Down the Road...","Brecconary","Apothecary",4,0,10,"Herb"
+"BrAp3","A New Kind of Medicine","Brecconary","Apothecary",4,0,75,
+"BrHx1","Magic for Speed-Readers","Brecconary","Hexologist",1,0,10,
+"BrHx2","We Can't Stop, We Have to Slow Down First!","Brecconary","Hexologist",1,0,25,
+"BrHx3","Hall of Mirrors","Brecconary","Hexologist",1,0,40,
+"BrHu1","The Nest Discovered","Brecconary","Hunter",4,0,20,
+"BrHu2","Extended Scorpion Hunting","Brecconary","Hunter",5,0,50,
+"BrHu3","She Doesn't Look Druish","Brecconary","Hunter",5,0,80,
+"BrBo1","Desert Bloom","Brecconary","Botanist",4,0,30,
+"BrBo2","The Tree of Strength","Brecconary","Botanist",5,0,60,
+"BrZo1","The Slime Pool","Brecconary","Zoologist",5,50,100,
+"BrAr1","The Ancient Cave","Brecconary","Archaeologist",,0,0,
