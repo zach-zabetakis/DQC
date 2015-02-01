@@ -296,6 +296,68 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(AW) flavor.dodge` - flavor text when this monster dodges a physical attack
 
+
+## NPC
+
+Citizens of the land who may help you on your quest.
+
+`(A) name` - Person's name
+
+`(B) base_HP` - base maximum HP value
+
+`(C) base_MP` - base maximum MP value
+
+`(D) base_strength` - base strength value
+
+`(E) base_agility` - base agility value
+
+`(F) base_critical` - base rate (out of 32) of performing a critical hit
+
+`(G) base_dodge` - base rate (out of 256) of evading a physical attack
+
+`(H) experience` - experience points awarded if defeated (you murderer!)
+
+`(I) gold` - gold coins awarded if defeated
+
+`(J) resist.burn` - resistance (out of 16) for BURN attacks
+
+`(K) resist.beat` - resistance (out of 16) for instant death spells
+
+`(L) resist.numb` - resistance (out of 16) for paralysis
+
+`(M) resist.poison` - resistance (out of 16) for poison
+
+`(N) resist.sap` - resistance (out of 16) for defense lowering spells
+
+`(O) resist.slow` - resistance (out of 16) for agility lowering spells
+
+`(P) resist.chaos` - resistance (out of 16) for confusion
+
+`(Q) resist.robmagic` - resistance (out of 16) for MP stealing spells
+
+`(R) resist.sleep` - resistance (out of 16) for sleep
+
+`(S) resist.stopspell` - resistance (out of 16) for stopspell
+
+`(T) resist.surround` - resistance (out of 16) for surround
+
+`(U) resist.fear` - resistance (out of 16) from being frozen in fear
+
+`(V) equip.weapon` - person's equipped weapon
+
+`(W) equip.armor` - person's equipped body armor
+
+`(X) equip.shield` - person's equipped shield
+
+`(Y) equip.helmet` - person's equipped helmet
+
+`(Z-AE) inventory` - items in this person's possession. Limit of 6
+
+`(AF) behavior` - battle AI behavior (one of: fixed, random, custom)
+
+`(AG-AN) pattern` - monster's attack pattern. Equal chance of each action
+
+
 ## Shield
 
 Items which can be equipped in a character's SHIELD slot. Note that description is for display purposes only.
