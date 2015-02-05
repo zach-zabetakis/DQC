@@ -172,10 +172,10 @@ function calculateData (data, type) {
 function populateScenario (data) {
   var spells = new Spells(data.spell);
 
-  _.each(data.scenario.quests, function (quest) {
-    _.each(quest.characters.groups, populateGroup);
-    _.each(quest.allies.groups, populateGroup);
-    _.each(quest.enemies.groups, populateGroup);
+  _.each(data.scenario.scenarios, function (scenario) {
+    _.each(scenario.characters.groups, populateGroup);
+    _.each(scenario.allies.groups, populateGroup);
+    _.each(scenario.enemies.groups, populateGroup);
   });
 
   function populateGroup (group) {

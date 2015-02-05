@@ -1,6 +1,7 @@
 {
   "data" : "/data/",
   "scenario" : "current.json",
+  "html" : false,
   "max_stat" : {
     "base_strength" : "255",
     "adj_strength" : "255",
