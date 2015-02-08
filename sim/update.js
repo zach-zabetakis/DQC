@@ -3,25 +3,34 @@ var helpers = require(process.cwd() + '/lib/helpers');
 var lottery = require(process.cwd() + '/lib/lottery');
 
 module.exports = function (DQC) {
-  helpers.out('~UPDATE!~', true, true);
+  helpers.out(helpers.format('~UPDATE!~', true, true));
   helpers.out('');
   helpers.out('');
 
   // LOTTERY
-  helpers.out('OFFICIAL LOTTERY DRAWINGS', true);
-  helpers.out('');
-  lottery.loto3(DQC.RNG, DQC.data.character);
-  helpers.out('');
-  lottery.bol(DQC.RNG, DQC.data.character);
-  helpers.out('');
+  var loto3 = lottery.loto3(DQC);
+  var bol   = lottery.bol(DQC);
+
+  if (loto3.length || bol.length) {
+    helpers.out(helpers.format('OFFICIAL LOTTERY DRAWINGS', true));
+    if (loto3.length) {
+      helpers.out('');
+      _.each(loto3, helpers.out);
+    }
+    if (bol.length) {
+      helpers.out('');
+      _.each(bol, helpers.out);
+    }
+    helpers.out('');
+  }
 
   var scenarios = DQC.scenario.scenarios;
 
   _.each(scenarios, function (scenario) {
     var message;
 
-    helpers.out(scenario.name, true, true);
-    helpers.out('Location: ' + scenario.location, true, true);
+    helpers.out(helpers.format(scenario.name, true, true));
+    helpers.out(helpers.format('Location: ' + scenario.location, true, true));
 
     if (scenario.in_battle) {
 
@@ -51,13 +60,18 @@ module.exports = function (DQC) {
           remaining.push(firstEnemyName + enemyLetters);
         }
       });
-      helpers.out('[' + remaining.join(', ') + ' remain. Command?]', false, true)
+      helpers.out(helpers.format('[' + remaining.join(', ') + ' remain. Command?]', false, true));
 
     } else {
-      helpers.out('[Command?]', false, true);
+      helpers.out(helpers.format('[Command?]', false, true));
     }
 
   });
+
+  helpers.out('');
+  helpers.out('----------');
+  helpers.out('');
+  helpers.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
 };
 
 // outputs current HP/MP values of the group provided
@@ -72,5 +86,5 @@ function outputStatusLines (group) {
     message += '.';
     return message;
   });
-  helpers.out('[' + members.join(' ') + ']', false, true);
+  helpers.out(helpers.format('[' + members.join(' ') + ']', false, true));
 }

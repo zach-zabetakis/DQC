@@ -169,6 +169,14 @@ function calculateData (data, type) {
     } else {
       member.status = [];
     }
+
+    // sanitize lottery tickets
+    if (member.loto3) {
+      member.loto3 = _.map(member.loto3, function (ticket) { return ticket.replace(/\s/g, ''); });
+    }
+    if (member.bol) {
+      member.bol = _.map(member.bol, function (ticket) { return ticket.replace(/\s/g, ''); });
+    }
   });
 }
 
