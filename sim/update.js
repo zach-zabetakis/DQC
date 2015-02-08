@@ -10,9 +10,9 @@ module.exports = function (DQC) {
   // LOTTERY
   helpers.out('OFFICIAL LOTTERY DRAWINGS', true);
   helpers.out('');
-  lottery.loto3(DQC.RNG);
+  lottery.loto3(DQC.RNG, DQC.data.character);
   helpers.out('');
-  lottery.bol(DQC.RNG);
+  lottery.bol(DQC.RNG, DQC.data.character);
   helpers.out('');
 
   var scenarios = DQC.scenario.scenarios;
@@ -65,7 +65,11 @@ function outputStatusLines (group) {
   var members = _.map(group.members, function (member) {
     var message = member.name + ': ';
     message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
-    message += 'MP ' + member.curr_MP + '/' + member.max_MP + '.';
+    message += 'MP ' + member.curr_MP + '/' + member.max_MP;
+    if (member.status.length) {
+      message += ' ' + member.status.join(',');
+    }
+    message += '.';
     return message;
   });
   helpers.out('[' + members.join(' ') + ']', false, true);

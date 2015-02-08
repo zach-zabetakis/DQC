@@ -28,7 +28,7 @@
                 "name" : "Hexologist",
                 "curr_HP" : "29",
                 "curr_MP" : "14",
-                "status" : [],
+                "status" : ["ST"],
                 "effects" : ["Increase"]
               }
             ]

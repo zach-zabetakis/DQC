@@ -150,9 +150,13 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(AK-AP) inventory` - items in this character's possession. Limit of 6
 
-`(AQ) deaths` - number of times this character has been defeated
+`(AQ-AT) loto3` - Loto3 lottery tickets. Limit of 4
 
-`(AR) active` - is this character actively participating in the game? 
+`(AU-AX) bol` - Ball of Light lottery tickets. Limit of 4
+
+`(AY) deaths` - number of times this character has been defeated
+
+`(AZ) active` - is this character actively participating in the game? 
 
 ## Experience
 

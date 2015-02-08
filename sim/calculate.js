@@ -158,12 +158,16 @@ function calculateData (data, type) {
   
     // status should be an array
     if (member.status) {
-      member.status = _.map(member.status.split(';'), function (status) { return status.trim(); });
+      member.status = _.compact(_.map(member.status.split(';'), function (status) { return status.trim(); }));
+    } else {
+      member.status = [];
     }
 
     // effects should be an array
     if (member.effects) {
-      member.effects = _.map(member.effects.split(';'), function (effect) { return effect.trim(); });
+      member.effects = _.compact(_.map(member.effects.split(';'), function (effect) { return effect.trim(); }));
+    } else {
+      member.status = [];
     }
   });
 }
