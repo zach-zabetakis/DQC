@@ -1,6 +1,6 @@
 var _       = require('lodash');
-var helpers = require(process.cwd() + '/lib/helpers');
-var lottery = require(process.cwd() + '/lib/lottery');
+var helpers = require(__dirname + '/../lib/helpers');
+var lottery = require(__dirname + '/../lib/lottery');
 
 module.exports = function (DQC) {
   helpers.out(helpers.format('~UPDATE!~', true, true));

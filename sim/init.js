@@ -1,4 +1,4 @@
-var helpers   = require(process.cwd() + '/lib/helpers');
+var helpers   = require(__dirname + '/../lib/helpers');
 var Converter = require('csvtojson').core.Converter;
 var nconf     = require('nconf');
 var async     = require('async');
@@ -11,8 +11,8 @@ var _         = require('lodash');
 module.exports = function (rng, next) {
   // PATH TO DATA FILES
   var path = nconf.get('data');
-  if (path === '/data/') {
-    path = process.cwd() + path;
+  if (path === 'data/') {
+    path = __dirname + '/../' + path;
   }
 
   async.parallel({

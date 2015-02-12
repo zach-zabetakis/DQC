@@ -1,4 +1,4 @@
-var sim   = require(process.cwd() + '/sim');
+var sim   = require(__dirname + '/sim');
 var async = require('async');
 
 module.exports = function () {

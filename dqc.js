@@ -1,6 +1,6 @@
-var worker = require(process.cwd() + '/worker');
+var worker = require(__dirname + '/worker');
 var nconf  = require('nconf');
-require(process.cwd() + '/lib/lodash_mixins');
+require(__dirname + '/lib/lodash_mixins');
 
 nconf.argv({
   'd' : {
@@ -20,8 +20,8 @@ nconf.argv({
   }
 }, 'Usage: $0');
 nconf.env();
-nconf.file('config.json', process.cwd() + '/config.json');
-nconf.file('package.json', process.cwd() + '/package.json');
+nconf.file('config.json', __dirname + '/config.json');
+nconf.file('package.json', __dirname + '/package.json');
 
 // Hand off to the worker
 worker();

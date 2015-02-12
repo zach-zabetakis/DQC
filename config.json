@@ -1,5 +1,5 @@
 {
-  "data" : "/data/",
+  "data" : "data/",
   "scenario" : "current.json",
   "html" : false,
   "max_stat" : {
