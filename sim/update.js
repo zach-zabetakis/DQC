@@ -3,25 +3,25 @@ var helpers = require(__dirname + '/../lib/helpers');
 var lottery = require(__dirname + '/../lib/lottery');
 
 module.exports = function (DQC) {
-  helpers.out(helpers.format('~UPDATE!~', true, true));
-  helpers.out('');
-  helpers.out('');
+  DQC.out(helpers.format('~UPDATE!~', true, true));
+  DQC.out();
+  DQC.out();
 
   // LOTTERY
   var loto3 = lottery.loto3(DQC);
   var bol   = lottery.bol(DQC);
 
   if (loto3.length || bol.length) {
-    helpers.out(helpers.format('OFFICIAL LOTTERY DRAWINGS', true));
+    DQC.out(helpers.format('OFFICIAL LOTTERY DRAWINGS', true));
     if (loto3.length) {
-      helpers.out('');
-      _.each(loto3, helpers.out);
+      DQC.out();
+      _.each(loto3, DQC.out);
     }
     if (bol.length) {
-      helpers.out('');
-      _.each(bol, helpers.out);
+      DQC.out();
+      _.each(bol, DQC.out);
     }
-    helpers.out('');
+    DQC.out();
   }
 
   var scenarios = DQC.scenario.scenarios;
@@ -29,8 +29,8 @@ module.exports = function (DQC) {
   _.each(scenarios, function (scenario) {
     var message;
 
-    helpers.out(helpers.format(scenario.name, true, true));
-    helpers.out(helpers.format('Location: ' + scenario.location, true, true));
+    DQC.out(helpers.format(scenario.name, true, true));
+    DQC.out(helpers.format('Location: ' + scenario.location, true, true));
 
     if (scenario.in_battle) {
 
@@ -38,7 +38,7 @@ module.exports = function (DQC) {
       // What out of battle actions can be automated...?
     }
 
-    helpers.out('');
+    DQC.out();
 
     // output status line
     _.each(scenario.characters.groups, outputStatusLines);
@@ -60,31 +60,32 @@ module.exports = function (DQC) {
           remaining.push(firstEnemyName + enemyLetters);
         }
       });
-      helpers.out(helpers.format('[' + remaining.join(', ') + ' remain. Command?]', false, true));
+      DQC.out(helpers.format('[' + remaining.join(', ') + ' remain. Command?]', false, true));
 
     } else {
-      helpers.out(helpers.format('[Command?]', false, true));
+      DQC.out(helpers.format('[Command?]', false, true));
     }
 
   });
 
-  helpers.out('');
-  helpers.out('----------');
-  helpers.out('');
-  helpers.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
+  DQC.out();
+  DQC.out('----------');
+  DQC.out();
+  DQC.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
+
+
+  // outputs current HP/MP values of the group provided
+  function outputStatusLines (group) {
+    var members = _.map(group.members, function (member) {
+      var message = member.name + ': ';
+      message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
+      message += 'MP ' + member.curr_MP + '/' + member.max_MP;
+      if (member.status.length) {
+        message += ' ' + member.status.join(',');
+      }
+      message += '.';
+      return message;
+    });
+    DQC.out(helpers.format('[' + members.join(' ') + ']', false, true));
+  }  
 };
-
-// outputs current HP/MP values of the group provided
-function outputStatusLines (group) {
-  var members = _.map(group.members, function (member) {
-    var message = member.name + ': ';
-    message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
-    message += 'MP ' + member.curr_MP + '/' + member.max_MP;
-    if (member.status.length) {
-      message += ' ' + member.status.join(',');
-    }
-    message += '.';
-    return message;
-  });
-  helpers.out(helpers.format('[' + members.join(' ') + ']', false, true));
-}

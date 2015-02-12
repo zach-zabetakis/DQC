@@ -8,6 +8,11 @@ nconf.argv({
     describe : 'Location of the data files',
     demand   : false
   },
+  'f' : {
+    alias    : 'file',
+    describe : 'Location of output file',
+    demand   : false
+  },
   'h' : {
     alias    : 'html',
     describe : 'HTML markup in output?',
