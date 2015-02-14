@@ -1,6 +1,7 @@
-var _       = require('lodash');
-var helpers = require(__dirname + '/../lib/helpers');
-var lottery = require(__dirname + '/../lib/lottery');
+var _             = require('lodash');
+var battleHelpers = require(__dirname + '/../lib/battle_helpers');
+var helpers       = require(__dirname + '/../lib/helpers');
+var lottery       = require(__dirname + '/../lib/lottery');
 
 module.exports = function (DQC) {
   DQC.out(helpers.format('~UPDATE!~', true, true));
@@ -24,15 +25,35 @@ module.exports = function (DQC) {
     DQC.out();
   }
 
-  var scenarios = DQC.scenario.scenarios;
-
-  _.each(scenarios, function (scenario) {
+  // Update each individual scenario
+  _.each(DQC.scenario.scenarios, function (scenario) {
     var message;
 
     DQC.out(helpers.format(scenario.name, true, true));
     DQC.out(helpers.format('Location: ' + scenario.location, true, true));
+    DQC.out();
 
     if (scenario.in_battle) {
+      // Each participant in battle will take turns in a randomly generated order.
+      battleHelpers.generateTurnOrder(DQC, scenario);
+      _.each(scenario.turn_order, function (active_member) {
+        var disp_name = active_member.name + (active_member.symbol || '');
+
+        switch (active_member.type) {
+          case 'character' :
+            DQC.out(disp_name + ' is flustered!');
+            break;
+          case 'npc' :
+            DQC.out(disp_name + ' cackles gleefully!');
+            break;
+          case 'monster' :
+            DQC.out(disp_name + ' is assessing the situation!');
+            break;
+          default :
+            throw new Error('Unknown type ' + type);
+            break;
+        }
+      });
 
     } else {
       // What out of battle actions can be automated...?
@@ -40,27 +61,12 @@ module.exports = function (DQC) {
 
     DQC.out();
 
-    // output status line
-    _.each(scenario.characters.groups, outputStatusLines);
-    _.each(scenario.allies.groups, outputStatusLines);
+    // output status lines
+    _.each(scenario.characters.groups, outputAllyStatus);
+    _.each(scenario.allies.groups, outputAllyStatus);
     if (scenario.in_battle) {
-      var remaining = [];
-      _.each(scenario.enemies.groups, function (group) {
-        // groups can only contain a single species of enemy
-        var firstEnemyName = (group.members[0] && group.members[0].name) || 'Missingno';
-        var enemyLetters   = '';
-
-        _.each(group.members, function (member, index) {
-          if (member.curr_HP > 0) {
-            enemyLetters += String.fromCharCode(65 + index);
-          }
-        });
-
-        if (enemyLetters) {
-          remaining.push(firstEnemyName + enemyLetters);
-        }
-      });
-      DQC.out(helpers.format('[' + remaining.join(', ') + ' remain. Command?]', false, true));
+      var enemy_status = outputEnemyStatus(scenario.enemies);
+      DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
 
     } else {
       DQC.out(helpers.format('[Command?]', false, true));
@@ -75,7 +81,7 @@ module.exports = function (DQC) {
 
 
   // outputs current HP/MP values of the group provided
-  function outputStatusLines (group) {
+  function outputAllyStatus (group) {
     var members = _.map(group.members, function (member) {
       var message = member.name + ': ';
       message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
@@ -87,5 +93,28 @@ module.exports = function (DQC) {
       return message;
     });
     DQC.out(helpers.format('[' + members.join(' ') + ']', false, true));
-  }  
+  }
+
+  // outputs the names of the remaining foes in battle
+  function outputEnemyStatus (enemies) {
+    var remaining = _.map(enemies.groups, function (group) {
+      // groups can only contain a single species of enemy
+      var firstEnemyName = (group.members[0] && group.members[0].name) || 'Missingno';
+      var enemySymbols   = '';
+      var display_group  = false;
+
+      _.each(group.members, function (member) {
+        if (member.curr_HP > 0) {
+          enemySymbols += member.symbol || '';
+          display_group = true;
+        }
+      });
+
+      if (display_group) {
+        return (firstEnemyName + enemySymbols);
+      }
+    });
+
+    return _.compact(remaining);
+  }
 };
