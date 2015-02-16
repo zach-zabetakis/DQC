@@ -1,10 +1,11 @@
-var helpers = require(__dirname + '/../lib/helpers');
-var Spells  = require(__dirname + '/../lib/spells');
-var nconf   = require('nconf');
-var _       = require('lodash');
+var battleHelpers = require(__dirname + '/../lib/battle_helpers');
+var helpers       = require(__dirname + '/../lib/helpers');
+var Spells        = require(__dirname + '/../lib/spells');
+var nconf         = require('nconf');
+var _             = require('lodash');
 
 /*
- * Calculate additional data based on the data passed in.
+ * Calculate/sanitize additional data based on the data passed in.
  */
 module.exports = function (data, next) {
   var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'shield', 'spell', 'weapon'];
@@ -53,6 +54,7 @@ function calculateMonsterData (data) {
 // calculated/additional data attached to each character or NPC.
 function calculateData (data, type) {
   var max_stat = nconf.get('max_stat');
+  var statuses = nconf.get('status');
 
   _.each(data[type], function (member) {
     member.type = type;
@@ -63,12 +65,6 @@ function calculateData (data, type) {
     // max_HP
     member.max_HP = helpers.calculateStatBoost('HP', member.base_HP, data, member);
     member.max_HP = Math.max(member.max_HP, 0);
-
-    if (type === 'character') {
-      // curr_HP cannot be greater than max_HP
-      member.curr_HP = Math.min(member.curr_HP, member.max_HP);
-      member.curr_HP = Math.max(member.curr_HP, 0);
-    }
 
     // max_MP
     member.max_MP = helpers.calculateStatBoost('MP', member.base_MP, data, member);
@@ -158,7 +154,12 @@ function calculateData (data, type) {
   
     // status should be an array
     if (member.status) {
-      member.status = _.compact(_.map(member.status.split(';'), function (status) { return status.trim(); }));
+      member.status = _.compact(_.map(member.status.split(';'), function (status) {
+        status = status.trim();
+        if (_.includes(statuses, status)) {
+          return status;
+        }
+      }));
     } else {
       member.status = [];
     }
@@ -167,7 +168,7 @@ function calculateData (data, type) {
     if (member.effects) {
       member.effects = _.compact(_.map(member.effects.split(';'), function (effect) { return effect.trim(); }));
     } else {
-      member.status = [];
+      member.effects = [];
     }
 
     // sanitize lottery tickets
@@ -185,24 +186,35 @@ function populateScenario (data) {
   var spells = new Spells(data.spell);
 
   _.each(data.scenario.scenarios, function (scenario) {
-    _.each(scenario.characters.groups, populateGroup);
-    _.each(scenario.allies.groups, populateGroup);
-    _.each(scenario.enemies.groups, populateGroup);
+    _.each(scenario.characters.groups, populateGroup(false));
+    _.each(scenario.allies.groups, populateGroup(false));
+    _.each(scenario.enemies.groups, populateGroup(true));
   });
 
-  function populateGroup (group) {
-    _.each(group.members, function (member, index) {
-      var type  = member.type || 'character';
-      var match = _.find(data[type], { name : member.name });
-      if (match) {
-        var new_member = _.merge(member, match);
-        _.each(new_member.effects, function (effect) {
-          spells.applySpellEffect(effect, new_member);
-        });
-        group.members[index] = new_member;
-      } else {
-        throw new Error('Data for ' + member.name + ' not found!');
-      }
-    });
+  function populateGroup (is_enemy) {
+    return function (group) {
+      _.each(group.members, function (member, index) {
+        var type  = member.type || 'character';
+        var match = _.find(data[type], { name : member.name });
+        if (match) {
+          var new_member = _.merge(member, match);
+          _.each(new_member.effects, function (effect) {
+            spells.applySpellEffect(effect, new_member);
+          });
+
+          // we need a quick way to tell friends from foes, for mechanics purposes
+          new_member.is_enemy = is_enemy;
+
+          // check current HP/MP
+          battleHelpers.checkHP(new_member);
+          new_member.curr_MP = Math.min(new_member.curr_MP, new_member.max_MP);
+          new_member.curr_MP = Math.max(new_member.curr_MP, 0);
+
+          group.members[index] = new_member;
+        } else {
+          throw new Error('Data for ' + member.name + ' not found!');
+        }
+      });
+    }
   }
 }

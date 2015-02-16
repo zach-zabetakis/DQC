@@ -14,5 +14,15 @@
     "curr_attack" : "999",
     "defense" : "999",
     "curr_defense" : "999"
+  },
+  "status" : {
+    "chaos" : "CF",
+    "death" : "DE",
+    "fear" : "FR",
+    "numb" : "NU",
+    "poison" : "PO",
+    "sleep" : "SL",
+    "stopspell" : "ST",
+    "surround" : "SU"
   }
 }

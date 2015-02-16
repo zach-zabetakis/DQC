@@ -36,6 +36,10 @@ module.exports = function (DQC) {
     if (scenario.in_battle) {
       // Each participant in battle will take turns in a randomly generated order.
       battleHelpers.generateTurnOrder(DQC, scenario);
+
+      // Enemy units choose a target at the beginning of each turn
+      battleHelpers.chooseEnemyTargets(DQC, scenario);
+
       _.each(scenario.turn_order, function (active_member) {
         var disp_name = active_member.name + (active_member.symbol || '');
 
@@ -47,7 +51,8 @@ module.exports = function (DQC) {
             DQC.out(disp_name + ' cackles gleefully!');
             break;
           case 'monster' :
-            DQC.out(disp_name + ' is assessing the situation!');
+            battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+            //DQC.out(disp_name + ' is assessing the situation!');
             break;
           default :
             throw new Error('Unknown type ' + type);
