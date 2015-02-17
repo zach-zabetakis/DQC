@@ -38,7 +38,13 @@ module.exports = function (DQC) {
       battleHelpers.generateTurnOrder(DQC, scenario);
 
       // Enemy units choose a target at the beginning of each turn
-      battleHelpers.chooseEnemyTargets(DQC, scenario);
+      _.each(scenario.enemies.groups, function (group) {
+        _.each(group.members, function (enemy) {
+          if (battleHelpers.canAct(enemy)) {
+            enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy);
+          }
+        });
+      });
 
       _.each(scenario.turn_order, function (active_member) {
         var disp_name = active_member.name + (active_member.symbol || '');

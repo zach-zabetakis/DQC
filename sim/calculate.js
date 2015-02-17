@@ -70,12 +70,6 @@ function calculateData (data, type) {
     member.max_MP = helpers.calculateStatBoost('MP', member.base_MP, data, member);
     member.max_MP = Math.max(member.max_MP, 0);
 
-    if (type === 'character') {
-      // curr_MP cannot be greater than max_MP
-      member.curr_MP = Math.min(member.curr_MP, member.max_MP);
-      member.curr_MP = Math.max(member.curr_MP, 0);
-    }
-
     // base_strength
     member.base_strength = Math.min(member.base_strength, max_stat['base_strength']);
 
@@ -189,10 +183,18 @@ function populateScenario (data) {
     _.each(scenario.characters.groups, populateGroup(false));
     _.each(scenario.allies.groups, populateGroup(false));
     _.each(scenario.enemies.groups, populateGroup(true));
+
+    // if all allies are dead set to inactive
+    if (!_.findWhere(scenario.allies.groups, { active : true})) {
+      scenario.allies.active = false;
+    }
   });
 
   function populateGroup (is_enemy) {
     return function (group) {
+      // an 'active' group contains at least one alive member.
+      group.active = false;
+
       _.each(group.members, function (member, index) {
         var type  = member.type || 'character';
         var match = _.find(data[type], { name : member.name });
@@ -209,6 +211,10 @@ function populateScenario (data) {
           battleHelpers.checkHP(new_member);
           new_member.curr_MP = Math.min(new_member.curr_MP, new_member.max_MP);
           new_member.curr_MP = Math.max(new_member.curr_MP, 0);
+
+          if (!new_member.is_dead) {
+            group.active = true;
+          }
 
           group.members[index] = new_member;
         } else {
