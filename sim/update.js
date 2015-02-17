@@ -58,7 +58,6 @@ module.exports = function (DQC) {
             break;
           case 'monster' :
             battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
-            //DQC.out(disp_name + ' is assessing the situation!');
             break;
           default :
             throw new Error('Unknown type ' + type);

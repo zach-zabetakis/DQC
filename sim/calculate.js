@@ -185,9 +185,7 @@ function populateScenario (data) {
     _.each(scenario.enemies.groups, populateGroup(true));
 
     // if all allies are dead set to inactive
-    if (!_.findWhere(scenario.allies.groups, { active : true})) {
-      scenario.allies.active = false;
-    }
+    scenario.allies.active = !!_.findWhere(scenario.allies.groups, { active : true });
   });
 
   function populateGroup (is_enemy) {
