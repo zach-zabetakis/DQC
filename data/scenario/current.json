@@ -37,6 +37,7 @@
       },
       "battles_remaining" : 1,
       "in_battle" : true,
+      "battle_turn": 2,
       "enemies" : {
         "groups" : [
           {
@@ -47,7 +48,7 @@
                 "symbol" : "A",
                 "curr_HP" : "3",
                 "curr_MP" : "0",
-                "status" : [],
+                "status" : ["FR", "SL", "NU"],
                 "effects" : ["Bikill"]
               },
               {
@@ -56,7 +57,7 @@
                 "symbol" : "B",
                 "curr_HP" : "2",
                 "curr_MP" : "0",
-                "status" : [],
+                "status" : ["SL", "NU"],
                 "effects" : ["Defense"]
               }
             ]
@@ -69,7 +70,7 @@
                 "symbol" : "A",
                 "curr_HP" : "3",
                 "curr_MP" : "0",
-                "status" : [],
+                "status" : ["NU"],
                 "effects" : []
               }
             ]
