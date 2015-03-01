@@ -1,14 +1,12 @@
-var battleHelpers = require(__dirname + '/../lib/battle_helpers');
-var helpers       = require(__dirname + '/../lib/helpers');
-var Spells        = require(__dirname + '/../lib/spells');
-var nconf         = require('nconf');
-var _             = require('lodash');
+var helpers = require(__dirname + '/../lib/helpers');
+var nconf   = require('nconf');
+var _       = require('lodash');
 
 /*
  * Calculate/sanitize additional data based on the data passed in.
  */
 module.exports = function (data, next) {
-  var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'shield', 'spell', 'weapon'];
+  var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'npc', 'shield', 'spell', 'weapon'];
   _.each(initDataKeys, function (key) {
     if (!data[key]) {
       throw new Error(key + ' data not found!');
@@ -18,7 +16,6 @@ module.exports = function (data, next) {
   calculateMonsterData(data);
   calculateData(data, 'npc');
   calculateData(data, 'character');
-  populateScenario(data);
 
   return next(null, data);
 };
@@ -173,52 +170,4 @@ function calculateData (data, type) {
       member.bol = _.map(member.bol, function (ticket) { return ticket.replace(/\s/g, ''); });
     }
   });
-}
-
-// Fill characters and monsters into the scenario
-function populateScenario (data) {
-  var spells = new Spells(data.spell);
-
-  _.each(data.scenario.scenarios, function (scenario) {
-    _.each(scenario.characters.groups, populateGroup(false));
-    _.each(scenario.allies.groups, populateGroup(false));
-    _.each(scenario.enemies.groups, populateGroup(true));
-
-    // if all allies are dead set to inactive
-    scenario.allies.active = !!_.findWhere(scenario.allies.groups, { active : true });
-  });
-
-  function populateGroup (is_enemy) {
-    return function (group) {
-      // an 'active' group contains at least one alive member.
-      group.active = false;
-
-      _.each(group.members, function (member, index) {
-        var type  = member.type || 'character';
-        var match = _.find(data[type], { name : member.name });
-        if (match) {
-          var new_member = _.merge(member, match);
-          _.each(new_member.effects, function (effect) {
-            spells.applySpellEffect(effect, new_member);
-          });
-
-          // we need a quick way to tell friends from foes, for mechanics purposes
-          new_member.is_enemy = is_enemy;
-
-          // check current HP/MP
-          battleHelpers.checkHP(new_member);
-          new_member.curr_MP = Math.min(new_member.curr_MP, new_member.max_MP);
-          new_member.curr_MP = Math.max(new_member.curr_MP, 0);
-
-          if (!new_member.is_dead) {
-            group.active = true;
-          }
-
-          group.members[index] = new_member;
-        } else {
-          throw new Error('Data for ' + member.name + ' not found!');
-        }
-      });
-    }
-  }
 }

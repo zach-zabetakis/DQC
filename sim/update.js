@@ -27,61 +27,62 @@ module.exports = function (DQC) {
 
   // Update each individual scenario
   _.each(DQC.scenario.scenarios, function (scenario) {
-    var message;
+    if (scenario.update) {
+      var message;
 
-    DQC.out(helpers.format(scenario.name, true, true));
-    DQC.out(helpers.format('Location: ' + scenario.location, true, true));
-    DQC.out();
+      DQC.out(helpers.format(scenario.name, true, true));
+      DQC.out(helpers.format('Location: ' + scenario.location, true, true));
+      DQC.out();
 
-    if (scenario.in_battle) {
-      // Each participant in battle will take turns in a randomly generated order.
-      battleHelpers.generateTurnOrder(DQC, scenario);
+      if (scenario.in_battle) {
+        // Each participant in battle will take turns in a randomly generated order.
+        battleHelpers.generateTurnOrder(DQC, scenario);
 
-      // Enemy units choose a target at the beginning of each turn
-      _.each(scenario.enemies.groups, function (group) {
-        _.each(group.members, function (enemy) {
-          if (battleHelpers.canAct(enemy)) {
-            enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy);
+        // Enemy units choose a target at the beginning of each turn
+        _.each(scenario.battle.enemies.groups, function (group) {
+          _.each(group.members, function (enemy) {
+            if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
+              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy);
+            }
+          });
+        });
+
+        _.each(scenario.battle.turn_order, function (active_member) {
+          var disp_name = active_member.name + (active_member.symbol || '');
+
+          switch (active_member.type) {
+            case 'character' :
+              DQC.out(disp_name + ' is flustered!');
+              break;
+            case 'npc' :
+              DQC.out(disp_name + ' cackles gleefully!');
+              break;
+            case 'monster' :
+              battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+              break;
+            default :
+              throw new Error('Unknown type ' + type);
+              break;
           }
         });
-      });
 
-      _.each(scenario.turn_order, function (active_member) {
-        var disp_name = active_member.name + (active_member.symbol || '');
+      } else {
+        // What out of battle actions can be automated...?
+      }
 
-        switch (active_member.type) {
-          case 'character' :
-            DQC.out(disp_name + ' is flustered!');
-            break;
-          case 'npc' :
-            DQC.out(disp_name + ' cackles gleefully!');
-            break;
-          case 'monster' :
-            battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
-            break;
-          default :
-            throw new Error('Unknown type ' + type);
-            break;
-        }
-      });
+      DQC.out();
 
-    } else {
-      // What out of battle actions can be automated...?
+      // output status lines
+      _.each(scenario.battle.characters.groups, outputAllyStatus);
+      _.each(scenario.battle.allies.groups, outputAllyStatus);
+      if (scenario.in_battle) {
+        var enemy_status = outputEnemyStatus(scenario.battle.enemies);
+        DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
+
+      } else {
+        DQC.out(helpers.format('[Command?]', false, true));
+      }
     }
-
-    DQC.out();
-
-    // output status lines
-    _.each(scenario.characters.groups, outputAllyStatus);
-    _.each(scenario.allies.groups, outputAllyStatus);
-    if (scenario.in_battle) {
-      var enemy_status = outputEnemyStatus(scenario.enemies);
-      DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
-
-    } else {
-      DQC.out(helpers.format('[Command?]', false, true));
-    }
-
   });
 
   DQC.out();
@@ -114,7 +115,7 @@ module.exports = function (DQC) {
       var display_group  = false;
 
       _.each(group.members, function (member) {
-        if (member.curr_HP > 0) {
+        if (!member.is_dead) {
           enemySymbols += member.symbol || '';
           display_group = true;
         }

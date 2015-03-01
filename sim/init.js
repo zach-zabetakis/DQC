@@ -88,7 +88,7 @@ module.exports = function (rng, next) {
     var json;
 
     try {
-      json = fs.readFileSync(path + '/scenario/' + scenario);
+      json = fs.readFileSync(path + 'scenario/' + scenario + '.json');
       json = JSON.parse(json);
     } catch (e) {
       return callback(new Error('Could not load scenario file'));

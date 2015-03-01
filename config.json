@@ -1,6 +1,6 @@
 {
   "data" : "data/",
-  "scenario" : "current.json",
+  "scenario" : "current",
   "file" : "",
   "html" : false,
   "max_stat" : {

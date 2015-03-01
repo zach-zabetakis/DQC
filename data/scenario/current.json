@@ -1,94 +1,137 @@
 {
   "scenarios" : [
     {
+      "update" : true,
       "name" : "Test",
       "location" : "Unknown",
+      "map_position" : null,
+      "light_level" : null,
+      "characters" : [
+        {
+          "name" : "Zephyr"
+        },
+        {
+         "name" : "Anduin"
+        }
+      ],
+      "allies" : [
+        {
+          "type" : "npc",
+          "name" : "Hexologist",
+          "curr_HP" : "29",
+          "curr_MP" : "14",
+          "status" : ["ST"],
+          "effects" : ["Increase"],
+          "can_target" : false
+        },
+        {
+          "type" : "npc",
+          "name" : "Diversion",
+          "curr_HP" : "10",
+          "curr_MP" : "0",
+          "status" : [],
+          "effects" : [],
+          "can_act" : false
+        }
+      ],
       "in_quest" : true,
-      "quest_name" : "BrHx1",
-      "characters" : {
-        "groups" : [
-          {
-            "members" : [
-              {
-                "name" : "Zephyr"
-              },
-              {
-                "name" : "Anduin"
-              }
-            ]
-          }
-        ]
-      },
-      "allies" : {
-        "groups" : [
-          {
-            "members" : [
-              {
-                "type" : "npc",
-                "name" : "Hexologist",
-                "curr_HP" : "29",
-                "curr_MP" : "14",
-                "status" : ["ST"],
-                "effects" : ["Increase"]
-              }
-            ]
-          }
-        ]
-      },
-      "battles_remaining" : 1,
+      "quest" : "BrHx1",
       "in_battle" : true,
-      "battle_turn": 2,
-      "enemies" : {
-        "groups" : [
-          {
-            "members" : [
-              {
-                "type" : "monster",
-                "name" : "Slime",
-                "symbol" : "A",
-                "curr_HP" : "3",
-                "curr_MP" : "0",
-                "status" : ["FR", "SL", "NU"],
-                "effects" : ["Bikill"]
-              },
-              {
-                "type" : "monster",
-                "name" : "Slime",
-                "symbol" : "B",
-                "curr_HP" : "2",
-                "curr_MP" : "0",
-                "status" : ["SL", "NU"],
-                "effects" : ["Defense"]
-              }
-            ]
-          },
-          {
-            "members" : [
-              {
-                "type" : "monster",
-                "name" : "Red Slime",
-                "symbol" : "A",
-                "curr_HP" : "3",
-                "curr_MP" : "0",
-                "status" : ["NU"],
-                "effects" : []
-              }
-            ]
-          },
-          {
-            "members" : [
-              {
-                "type" : "monster",
-                "name" : "Red Slime",
-                "symbol" : "B",
-                "curr_HP" : "3",
-                "curr_MP" : "0",
-                "status" : [],
-                "effects" : []
-              }
-            ]
-          }
-        ]
+      "battles_remaining" : 1,
+      "battle" : {
+        "turn" : 2,
+        "characters" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "name" : "Zephyr"
+                },
+                {
+                  "name" : "Anduin"
+                }
+              ]
+            }
+          ]
+        },
+        "allies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "npc",
+                  "name" : "Hexologist"
+                },
+                {
+                  "type" : "npc",
+                  "name" : "Diversion"
+                }
+              ]
+            }
+          ]
+        },
+        "enemies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "A",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : ["FR", "SL", "NU"],
+                  "effects" : ["Bikill"]
+                },
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "B",
+                  "curr_HP" : "0",
+                  "curr_MP" : "0",
+                  "status" : ["DE"],
+                  "effects" : ["Defense"]
+                },
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "C",
+                  "curr_HP" : "1",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : [],
+                  "killed_by" : "Zephyr"
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "A",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "B",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            }
+          ]
+        }
       }
     }
   ],

@@ -7,10 +7,11 @@ module.exports = function () {
   async.waterfall([
     sim.random,
     sim.init,
-    sim.calculate
+    sim.calculate,
+    sim.populate
   ], function (error, results) {
     if (error) {
-      throw new Error('CURSED!');
+      throw error || new Error('CURSED!');
     }
 
     // store all data together
