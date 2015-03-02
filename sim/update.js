@@ -64,6 +64,8 @@ module.exports = function (DQC) {
               throw new Error('Unknown type ' + type);
               break;
           }
+
+          // TODO: check if battle has ended
         });
 
       } else {

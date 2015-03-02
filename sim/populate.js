@@ -24,7 +24,7 @@ module.exports = function (data, next) {
           enemy = findMember(enemy);
           enemy.is_enemy = true;
         });
-        group.active = battleHelpers.isActive(group);
+        group.active = battleHelpers.isActive(group.members);
       });
 
       // copy character/ally data into battle object
@@ -61,11 +61,11 @@ module.exports = function (data, next) {
   }
 
   // copy members from character/ally array into the battle
-  function copyMembers (scenario, searchKey) {
+  function copyMembers (scenario, groupType) {
     return function (group) {
       _.each(group.members, function (member) {
         var type  = member.type || 'character';
-        var match = _.findWhere(scenario[searchKey], { name : member.name, type : type });
+        var match = _.findWhere(scenario[groupType], { name : member.name, type : type });
 
         if (match) {
           member = _.merge(member, match);
