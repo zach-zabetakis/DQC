@@ -98,7 +98,7 @@
                   "symbol" : "C",
                   "curr_HP" : "1",
                   "curr_MP" : "0",
-                  "status" : [],
+                  "status" : ["PO"],
                   "effects" : [],
                   "killed_by" : "Zephyr"
                 }
@@ -110,7 +110,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "A",
-                  "curr_HP" : "3",
+                  "curr_HP" : "2",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
