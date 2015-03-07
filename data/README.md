@@ -246,59 +246,61 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(H) dodge` - rate (out of 256) of evading a physical attack
 
-`(I) experience` - experience points awarded when the monster is defeated
+`(I) regen` - does this monster automatically regenerate HP?
 
-`(J) gold` - gold coins awarded when the monster is defeated
+`(J) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(K) drop.common.name` - item name the monster may drop after battle
+`(K) resist.beat` - resistance (out of 16) for instant death spells
 
-`(L) drop.common.rate` - rate (out of 256) for the common item drop
+`(L) resist.numb` - resistance (out of 16) for paralysis
 
-`(M) drop.rare.name` - item name the monster may rarely drop after battle
+`(M) resist.poison` - resistance (out of 16) for poison
 
-`(N) drop.rare.rate` - rate (out of 256) for the rare item drop
+`(N) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(O) drop.heart.name` - name of this monster's heart (see HEART data)
+`(O) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(P) drop.heart.rate` - rate (out of 1024) for a monster heart drop
+`(P) resist.chaos` - resistance (out of 16) for confusion
 
-`(Q) resist.burn` - resistance (out of 16) for BURN attacks
+`(Q) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(R) resist.beat` - resistance (out of 16) for instant death spells
+`(R) resist.sleep` - resistance (out of 16) for sleep
 
-`(S) resist.numb` - resistance (out of 16) for paralysis
+`(S) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(T) resist.poison` - resistance (out of 16) for poison
+`(T) resist.surround` - resistance (out of 16) for surround
 
-`(U) resist.sap` - resistance (out of 16) for defense lowering spells
+`(U) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(V) resist.slow` - resistance (out of 16) for agility lowering spells
+`(V) saver.burn` - does this monster have BURN SAVER?
 
-`(W) resist.chaos` - resistance (out of 16) for confusion
+`(W) saver.phys` - does this monster have PHYS SAVER?
 
-`(X) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(X) saver.ment` - does this monster have MENT SAVER?
 
-`(Y) resist.sleep` - resistance (out of 16) for sleep
+`(Y) experience` - experience points awarded when the monster is defeated
 
-`(Z) resist.stopspell` - resistance (out of 16) for stopspell
+`(Z) gold` - gold coins awarded when the monster is defeated
 
-`(AA) resist.surround` - resistance (out of 16) for surround
+`(AA) drop.common.name` - item name the monster may drop after battle
 
-`(AB) resist.fear` - resistance (out of 16) from being frozen in fear
+`(AB) drop.common.rate` - rate (out of 256) for the common item drop
 
-`(AC) saver.burn` - does this monster have BURN SAVER?
+`(AC) drop.rare.name` - item name the monster may rarely drop after battle
 
-`(AD) saver.phys` - does this monster have PHYS SAVER?
+`(AD) drop.rare.rate` - rate (out of 256) for the rare item drop
 
-`(AE) saver.ment` - does this monster have MENT SAVER?
+`(AE) drop.heart.name` - name of this monster's heart (see HEART data)
 
-`(AF) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AF) drop.heart.rate` - rate (out of 1024) for a monster heart drop
 
-`(AG-AO) pattern` - monster's attack pattern. Equal chance of each action
+`(AG) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(AO-AV) flavor.attack` - flavor text for this monster's physical attack
+`(AH-AO) pattern` - monster's attack pattern. Equal chance of each action
 
-`(AW) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AP-AW) flavor.attack` - flavor text for this monster's physical attack
+
+`(AX) flavor.dodge` - flavor text when this monster dodges a physical attack
 
 
 ## NPC
