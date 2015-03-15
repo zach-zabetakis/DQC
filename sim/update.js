@@ -52,7 +52,7 @@ module.exports = function (DQC) {
 
           switch (active_member.type) {
             case 'character' :
-              DQC.out(disp_name + ' is flustered!');
+              DQC.out(disp_name + ' assesses the situation.');
               break;
             case 'npc' :
               DQC.out(disp_name + ' cackles gleefully!');
@@ -65,7 +65,35 @@ module.exports = function (DQC) {
               break;
           }
 
-          // TODO: check if battle has ended
+          // check if the battle has ended
+          if (!battleHelpers.isRemaining(scenario, 'characters')) {
+            scenario.in_battle = false;
+            DQC.out();
+            if (battleHelpers.isPlayerWipeout) {
+              DQC.out(helpers.format('The party is wiped out.', true));
+              // TODO: wipeout
+
+            } else {
+              // TODO: one or more players fled or did not participate in battle.
+            }
+
+            // exit out of the turn order
+            return false;
+
+          } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
+            scenario.in_battle = false;
+            DQC.out();
+            if (!scenario.battle.enemies.groups.length) {
+              DQC.out('There are no more enemies remaining.');
+              // TODO: all enemies fled or were expelled from battle.
+
+            } else {
+              // TODO: Victory!
+            }
+
+            // exit out of the turn order
+            return false;
+          }
         });
 
       } else {

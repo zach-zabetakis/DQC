@@ -302,6 +302,8 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(AX) flavor.dodge` - flavor text when this monster dodges a physical attack
 
+`(AY) flavor.confusion` - flavor text when this monster is confused
+
 
 ## NPC
 
