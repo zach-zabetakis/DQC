@@ -52,6 +52,7 @@ module.exports = function (DQC) {
 
           switch (active_member.type) {
             case 'character' :
+              battleHelpers.deathPenalty(DQC, active_member);
               DQC.out(disp_name + ' assesses the situation.');
               break;
             case 'npc' :
@@ -71,7 +72,7 @@ module.exports = function (DQC) {
             DQC.out();
             if (battleHelpers.isPlayerWipeout) {
               DQC.out(helpers.format('The party is wiped out.', true));
-              // TODO: wipeout
+              battleHelpers.wipeout(DQC, scenario);
 
             } else {
               // TODO: one or more players fled or did not participate in battle.
