@@ -52,7 +52,6 @@ module.exports = function (DQC) {
 
           switch (active_member.type) {
             case 'character' :
-              battleHelpers.deathPenalty(DQC, active_member);
               DQC.out(disp_name + ' assesses the situation.');
               break;
             case 'npc' :
