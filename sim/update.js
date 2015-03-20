@@ -52,10 +52,10 @@ module.exports = function (DQC) {
 
           switch (active_member.type) {
             case 'character' :
-              DQC.out(disp_name + ' assesses the situation.');
+              battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
               break;
             case 'npc' :
-              DQC.out(disp_name + ' cackles gleefully!');
+              battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
               break;
             case 'monster' :
               battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);

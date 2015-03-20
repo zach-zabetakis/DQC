@@ -80,7 +80,7 @@
                   "symbol" : "A",
                   "curr_HP" : "3",
                   "curr_MP" : "0",
-                  "status" : ["FR", "SL", "NU"],
+                  "status" : ["FR", "SL", "NU", "PO"],
                   "effects" : ["Bikill"]
                 },
                 {
