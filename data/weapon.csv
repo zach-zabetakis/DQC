@@ -1,18 +1,7 @@
 "name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","attack","miss","critical"
 "Bamboo Pole","A makeshift weapon fashioned from a bamboo stalk",10,"true","true","true","true","true",2,0,0
 "Club","A sturdy oaken club",60,"true","true","false","true","false",4,0,0
-"Boomerang","Can be thrown to hit all enemies in a group",0,"true","false","false","false","false",4,0,0
-"Magic Knife","Despite its name, this weapon has no magical properties",200,"true","true","false","true","true",7,0,0
-"Wizard's Wand","This wand can be USED in battle to cast BLAZE",1500,"false","false","false","false","true",7,0,0
 "Copper Sword","The cheapest blade that would-be adventurers can afford",180,"true","true","false","true","false",10,0,0
-"Chain Sickle","The chain catches the enemy and the sickle attacks",550,"true","true","false","true","false",12,0,0
-"Iron Spear","An effective weapon for those who like to keep their distance in battle",750,"true","true","false","true","false",14,0,0
 "Hand Axe","Though small, this hatchet is no less deadly",560,"true","true","false","false","false",15,0,0
-"Iron Claw","Sharp metal claws for those who prefer hand-to-hand combat",770,"false","false","true","false","false",15,0,0
 "Broad Sword","A finely balanced blade for seasoned adventurers",1500,"true","true","false","false","false",20,0,0
-"Wayfinder","One of the 12 Swords of Power. Never misses its target",0,"true","true","true","true","true",20,0,0
-"Coinspinner","One of the 12 Swords of Power. Unpredictable",0,"true","true","true","true","true",20,4,4
-"Giant Shears","A giant pair of shears that is worn over the arm",3700,"false","true","false","false","false",24,0,0
-"Sledge Hammer","This heavy hammer can crush all who stand in its way",6500,"false","true","false","false","false",27,0,0
-"Golden Claw","A glimmering golden claw surrounded by an air of danger",0,"false","false","true","false","false",27,0,0
 "Flame Sword","The blade of this sword seems to be made from fire itself",9800,"true","true","false","false","false",28,0,0

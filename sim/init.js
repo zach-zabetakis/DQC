@@ -11,7 +11,7 @@ var _         = require('lodash');
 module.exports = function (rng, next) {
   // PATH TO DATA FILES
   var path = nconf.get('data');
-  if (path === 'data/') {
+  if (path === 'data') {
     path = __dirname + '/../' + path;
   }
 
@@ -49,7 +49,7 @@ module.exports = function (rng, next) {
       });
 
       try {
-        fileStream = fs.createReadStream(path + filename + '.csv');
+        fileStream = fs.createReadStream(path + '/' + filename + '.csv');
         fileStream.pipe(csvConverter);
       } catch (e) {
         return callback(new Error('Could not load data file: ' + filename));
@@ -75,7 +75,7 @@ module.exports = function (rng, next) {
       });
 
       try {
-        fileStream  = fs.createReadStream(path + filename + '.csv');
+        fileStream  = fs.createReadStream(path + '/' + filename + '.csv');
         fileStream.pipe(csvConverter);
       } catch (e) {
         return callback(new Error('Could not load data file: ' + filename));
@@ -88,7 +88,7 @@ module.exports = function (rng, next) {
     var json;
 
     try {
-      json = fs.readFileSync(path + 'scenario/' + scenario + '.json');
+      json = fs.readFileSync(path + '/scenario/' + scenario + '.json');
       json = JSON.parse(json);
     } catch (e) {
       return callback(new Error('Could not load scenario file'));

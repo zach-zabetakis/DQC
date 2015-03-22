@@ -2,73 +2,35 @@
   "scenarios" : [
     {
       "update" : true,
-      "name" : "Test",
-      "location" : "Unknown",
+      "name" : "Zephyr",
+      "location" : "Outskirts of Brecconary",
       "map_position" : null,
       "light_level" : null,
       "characters" : [
         {
           "name" : "Zephyr"
-        },
-        {
-         "name" : "Anduin"
         }
       ],
-      "allies" : [
-        {
-          "type" : "npc",
-          "name" : "Hexologist",
-          "curr_HP" : "29",
-          "curr_MP" : "14",
-          "status" : ["ST"],
-          "effects" : ["Increase"],
-          "can_target" : false
-        },
-        {
-          "type" : "npc",
-          "name" : "Diversion",
-          "curr_HP" : "10",
-          "curr_MP" : "0",
-          "status" : [],
-          "effects" : [],
-          "can_act" : false
-        }
-      ],
-      "in_quest" : true,
-      "quest" : "BrHx1",
+      "allies" : [],
+      "in_quest" : false,
+      "quest" : null,
       "in_battle" : true,
-      "battles_remaining" : 1,
+      "battles_remaining" : null,
       "battle" : {
-        "turn" : 2,
+        "turn" : 0,
         "characters" : {
           "groups" : [
             {
               "members" : [
                 {
                   "name" : "Zephyr"
-                },
-                {
-                  "name" : "Anduin"
                 }
               ]
             }
           ]
         },
         "allies" : {
-          "groups" : [
-            {
-              "members" : [
-                {
-                  "type" : "npc",
-                  "name" : "Hexologist"
-                },
-                {
-                  "type" : "npc",
-                  "name" : "Diversion"
-                }
-              ]
-            }
-          ]
+          "groups" : []
         },
         "enemies" : {
           "groups" : [
@@ -77,42 +39,10 @@
                 {
                   "type" : "monster",
                   "name" : "Slime",
-                  "symbol" : "A",
+                  "symbol" : "",
                   "curr_HP" : "3",
                   "curr_MP" : "0",
-                  "status" : ["FR", "SL", "NU", "PO"],
-                  "effects" : ["Bikill"]
-                },
-                {
-                  "type" : "monster",
-                  "name" : "Slime",
-                  "symbol" : "B",
-                  "curr_HP" : "0",
-                  "curr_MP" : "0",
-                  "status" : ["DE"],
-                  "effects" : ["Defense"]
-                },
-                {
-                  "type" : "monster",
-                  "name" : "Slime",
-                  "symbol" : "C",
-                  "curr_HP" : "1",
-                  "curr_MP" : "0",
                   "status" : [],
-                  "effects" : [],
-                  "killed_by" : "Zephyr"
-                }
-              ]
-            },
-            {
-              "members" : [
-                {
-                  "type" : "monster",
-                  "name" : "Red Slime",
-                  "symbol" : "A",
-                  "curr_HP" : "1",
-                  "curr_MP" : "0",
-                  "status" : ["PO"],
                   "effects" : []
                 }
               ]
@@ -122,7 +52,263 @@
                 {
                   "type" : "monster",
                   "name" : "Red Slime",
-                  "symbol" : "B",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "update" : true,
+      "name" : "Ragnar",
+      "location" : "Outskirts of Brecconary",
+      "map_position" : null,
+      "light_level" : null,
+      "characters" : [
+        {
+          "name" : "Ragnar"
+        }
+      ],
+      "allies" : [],
+      "in_quest" : false,
+      "quest" : null,
+      "in_battle" : true,
+      "battles_remaining" : null,
+      "battle" : {
+        "turn" : 0,
+        "characters" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "name" : "Ragnar"
+                }
+              ]
+            }
+          ]
+        },
+        "allies" : {
+          "groups" : []
+        },
+        "enemies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "update" : true,
+      "name" : "Alena",
+      "location" : "Outskirts of Brecconary",
+      "map_position" : null,
+      "light_level" : null,
+      "characters" : [
+        {
+          "name" : "Alena"
+        }
+      ],
+      "allies" : [],
+      "in_quest" : false,
+      "quest" : null,
+      "in_battle" : true,
+      "battles_remaining" : null,
+      "battle" : {
+        "turn" : 0,
+        "characters" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "name" : "Alena"
+                }
+              ]
+            }
+          ]
+        },
+        "allies" : {
+          "groups" : []
+        },
+        "enemies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "update" : true,
+      "name" : "Cristo",
+      "location" : "Outskirts of Brecconary",
+      "map_position" : null,
+      "light_level" : null,
+      "characters" : [
+        {
+          "name" : "Cristo"
+        }
+      ],
+      "allies" : [],
+      "in_quest" : false,
+      "quest" : null,
+      "in_battle" : true,
+      "battles_remaining" : null,
+      "battle" : {
+        "turn" : 0,
+        "characters" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "name" : "Cristo"
+                }
+              ]
+            }
+          ]
+        },
+        "allies" : {
+          "groups" : []
+        },
+        "enemies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "update" : true,
+      "name" : "Mara",
+      "location" : "Outskirts of Brecconary",
+      "map_position" : null,
+      "light_level" : null,
+      "characters" : [
+        {
+          "name" : "Mara"
+        }
+      ],
+      "allies" : [],
+      "in_quest" : false,
+      "quest" : null,
+      "in_battle" : true,
+      "battles_remaining" : null,
+      "battle" : {
+        "turn" : 0,
+        "characters" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "name" : "Mara"
+                }
+              ]
+            }
+          ]
+        },
+        "allies" : {
+          "groups" : []
+        },
+        "enemies" : {
+          "groups" : [
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Slime",
+                  "symbol" : "",
+                  "curr_HP" : "3",
+                  "curr_MP" : "0",
+                  "status" : [],
+                  "effects" : []
+                }
+              ]
+            },
+            {
+              "members" : [
+                {
+                  "type" : "monster",
+                  "name" : "Red Slime",
+                  "symbol" : "",
                   "curr_HP" : "3",
                   "curr_MP" : "0",
                   "status" : [],
@@ -135,5 +321,5 @@
       }
     }
   ],
-  "jackpot" : 52650
+  "jackpot" : 50000
 }

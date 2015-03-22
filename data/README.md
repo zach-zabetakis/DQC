@@ -36,9 +36,13 @@ Multiple ACCESSORY items can be equipped.  All accessories count toward a charac
 
 `(P) resist.numb` - resistance against paralysis
 
-`(Q) saver.phys` - does this accessory have PHYS SAVER?
+`(Q) saver.burn` - does this accessory have BURN SAVER?
 
-`(R) is_cursed` - is this accessory cursed?
+`(R) saver.phys` - does this accessory have PHYS SAVER?
+
+`(S) saver.ment` - does this accessory have MENT SAVER?
+
+`(T) is_cursed` - is this accessory cursed?
 
 ## Armor
 

@@ -113,9 +113,9 @@ module.exports = function (DQC) {
         DQC.out(helpers.format('[Command?]', false, true));
       }
     }
+    DQC.out();
   });
 
-  DQC.out();
   DQC.out('----------');
   DQC.out();
   DQC.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
