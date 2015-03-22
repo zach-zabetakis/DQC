@@ -70,7 +70,6 @@ module.exports = function (DQC) {
             scenario.in_battle = false;
             DQC.out();
             if (battleHelpers.isPlayerWipeout) {
-              DQC.out(helpers.format('The party is wiped out.', true));
               battleHelpers.wipeout(DQC, scenario);
 
             } else {
@@ -88,7 +87,7 @@ module.exports = function (DQC) {
               // TODO: all enemies fled or were expelled from battle.
 
             } else {
-              // TODO: Victory!
+              battleHelpers.victory(DQC, scenario);
             }
 
             // exit out of the turn order
