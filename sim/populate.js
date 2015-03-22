@@ -63,12 +63,12 @@ module.exports = function (data, next) {
   // copy members from character/ally array into the battle
   function copyMembers (scenario, groupType) {
     return function (group) {
-      _.each(group.members, function (member) {
+      _.each(group.members, function (member, index) {
         var type  = member.type || 'character';
-        var match = _.findWhere(scenario[groupType], { name : member.name, type : type });
+        var found = _.findIndex(scenario[groupType], { name : member.name, type : type });
 
-        if (match) {
-          member = _.merge(member, match);
+        if (found > -1) {
+          group.members[index] = scenario[groupType][found];
         } else {
           throw new Error('Data for ' + member.name + ' not found!');
         }
