@@ -51,6 +51,7 @@ module.exports = function (data, next) {
       new_member.curr_MP = Math.min(new_member.curr_MP, new_member.max_MP);
       new_member.curr_MP = Math.max(new_member.curr_MP, 0);
 
+      new_member.in_battle  = false;
       new_member.can_act    = (new_member.can_act !== false);
       new_member.can_target = (new_member.can_target !== false);
 
@@ -69,6 +70,7 @@ module.exports = function (data, next) {
 
         if (found > -1) {
           group.members[index] = scenario[groupType][found];
+          group.members[index].in_battle = true;
         } else {
           throw new Error('Data for ' + member.name + ' not found!');
         }
