@@ -3,6 +3,7 @@
   "scenario" : "current",
   "file" : "",
   "html" : false,
+  "inventory_limit" : 6,
   "max_stat" : {
     "base_strength" : "255",
     "adj_strength" : "255",
