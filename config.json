@@ -3,6 +3,7 @@
   "scenario" : "current",
   "file" : "",
   "html" : false,
+  "experience_penalty" : 10,
   "inventory_limit" : 6,
   "max_stat" : {
     "base_strength" : "255",
