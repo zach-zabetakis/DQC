@@ -16,19 +16,24 @@ module.exports = function (rng, next) {
   }
 
   async.parallel({
-    accessory  : data('accessory'),
-    armor      : data('armor'),
-    character  : data('character'),
-    experience : dataArray('experience'),
-    heart      : data('heart'),
-    helmet     : data('helmet'),
-    monster    : data('monster'),
-    npc        : data('npc'),
-    quest      : data('quest'),
-    shield     : data('shield'),
-    spell      : data('spell'),
-    weapon     : data('weapon'),
-    scenario   : loadScenario
+    accessory     : data('accessory'),
+    armor         : data('armor'),
+    build_fighter : dataArray('build_fighter'),
+    build_priest  : dataArray('build_priest'),
+    build_ranger  : dataArray('build_ranger'),
+    build_soldier : dataArray('build_soldier'),
+    build_wizard  : dataArray('build_wizard'),
+    character     : data('character'),
+    experience    : dataArray('experience'),
+    heart         : data('heart'),
+    helmet        : data('helmet'),
+    monster       : data('monster'),
+    npc           : data('npc'),
+    quest         : data('quest'),
+    shield        : data('shield'),
+    spell         : data('spell'),
+    weapon        : data('weapon'),
+    scenario      : loadScenario
   }, function (error, results) {
     if (results) {
       results.RNG = rng;

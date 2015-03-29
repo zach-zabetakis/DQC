@@ -6,7 +6,26 @@ var _       = require('lodash');
  * Calculate/sanitize additional data based on the data passed in.
  */
 module.exports = function (data, next) {
-  var initDataKeys = ['accessory', 'armor', 'character', 'experience', 'heart', 'helmet', 'monster', 'npc', 'shield', 'spell', 'weapon'];
+  var initDataKeys = [
+    'accessory',
+    'armor',
+    'build_fighter',
+    'build_priest',
+    'build_ranger',
+    'build_soldier',
+    'build_wizard',
+    'character',
+    'experience',
+    'heart',
+    'helmet',
+    'monster',
+    'npc',
+    'quest',
+    'shield',
+    'spell',
+    'weapon'
+  ];
+
   _.each(initDataKeys, function (key) {
     if (!data[key]) {
       throw new Error(key + ' data not found!');

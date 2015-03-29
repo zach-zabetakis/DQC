@@ -76,6 +76,26 @@ Items which can be equipped in a character's ARMOR slot. Note that description i
 
 `(N) saver.burn` - does this armor have BURN SAVER?
 
+## Build
+
+Each character job has its own build file, which contains the stat growths that the character will receive at each level up. A character is assigned a specific build (integer ranging from 0-15) during character creation based on the character name provided.  Each build has 2 'primary' stats and 2 'secondary' stats.
+
+`(A) STR1` - primary strength stat growths
+
+`(B) STR2` - secondary strength stat growths
+
+`(C) AGI1` - primary agility stat growths
+
+`(D) AGI2` - secondary agility stat growths
+
+`(E) HP1` - primary HP stat growths
+
+`(F) HP2` - secondary HP stat growths
+
+`(G) MP1` - primary MP stat growths
+
+`(H) MP2` - secondary HP stat growths
+
 ## Character
 
 The brave heroes fighting to free the world from evil's grasp. All base values can be modified by equipment, heart, etc. `attack` and `defense` values are stored for convenience only and are recalculated based on other data.
@@ -84,83 +104,85 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(B) name` - character's name
 
-`(C) job` - character's job class
+`(C) build` - character build value (0-15). Based on name, affects stat growth
 
-`(D) level` - character's experience level
+`(D) job` - character's job class
 
-`(E) experience` - total accumulated experience points
+`(E) level` - character's experience level
 
-`(F) gold` - gold coins in this character's possession
+`(F) experience` - total accumulated experience points
 
-`(G) status` - semicolon separated list of status ailments
+`(G) gold` - gold coins in this character's possession
 
-`(H) effects` - semicolon separated list of current in-battle spell effects
+`(H) status` - semicolon separated list of status ailments
 
-`(I) curr_HP` - current HP value. When HP reaches 0 the character dies
+`(I) effects` - semicolon separated list of current in-battle spell effects
 
-`(J) curr_MP` - current MP value. Required to cast spells
+`(J) curr_HP` - current HP value. When HP reaches 0 the character dies
 
-`(K) base_HP` - base maximum HP value.
+`(K) curr_MP` - current MP value. Required to cast spells
 
-`(L) base_MP` - base maximum MP value.
+`(L) base_HP` - base maximum HP value.
 
-`(M) base_strength` - base strength value
+`(M) base_MP` - base maximum MP value.
 
-`(N) base_agility` - base agility value
+`(N) base_strength` - base strength value
 
-`(O) attack` - total attack value, stored for convenience only
+`(O) base_agility` - base agility value
 
-`(P) defense` - total defense value, stored for convenience only
+`(P) attack` - total attack value, stored for convenience only
 
-`(Q) base_critical` - base rate (out of 32) of performing a critical hit
+`(Q) defense` - total defense value, stored for convenience only
 
-`(R) base_dodge` - base rate (out of 256) of evading a physical attack
+`(R) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(S) base_resist.burn` - resistance (out of 16) for BURN attacks
+`(S) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(T) base_resist.beat` - resistance (out of 16) for instant death spells
+`(T) base_resist.burn` - resistance (out of 16) for BURN attacks
 
-`(U) base_resist.numb` - resistance (out of 16) for paralysis
+`(U) base_resist.beat` - resistance (out of 16) for instant death spells
 
-`(V) base_resist.poison` - resistance (out of 16) for poison
+`(V) base_resist.numb` - resistance (out of 16) for paralysis
 
-`(W) base_resist.sap` - resistance (out of 16) for defense lowering spells
+`(W) base_resist.poison` - resistance (out of 16) for poison
 
-`(X) base_resist.slow` - resistance (out of 16) for agility lowering spells
+`(X) base_resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(Y) base_resist.chaos` - resistance (out of 16) for confusion
+`(Y) base_resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(Z) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(Z) base_resist.chaos` - resistance (out of 16) for confusion
 
-`(AA) base_resist.sleep` - resistance (out of 16) for sleep
+`(AA) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(AB) base_resist.stopspell` - resistance (out of 16) for stopspell
+`(AB) base_resist.sleep` - resistance (out of 16) for sleep
 
-`(AC) base_resist.surround` - resistance (out of 16) for surround
+`(AC) base_resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AD) base_resist.fear` - resistance (out of 16) from being frozen in fear
+`(AD) base_resist.surround` - resistance (out of 16) for surround
 
-`(AE) equip.weapon` - character's equipped weapon
+`(AE) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AF) equip.armor` - character's equipped body armor
+`(AF) equip.weapon` - character's equipped weapon
 
-`(AG) equip.shield` - character's equipped shield
+`(AG) equip.armor` - character's equipped body armor
 
-`(AH) equip.helmet` - character's equipped helmet
+`(AH) equip.shield` - character's equipped shield
 
-`(AI) heart.name` - character's equipped monster heart
+`(AI) equip.helmet` - character's equipped helmet
 
-`(AJ) heart.experience` - monster heart experience value
+`(AJ) heart.name` - character's equipped monster heart
 
-`(AK-AP) inventory` - items in this character's possession. Limit of 6
+`(AK) heart.experience` - monster heart experience value
 
-`(AQ-AT) loto3` - Loto3 lottery tickets. Limit of 4
+`(AL-AQ) inventory` - items in this character's possession. Limit of 6
 
-`(AU-AX) bol` - Ball of Light lottery tickets. Limit of 4
+`(AR-AU) loto3` - Loto3 lottery tickets. Limit of 4
 
-`(AY) deaths` - number of times this character has been defeated
+`(AV-AY) bol` - Ball of Light lottery tickets. Limit of 4
 
-`(AZ) active` - is this character actively participating in the game? 
+`(AZ) deaths` - number of times this character has been defeated
+
+`(BA) active` - is this character actively participating in the game? 
 
 ## Experience
 
