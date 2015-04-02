@@ -17,6 +17,7 @@
     "defense" : "999",
     "curr_defense" : "999"
   },
+  "stat_bonus" : 0,
   "status" : {
     "chaos" : "CF",
     "death" : "DE",

@@ -111,8 +111,9 @@ module.exports = function (DQC) {
       } else {
         DQC.out(helpers.format('[Command?]', false, true));
       }
+      
+      DQC.out();
     }
-    DQC.out();
   });
 
   DQC.out('----------');
