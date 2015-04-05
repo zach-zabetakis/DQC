@@ -30,8 +30,7 @@ module.exports = function (data, next) {
       // copy character/ally data into battle object
       _.each(scenario.battle.characters.groups, copyMembers(scenario, 'characters'));
       _.each(scenario.battle.allies.groups, copyMembers(scenario, 'allies'));
-
-      }
+    }
   });
 
   return next(null, data);
