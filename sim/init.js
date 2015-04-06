@@ -24,6 +24,7 @@ module.exports = function (rng, next) {
     build_soldier : dataArray('build_soldier'),
     build_wizard  : dataArray('build_wizard'),
     character     : data('character'),
+    command       : data('command'),
     experience    : dataArray('experience'),
     heart         : data('heart'),
     helmet        : data('helmet'),

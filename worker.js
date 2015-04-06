@@ -8,7 +8,8 @@ module.exports = function () {
     sim.random,
     sim.init,
     sim.calculate,
-    sim.populate
+    sim.populate,
+    sim.commands,
   ], function (error, results) {
     if (error) {
       throw error || new Error('CURSED!');

@@ -15,6 +15,7 @@ module.exports = function (data, next) {
     'build_soldier',
     'build_wizard',
     'character',
+    'command',
     'experience',
     'heart',
     'helmet',

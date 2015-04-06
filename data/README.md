@@ -182,7 +182,27 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(AZ) deaths` - number of times this character has been defeated
 
-`(BA) active` - is this character actively participating in the game? 
+`(BA) active` - is this character actively participating in the game?
+
+## Command
+
+In battle player commands are recorded in this file. Commands must be entered for each player, and for certain NPCs and enemy monsters, for each update run.
+
+`(A) member.type` - member type. One of 'characters', 'allies', 'enemies'
+
+`(B) member.name` - name of the member who is performing this command
+
+`(C) type` - type of battle action that this command represents
+
+`(D) name` - for certain commands, a more specific command name
+
+`(E) flavor_prefix` - flavor text (prefix) for physical attacks
+
+`(F) target.type` - target type. One of 'characters', 'allies', 'enemies'
+
+`(G) target.name` - name of the target who is receiving this command
+
+`(H) flavor_suffix` - flavor text (suffix) for physical attacks
 
 ## Experience
 
