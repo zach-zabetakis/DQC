@@ -7,7 +7,7 @@ var _             = require('lodash');
 module.exports = function (data, next) {
   _.each(data.command, function (command) {
     // Make sure command is valid
-    var validCommands = ['ATTACK', 'SPELL', 'ITEM', 'RUN', 'PARRY', 'CHARGE', 'RETREAT', 'SWITCH', 'NONE'];
+    var validCommands = ['ATTACK', 'SPELL', 'HEART', 'ITEM', 'RUN', 'PARRY', 'CHARGE', 'RETREAT', 'SWITCH', 'NONE'];
     if (!_.includes(validCommands, command.type)) {
       throw new Error('Command ' + command.type + ' is not valid.');
     }
@@ -22,19 +22,25 @@ module.exports = function (data, next) {
     }
 
     // Make sure character/npc/monster can be found
-    var member = _.find(data.scenario.scenarios, function (scenario) {
-      var found = battleHelpers.findMember(scenario, command.member.name, command.member.type);
-      return found || false;
+    var member;
+    _.each(data.scenario.scenarios, function (scenario) {
+      member = battleHelpers.findMember(scenario, command.member.name, command.member.type);
+      if (member) {
+        return false;
+      }
     });
     if (!member) {
       throw new Error(command.member.type + ' named ' + command.member.name + ' not found.');
     }
 
+    // Make sure target is valid
+    var target;
     if (command.target.name) {
-      // Make sure target is valid
-      var target = _.find(data.scenario.scenarios, function (scenario) {
-        var found = battleHelpers.findMember(scenario, command.target.name, command.target.type);
-        return found || false;
+      _.each(data.scenario.scenarios, function (scenario) {
+        target = battleHelpers.findMember(scenario, command.target.name, command.target.type);
+        if (target) {
+          return false;
+        }
       });
       if (!target) {
         throw new Error(command.target.type + ' named ' + command.target.name + ' not found.');
