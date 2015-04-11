@@ -7,7 +7,7 @@ var _             = require('lodash');
 module.exports = function (data, next) {
   _.each(data.command, function (command) {
     // Make sure command is valid
-    var validCommands = ['ATTACK', 'SPELL', 'HEART', 'ITEM', 'RUN', 'PARRY', 'CHARGE', 'RETREAT', 'SWITCH', 'NONE'];
+    var validCommands = ['ATTACK', 'CHARGE', 'HEART', 'ITEM', 'NONE', 'PARRY', 'RETREAT', 'RUN', 'SHIFT', 'SPELL'];
     if (!_.includes(validCommands, command.type)) {
       throw new Error('Command ' + command.type + ' is not valid.');
     }
