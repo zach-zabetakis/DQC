@@ -29,7 +29,9 @@ module.exports = function (data, next) {
         return false;
       }
     });
-    if (!member) {
+    if (member) {
+      member.command = command;
+    } else {
       throw new Error(command.member.type + ' named ' + command.member.name + ' not found.');
     }
 
@@ -42,13 +44,12 @@ module.exports = function (data, next) {
           return false;
         }
       });
-      if (!target) {
+      if (target) {
+        // TODO: attach target
+      } else {
         throw new Error(command.target.type + ' named ' + command.target.name + ' not found.');
       }
     }
-
-    // Attach the command
-    member.command = command;
   });
 
   return next(null, data);

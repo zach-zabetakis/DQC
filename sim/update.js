@@ -39,6 +39,7 @@ module.exports = function (DQC) {
         battleHelpers.generateTurnOrder(DQC, scenario);
 
         // Enemy units choose a target at the beginning of each turn
+        // TODO: some (all?) enemies choose actions at the beginning of each turn
         _.each(scenario.battle.enemies.groups, function (group) {
           _.each(group.members, function (enemy) {
             if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
@@ -46,6 +47,8 @@ module.exports = function (DQC) {
             }
           });
         });
+
+        // TODO: set flag for PARRY
 
         _.each(scenario.battle.turn_order, function (active_member) {
           var disp_name = active_member.name + (active_member.symbol || '');
