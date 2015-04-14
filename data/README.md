@@ -524,3 +524,7 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 `(J) miss` - rate (out of 32) that a physical attack will fail
 
 `(K) critical` - critical hit bonus
+
+`(L) target_all` - does this weapon target all enemies?
+
+`(M) target_group` - does this weapon attack an entire group?

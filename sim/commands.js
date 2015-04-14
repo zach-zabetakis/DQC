@@ -45,7 +45,7 @@ module.exports = function (data, next) {
         }
       });
       if (target) {
-        // TODO: attach target
+        command.target = target;
       } else {
         throw new Error(command.target.type + ' named ' + command.target.name + ' not found.');
       }
