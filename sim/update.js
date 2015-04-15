@@ -51,50 +51,50 @@ module.exports = function (DQC) {
         // TODO: set flag for PARRY
 
         _.each(scenario.battle.turn_order, function (active_member) {
-          var disp_name = active_member.name + (active_member.symbol || '');
-
-          switch (active_member.type) {
-            case 'character' :
-              battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
-              break;
-            case 'npc' :
-              battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
-              break;
-            case 'monster' :
-              battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
-              break;
-            default :
-              throw new Error('Unknown type ' + type);
-              break;
-          }
-
-          // check if the battle has ended
-          if (!battleHelpers.isRemaining(scenario, 'characters')) {
-            scenario.in_battle = false;
-            DQC.out();
-            if (battleHelpers.isPlayerWipeout) {
-              battleHelpers.wipeout(DQC, scenario);
-
-            } else {
-              // TODO: one or more players fled or did not participate in battle.
+          if (!active_member.is_dead) {
+            switch (active_member.type) {
+              case 'character' :
+                battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
+                break;
+              case 'npc' :
+                battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
+                break;
+              case 'monster' :
+                battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+                break;
+              default :
+                throw new Error('Unknown type ' + type);
+                break;
             }
 
-            // exit out of the turn order
-            return false;
+            // check if the battle has ended
+            if (!battleHelpers.isRemaining(scenario, 'characters')) {
+              scenario.in_battle = false;
+              DQC.out();
+              if (battleHelpers.isPlayerWipeout) {
+                battleHelpers.wipeout(DQC, scenario);
 
-          } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
-            scenario.in_battle = false;
-            DQC.out();
-            if (!scenario.battle.enemies.groups.length) {
-              DQC.out('There are no more enemies remaining.');
-              // TODO: all enemies fled or were expelled from battle.
+              } else {
+                // TODO: one or more players fled or did not participate in battle.
+              }
 
-            } else {
-              battleHelpers.victory(DQC, scenario);
+              // exit out of the turn order
+              return false;
+
+            } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
+              scenario.in_battle = false;
+              DQC.out();
+              if (!scenario.battle.enemies.groups.length) {
+                DQC.out('There are no more enemies remaining.');
+                // TODO: all enemies fled or were expelled from battle.
+
+              } else {
+                battleHelpers.victory(DQC, scenario);
+              }
+
+              // exit out of the turn order
+              return false;
             }
-
-            // exit out of the turn order
-            return false;
           }
         });
 
