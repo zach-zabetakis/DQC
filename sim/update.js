@@ -127,7 +127,7 @@ module.exports = function (DQC) {
   // outputs current HP/MP values of the group provided
   function outputAllyStatus (group) {
     var members = _.map(group.members, function (member) {
-      var message = member.name + ': ';
+      var message = member.displayName() + ': ';
       message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
       message += 'MP ' + member.curr_MP + '/' + member.max_MP;
       if (member.status.length) {

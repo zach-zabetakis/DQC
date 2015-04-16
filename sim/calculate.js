@@ -65,6 +65,10 @@ function calculateMonsterData (data) {
 
     monster.experience = Math.max(monster.experience, 0);
     monster.gold = Math.max(monster.gold, 0);
+
+    monster.displayName = function () {
+      return (this.name + (this.symbol || ''));
+    }
   });
 }
 
@@ -188,6 +192,10 @@ function calculateData (data, type) {
     }
     if (member.bol) {
       member.bol = _.map(member.bol, function (ticket) { return ticket.replace(/\s/g, ''); });
+    }
+
+    member.displayName = function () {
+      return (this.name + (this.symbol || ''));
     }
   });
 }
