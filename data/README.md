@@ -134,55 +134,57 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(Q) defense` - total defense value, stored for convenience only
 
-`(R) base_critical` - base rate (out of 32) of performing a critical hit
+`(R) base_miss` - base rate (out of 32) of failing to land a physical attack
 
-`(S) base_dodge` - base rate (out of 256) of evading a physical attack
+`(S) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(T) base_resist.burn` - resistance (out of 16) for BURN attacks
+`(T) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(U) base_resist.beat` - resistance (out of 16) for instant death spells
+`(U) base_resist.burn` - resistance (out of 16) for BURN attacks
 
-`(V) base_resist.numb` - resistance (out of 16) for paralysis
+`(V) base_resist.beat` - resistance (out of 16) for instant death spells
 
-`(W) base_resist.poison` - resistance (out of 16) for poison
+`(W) base_resist.numb` - resistance (out of 16) for paralysis
 
-`(X) base_resist.sap` - resistance (out of 16) for defense lowering spells
+`(X) base_resist.poison` - resistance (out of 16) for poison
 
-`(Y) base_resist.slow` - resistance (out of 16) for agility lowering spells
+`(Y) base_resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(Z) base_resist.chaos` - resistance (out of 16) for confusion
+`(Z) base_resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(AA) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(AA) base_resist.chaos` - resistance (out of 16) for confusion
 
-`(AB) base_resist.sleep` - resistance (out of 16) for sleep
+`(AB) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(AC) base_resist.stopspell` - resistance (out of 16) for stopspell
+`(AC) base_resist.sleep` - resistance (out of 16) for sleep
 
-`(AD) base_resist.surround` - resistance (out of 16) for surround
+`(AD) base_resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AE) base_resist.fear` - resistance (out of 16) from being frozen in fear
+`(AE) base_resist.surround` - resistance (out of 16) for surround
 
-`(AF) equip.weapon` - character's equipped weapon
+`(AF) base_resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AG) equip.armor` - character's equipped body armor
+`(AG) equip.weapon` - character's equipped weapon
 
-`(AH) equip.shield` - character's equipped shield
+`(AH) equip.armor` - character's equipped body armor
 
-`(AI) equip.helmet` - character's equipped helmet
+`(AI) equip.shield` - character's equipped shield
 
-`(AJ) heart.name` - character's equipped monster heart
+`(AJ) equip.helmet` - character's equipped helmet
 
-`(AK) heart.experience` - monster heart experience value
+`(AK) heart.name` - character's equipped monster heart
 
-`(AL-AQ) inventory` - items in this character's possession. Limit of 6
+`(AL) heart.experience` - monster heart experience value
 
-`(AR-AU) loto3` - Loto3 lottery tickets. Limit of 4
+`(AM-AR) inventory` - items in this character's possession. Limit of 6
 
-`(AV-AY) bol` - Ball of Light lottery tickets. Limit of 4
+`(AS-AV) loto3` - Loto3 lottery tickets. Limit of 4
 
-`(AZ) deaths` - number of times this character has been defeated
+`(AW-AZ) bol` - Ball of Light lottery tickets. Limit of 4
 
-`(BA) active` - is this character actively participating in the game?
+`(BA) deaths` - number of times this character has been defeated
+
+`(BB) active` - is this character actively participating in the game?
 
 ## Command
 
@@ -288,68 +290,71 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(F) agility` - monster's response speed
 
-`(G) critical` - rate (out of 32) of performing a critical hit
+`(G) miss` - rate (out of 32) of failing to land a physical attack
 
-`(H) dodge` - rate (out of 256) of evading a physical attack
+`(H) critical` - rate (out of 32) of performing a critical hit
 
-`(I) regen` - does this monster automatically regenerate HP?
+`(I) dodge` - rate (out of 256) of evading a physical attack
 
-`(J) resist.burn` - resistance (out of 16) for BURN attacks
+`(J) regen` - does this monster automatically regenerate HP?
 
-`(K) resist.beat` - resistance (out of 16) for instant death spells
+`(K) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(L) resist.numb` - resistance (out of 16) for paralysis
+`(L) resist.beat` - resistance (out of 16) for instant death spells
 
-`(M) resist.poison` - resistance (out of 16) for poison
+`(M) resist.numb` - resistance (out of 16) for paralysis
 
-`(N) resist.sap` - resistance (out of 16) for defense lowering spells
+`(N) resist.poison` - resistance (out of 16) for poison
 
-`(O) resist.slow` - resistance (out of 16) for agility lowering spells
+`(O) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(P) resist.chaos` - resistance (out of 16) for confusion
+`(P) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(Q) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(Q) resist.chaos` - resistance (out of 16) for confusion
 
-`(R) resist.sleep` - resistance (out of 16) for sleep
+`(R) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(S) resist.stopspell` - resistance (out of 16) for stopspell
+`(S) resist.sleep` - resistance (out of 16) for sleep
 
-`(T) resist.surround` - resistance (out of 16) for surround
+`(T) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(U) resist.fear` - resistance (out of 16) from being frozen in fear
+`(U) resist.surround` - resistance (out of 16) for surround
 
-`(V) saver.burn` - does this monster have BURN SAVER?
+`(V) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(W) saver.phys` - does this monster have PHYS SAVER?
+`(W) saver.burn` - does this monster have BURN SAVER?
 
-`(X) saver.ment` - does this monster have MENT SAVER?
+`(X) saver.phys` - does this monster have PHYS SAVER?
 
-`(Y) experience` - experience points awarded when the monster is defeated
+`(Y) saver.ment` - does this monster have MENT SAVER?
 
-`(Z) gold` - gold coins awarded when the monster is defeated
+`(Z) experience` - experience points awarded when the monster is defeated
 
-`(AA) drop.common.name` - item name the monster may drop after battle
+`(AA) gold` - gold coins awarded when the monster is defeated
 
-`(AB) drop.common.rate` - rate (out of 256) for the common item drop
+`(AB) drop.common.name` - item name the monster may drop after battle
 
-`(AC) drop.rare.name` - item name the monster may rarely drop after battle
+`(AC) drop.common.rate` - rate (out of 256) for the common item drop
 
-`(AD) drop.rare.rate` - rate (out of 256) for the rare item drop
+`(AD) drop.rare.name` - item name the monster may rarely drop after battle
 
-`(AE) drop.heart.name` - name of this monster's heart (see HEART data)
+`(AE) drop.rare.rate` - rate (out of 256) for the rare item drop
 
-`(AF) drop.heart.rate` - rate (out of 1024) for a monster heart drop
+`(AF) drop.heart.name` - name of this monster's heart (see HEART data)
 
-`(AG) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AG) drop.heart.rate` - rate (out of 1024) for a monster heart drop
 
-`(AH-AO) pattern` - monster's attack pattern. Equal chance of each action
+`(AH) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(AP-AW) flavor.attack` - flavor text for this monster's physical attack
+`(AI-AP) pattern` - monster's attack pattern. Equal chance of each action
 
-`(AX) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AQ-AX) flavor.attack` - flavor text for this monster's physical attack
 
-`(AY) flavor.confusion` - flavor text when this monster is confused
+`(AY) flavor.dodge` - flavor text when this monster dodges a physical attack
 
+`(AZ) flavor.confusion` - flavor text when this monster is confused
+
+`(BA) flavor.idle` - flavor text when this monster is doing nothing
 
 ## NPC
 
@@ -365,52 +370,53 @@ Citizens of the land who may help you on your quest.
 
 `(E) base_agility` - base agility value
 
-`(F) base_critical` - base rate (out of 32) of performing a critical hit
+`(F) base_miss` - base rate (out of 32) of failing to land a physical attack
 
-`(G) base_dodge` - base rate (out of 256) of evading a physical attack
+`(G) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(H) experience` - experience points awarded if defeated (you murderer!)
+`(H) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(I) gold` - gold coins awarded if defeated
+`(I) experience` - experience points awarded if defeated (you murderer!)
 
-`(J) resist.burn` - resistance (out of 16) for BURN attacks
+`(J) gold` - gold coins awarded if defeated
 
-`(K) resist.beat` - resistance (out of 16) for instant death spells
+`(K) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(L) resist.numb` - resistance (out of 16) for paralysis
+`(L) resist.beat` - resistance (out of 16) for instant death spells
 
-`(M) resist.poison` - resistance (out of 16) for poison
+`(M) resist.numb` - resistance (out of 16) for paralysis
 
-`(N) resist.sap` - resistance (out of 16) for defense lowering spells
+`(N) resist.poison` - resistance (out of 16) for poison
 
-`(O) resist.slow` - resistance (out of 16) for agility lowering spells
+`(O) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(P) resist.chaos` - resistance (out of 16) for confusion
+`(P) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(Q) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(Q) resist.chaos` - resistance (out of 16) for confusion
 
-`(R) resist.sleep` - resistance (out of 16) for sleep
+`(R) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(S) resist.stopspell` - resistance (out of 16) for stopspell
+`(S) resist.sleep` - resistance (out of 16) for sleep
 
-`(T) resist.surround` - resistance (out of 16) for surround
+`(T) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(U) resist.fear` - resistance (out of 16) from being frozen in fear
+`(U) resist.surround` - resistance (out of 16) for surround
 
-`(V) equip.weapon` - person's equipped weapon
+`(V) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(W) equip.armor` - person's equipped body armor
+`(W) equip.weapon` - person's equipped weapon
 
-`(X) equip.shield` - person's equipped shield
+`(X) equip.armor` - person's equipped body armor
 
-`(Y) equip.helmet` - person's equipped helmet
+`(Y) equip.shield` - person's equipped shield
 
-`(Z-AE) inventory` - items in this person's possession. Limit of 6
+`(Z) equip.helmet` - person's equipped helmet
 
-`(AF) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AA-AF) inventory` - items in this person's possession. Limit of 6
 
-`(AG-AN) pattern` - monster's attack pattern. Equal chance of each action
+`(AG) behavior` - battle AI behavior (one of: fixed, random, custom)
 
+`(AH-AO) pattern` - NPC's attack pattern. Equal chance of each action
 
 ## Quest
 
@@ -431,7 +437,6 @@ Perform quests to test your strength or gain a variety of rewards. Note that nam
 `(G) reward.gold` - gold reward upon quest completion
 
 `(H) reward.item` - item reward upon quest completion
-
 
 ## Shield
 

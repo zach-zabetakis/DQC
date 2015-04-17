@@ -57,7 +57,7 @@ function calculateMonsterData (data) {
     monster.agility = Math.min(monster.agility, max_stat['base_agility']);
     monster.curr_agility = monster.adj_agility = monster.agility;
 
-    monster.miss = 0;
+    monster.adj_miss = monster.miss;
 
     monster.adj_critical = monster.critical;
 
@@ -130,7 +130,7 @@ function calculateData (data, type) {
     member.curr_defense = member.defense;
 
     // miss
-    member.miss = helpers.calculateStatBoost('miss', 0, data, member);
+    member.miss = helpers.calculateStatBoost('miss', member.base_miss, data, member);
     member.miss = Math.max(member.miss, 0);
 
     // adj_critical
