@@ -1,4 +1,4 @@
-DQC
+Dragon Quest Cosmos
 ===
 
 *The stern-looking guard whispered a quiet warning as he led the travelers down the hall leading to the throne room. "Ye are about to enter the presence of our much-respected and beloved King Lorik XVI. Pay him your respect, and no shenanigans!" He shot a threatening glance to each of them in turn before opening the large wooden door and ushering them inside.*
