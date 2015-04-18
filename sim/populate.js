@@ -20,9 +20,11 @@ module.exports = function (data, next) {
         ally.is_enemy = false;
       });
       _.each(scenario.battle.enemies.groups, function (group) {
-        _.each(group.members, function (enemy) {
+        _.each(group.members, function (enemy, index) {
           enemy = findMember(enemy);
           enemy.is_enemy = true;
+          enemy.in_battle = true;
+          group.members[index] = enemy;
         });
         group.active = battleHelpers.isActive(group.members);
       });
@@ -39,6 +41,7 @@ module.exports = function (data, next) {
   function findMember (member) {
     var type  = member.type || 'character';
     var match = _.find(data[type], { name : member.name });
+    match = _.cloneDeep(match);
 
     if (match) {
       var new_member = _.merge(member, match);

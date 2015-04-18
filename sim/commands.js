@@ -26,29 +26,24 @@ module.exports = function (data, next) {
     _.each(data.scenario.scenarios, function (scenario) {
       member = battleHelpers.findMember(scenario, command.member.name, command.member.type);
       if (member) {
+        member.command = command;
+
+        // Make sure target is valid
+        var target;
+        if (command.target.name) {
+          target = battleHelpers.findMember(scenario, command.target.name, command.target.type);
+          if (target) {
+            command.target = target;
+          } else {
+            throw new Error(command.target.type + ' named ' + command.target.name + ' not found.');
+          }
+        }
+        
         return false;
       }
     });
-    if (member) {
-      member.command = command;
-    } else {
+    if (!member) {
       throw new Error(command.member.type + ' named ' + command.member.name + ' not found.');
-    }
-
-    // Make sure target is valid
-    var target;
-    if (command.target.name) {
-      _.each(data.scenario.scenarios, function (scenario) {
-        target = battleHelpers.findMember(scenario, command.target.name, command.target.type);
-        if (target) {
-          return false;
-        }
-      });
-      if (target) {
-        command.target = target;
-      } else {
-        throw new Error(command.target.type + ' named ' + command.target.name + ' not found.');
-      }
     }
   });
 
