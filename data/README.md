@@ -252,6 +252,12 @@ Monster hearts which grant the essence of the defeated monster. Note that descri
 
 `(N) saver.ment` - does this heart grant MENT saver?
 
+`(O) on_hit.chance` - rate (out of 32) to proc an on-hit effect
+
+`(P) on_hit.effect` - effect produced on physical attacks
+
+`(Q) on_hit.resist` - resistance key against this effect
+
 ## Helmet
 
 Items which can be equipped in a character's HELMET slot. Note that description is for display purposes only.
@@ -533,3 +539,9 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 `(L) target_all` - does this weapon target all enemies?
 
 `(M) target_group` - does this weapon attack an entire group?
+
+`(N) on_hit.chance` - rate (out of 32) to proc an on-hit effect
+
+`(O) on_hit.effect` - effect produced when this weapon hits
+
+`(P) on_hit.resist` - resistance key against this effect
