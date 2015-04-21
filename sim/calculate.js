@@ -131,7 +131,7 @@ function calculateData (data, type) {
 
     // miss
     member.adj_miss = helpers.calculateStatBoost('miss', member.base_miss, data, member);
-    member.adj_miss = Math.max(member.miss, 0);
+    member.adj_miss = Math.max(member.adj_miss, 0);
 
     // adj_critical
     // 'fighter' job gets a level-based critical bonus
