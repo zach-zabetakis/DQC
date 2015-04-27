@@ -48,7 +48,12 @@ module.exports = function (DQC) {
           });
         });
 
-        // TODO: set flag for PARRY
+        // Re-sort turn order based on priority levels of each command
+        scenario.battle.turn_order = _.sortBy(scenario.battle.turn_order, function (member) {
+          var priority = (member.command && member.command.priority) || 0;
+          var order    = (priority * 1000) + member.order;
+          return order;
+        }).reverse();
 
         _.each(scenario.battle.turn_order, function (active_member) {
           if (!active_member.is_dead) {
