@@ -19,9 +19,10 @@ module.exports = function (data, next) {
         ally = findMember(ally);
         ally.is_enemy = false;
       });
-      _.each(scenario.battle.enemies.groups, function (group) {
+      _.each(scenario.battle.enemies.groups, function (group, group_index) {
         _.each(group.members, function (enemy, index) {
           enemy = findMember(enemy);
+          enemy.group_index = group_index;
           enemy.is_enemy = true;
           enemy.in_battle = true;
           group.members[index] = enemy;
@@ -65,7 +66,7 @@ module.exports = function (data, next) {
 
   // copy members from character/ally array into the battle
   function copyMembers (scenario, groupType) {
-    return function (group) {
+    return function (group, group_index) {
       _.each(group.members, function (member, index) {
         var type  = member.type || 'character';
         var found = _.findIndex(scenario[groupType], { name : member.name, type : type });
@@ -73,6 +74,7 @@ module.exports = function (data, next) {
         if (found > -1) {
           group.members[index] = scenario[groupType][found];
           group.members[index].in_battle = true;
+          group.members[index].group_index = group_index;
         } else {
           throw new Error('Data for ' + member.name + ' not found!');
         }
