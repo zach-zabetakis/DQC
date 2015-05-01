@@ -1,4 +1,5 @@
 var battleHelpers = require(__dirname + '/../lib/battle_helpers');
+var Commands      = require(__dirname + '/../lib/commands')(battleHelpers);
 var _             = require('lodash');
 
 /*
@@ -27,6 +28,7 @@ module.exports = function (data, next) {
       member = battleHelpers.findMember(scenario, command.member.name, command.member.type);
       if (member) {
         member.command = command;
+        command.member = member;
 
         // Make sure target is valid
         var target;
@@ -44,6 +46,15 @@ module.exports = function (data, next) {
     });
     if (!member) {
       throw new Error(command.member.type + ' named ' + command.member.name + ' not found.');
+    }
+
+    // Extra custom validation
+    var type = (member.command.type || '').toLowerCase();
+    type = type.slice(0,1).toUpperCase() + type.slice(1);
+    try {
+      eval('Commands.validate' + type + '(command);');
+    } catch (err) {
+      throw new Error(err);
     }
 
     // Assign priority level to the command
