@@ -52,7 +52,7 @@ module.exports = function (data, next) {
     var type = (member.command.type || '').toLowerCase();
     type = type.slice(0,1).toUpperCase() + type.slice(1);
     try {
-      eval('Commands.validate' + type + '(command);');
+      eval('Commands.validate' + type + '(data, command);');
     } catch (err) {
       throw new Error(err);
     }
