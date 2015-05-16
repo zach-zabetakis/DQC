@@ -166,6 +166,10 @@ function calculateData (data, type) {
 
     // is_cursed
     member.is_cursed = helpers.calculateStatBoost('is_cursed', false, data, member);
+    // target_group
+    member.target_group = helpers.calculateStatBoost('target_group', false, data, member);
+    // target_all
+    member.target_all = helpers.calculateStatBoost('target_all', false, data, member);
   
     // status should be an array
     if (member.status) {
