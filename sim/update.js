@@ -75,7 +75,9 @@ module.exports = function (DQC) {
             // check if the battle has ended
             if (!battleHelpers.isRemaining(scenario, 'characters')) {
               scenario.in_battle = false;
+              _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
+
               if (battleHelpers.isPlayerWipeout) {
                 battleHelpers.wipeout(DQC, scenario);
 
@@ -88,7 +90,10 @@ module.exports = function (DQC) {
 
             } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
               scenario.in_battle = false;
+              _.each(scenario.characters, battleHelpers.clearBattleEffects);
+              _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
+
               if (!scenario.battle.enemies.groups.length) {
                 DQC.out('There are no more enemies remaining.');
                 // TODO: all enemies fled or were expelled from battle.
