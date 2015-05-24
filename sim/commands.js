@@ -49,8 +49,7 @@ module.exports = function (data, next) {
     }
 
     // Extra custom validation
-    var type = (member.command.type || '').toLowerCase();
-    type = type.slice(0,1).toUpperCase() + type.slice(1);
+    var type = (member.command.type || '').toTitleCase();
     try {
       eval('Commands.validate' + type + '(data, command);');
     } catch (err) {

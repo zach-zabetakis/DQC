@@ -28,5 +28,11 @@ nconf.env();
 nconf.file('config.json', __dirname + '/config.json');
 nconf.file('package.json', __dirname + '/package.json');
 
+// String helpers
+String.prototype.toTitleCase = function () {
+  var string = this.toLowerCase();
+  return string.slice(0,1).toUpperCase() + string.slice(1);
+};
+
 // Hand off to the worker
 worker();
