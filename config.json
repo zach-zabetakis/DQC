@@ -20,9 +20,11 @@
   },
   "stat_bonus" : 0,
   "status" : {
+    "bounce" : "BO",
     "chaos" : "CF",
     "death" : "DE",
     "fear" : "FR",
+    "ironize" : "IR",
     "numb" : "NU",
     "poison" : "PO",
     "sleep" : "SL",
