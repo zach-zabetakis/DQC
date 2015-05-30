@@ -1,12 +1,12 @@
 var battleHelpers = require(__dirname + '/../lib/battle_helpers');
-var Spells        = require(__dirname + '/../lib/spells');
+var Spell         = require(__dirname + '/../lib/spells');
 var _             = require('lodash');
 
 /*
  * Populate scenario data from the previous update.
  */
 module.exports = function (data, next) {
-  var spells = new Spells(data.spell);
+  var spell = new Spell();
 
   _.each(data.scenario.scenarios, function (scenario) {
     // ignore all scenarios that should not be updated (insufficient commands, etc.)
@@ -47,7 +47,8 @@ module.exports = function (data, next) {
     if (match) {
       var new_member = _.merge(member, match);
       _.each(new_member.effects, function (effect) {
-        spells.applySpellEffect(effect, new_member);
+        spell.setSpell(effect, data.spell);
+        spell.applyPreviousEffect(new_member);
       });
 
       battleHelpers.checkHP(new_member);
