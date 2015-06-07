@@ -504,15 +504,17 @@ Magical spells which will be learned at the appropriate experience level. Note t
 
 `(O) miss` - rate (out of 32) that this spell fails in being cast
 
-`(P) status` - status inflicted if this spell lands on the target
+`(P) priority` - priority level for spell (higher = earlier in battle)
 
-`(Q) resist` - resistance type used to defend against this spell
+`(Q) status` - status inflicted if this spell lands on the target
 
-`(R) stat_from` - multiply FROM this stat and add/subtract TO the next one
+`(R) resist` - resistance type used to defend against this spell
 
-`(S) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+`(S) stat_from` - multiply FROM this stat and add/subtract TO the next one
 
-`(T) multiplier` - stat multiplier used for calculation (null if not used)
+`(T) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+
+`(U) multiplier` - stat multiplier used for calculation (null if not used)
 
 ## Weapon
 
