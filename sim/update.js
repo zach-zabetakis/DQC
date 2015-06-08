@@ -108,6 +108,11 @@ module.exports = function (DQC) {
           }
         });
 
+        if (scenario.in_battle) {
+          // end of turn cleanup
+          battleHelpers.endOfTurn(DQC, scenario);
+        }
+
       } else {
         // What out of battle actions can be automated...?
       }
