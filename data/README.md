@@ -308,63 +308,65 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(L) target_all` - does this monster's attacks target all opponents?
 
-`(M) resist.burn` - resistance (out of 16) for BURN attacks
+`(M) run_fac` - factor used for determining player flee chances
 
-`(N) resist.beat` - resistance (out of 16) for instant death spells
+`(N) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(O) resist.numb` - resistance (out of 16) for paralysis
+`(O) resist.beat` - resistance (out of 16) for instant death spells
 
-`(P) resist.poison` - resistance (out of 16) for poison
+`(P) resist.numb` - resistance (out of 16) for paralysis
 
-`(Q) resist.sap` - resistance (out of 16) for defense lowering spells
+`(Q) resist.poison` - resistance (out of 16) for poison
 
-`(R) resist.slow` - resistance (out of 16) for agility lowering spells
+`(R) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(S) resist.chaos` - resistance (out of 16) for confusion
+`(S) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(T) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(T) resist.chaos` - resistance (out of 16) for confusion
 
-`(U) resist.sleep` - resistance (out of 16) for sleep
+`(U) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(V) resist.stopspell` - resistance (out of 16) for stopspell
+`(V) resist.sleep` - resistance (out of 16) for sleep
 
-`(W) resist.surround` - resistance (out of 16) for surround
+`(W) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(X) resist.fear` - resistance (out of 16) from being frozen in fear
+`(X) resist.surround` - resistance (out of 16) for surround
 
-`(Y) saver.burn` - does this monster have BURN SAVER?
+`(Y) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(Z) saver.phys` - does this monster have PHYS SAVER?
+`(Z) saver.burn` - does this monster have BURN SAVER?
 
-`(AA) saver.ment` - does this monster have MENT SAVER?
+`(AA) saver.phys` - does this monster have PHYS SAVER?
 
-`(AB) experience` - experience points awarded when the monster is defeated
+`(AB) saver.ment` - does this monster have MENT SAVER?
 
-`(AC) gold` - gold coins awarded when the monster is defeated
+`(AC) experience` - experience points awarded when the monster is defeated
 
-`(AD) drop.common.name` - item name the monster may drop after battle
+`(AD) gold` - gold coins awarded when the monster is defeated
 
-`(AE) drop.common.rate` - rate (out of 256) for the common item drop
+`(AE) drop.common.name` - item name the monster may drop after battle
 
-`(AF) drop.rare.name` - item name the monster may rarely drop after battle
+`(AF) drop.common.rate` - rate (out of 256) for the common item drop
 
-`(AG) drop.rare.rate` - rate (out of 256) for the rare item drop
+`(AG) drop.rare.name` - item name the monster may rarely drop after battle
 
-`(AH) drop.heart.name` - name of this monster's heart (see HEART data)
+`(AH) drop.rare.rate` - rate (out of 256) for the rare item drop
 
-`(AI) drop.heart.rate` - rate (out of 1024) for a monster heart drop
+`(AI) drop.heart.name` - name of this monster's heart (see HEART data)
 
-`(AJ) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AJ) drop.heart.rate` - rate (out of 1024) for a monster heart drop
 
-`(AK-AR) pattern` - monster's attack pattern. Equal chance of each action
+`(AK) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(AS-AZ) flavor.attack` - flavor text for this monster's physical attack
+`(AL-AS) pattern` - monster's attack pattern. Equal chance of each action
 
-`(BA) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AT-BA) flavor.attack` - flavor text for this monster's physical attack
 
-`(BB) flavor.confusion` - flavor text when this monster is confused
+`(BB) flavor.dodge` - flavor text when this monster dodges a physical attack
 
-`(BC) flavor.idle` - flavor text when this monster is doing nothing
+`(BC) flavor.confusion` - flavor text when this monster is confused
+
+`(BD) flavor.idle` - flavor text when this monster is doing nothing
 
 ## NPC
 
