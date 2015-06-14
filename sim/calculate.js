@@ -63,15 +63,17 @@ function calculateMonsterData (data) {
 
     monster.adj_dodge = monster.dodge;
 
-    // run_fac is multiplied by agility
-    monster.run_fac = parseInt(monster.run_fac * monster.curr_agility, 10) || 1;
+    monster.run_fac   = Math.max(monster.run_fac, 0);
+    monster.run_score = function () {
+        return (parseInt(this.run_fac * this.curr_agility, 10) || 1);
+    };
 
     monster.experience = Math.max(monster.experience, 0);
     monster.gold = Math.max(monster.gold, 0);
 
     monster.displayName = function () {
       return (this.name + (this.symbol || ''));
-    }
+    };
   });
 }
 
@@ -155,7 +157,10 @@ function calculateData (data, type) {
     member.adj_dodge = Math.max(member.adj_dodge, 0);
 
     // run_fac (only used for PvP)
-    member.run_fac = member.curr_agility || 1;
+    member.run_fac   = 1;
+    member.run_score = function () {
+        return (parseInt(this.run_fac * this.curr_agility, 10) || 1);
+    };
 
     // resist
     member.resist = {};
