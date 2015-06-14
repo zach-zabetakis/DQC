@@ -78,11 +78,12 @@ module.exports = function (DQC) {
               _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
 
-              if (battleHelpers.isPlayerWipeout) {
+              if (battleHelpers.isPlayerWipeout(scenario)) {
                 battleHelpers.wipeout(DQC, scenario);
 
               } else {
                 // TODO: one or more players fled or did not participate in battle.
+                // TODO: allies who were left behind in battle will disappear
               }
 
               // exit out of the turn order
