@@ -82,8 +82,16 @@ module.exports = function (DQC) {
                 battleHelpers.wipeout(DQC, scenario);
 
               } else {
-                // TODO: one or more players fled or did not participate in battle.
-                // TODO: allies who were left behind in battle will disappear
+                // one or more players fled or did not participate in battle.
+
+                // TODO: if only a few characters used outside/return, remove them from scenario
+                // TODO: add players who fled back to the battle order
+
+                // allies who were left behind in battle will disappear
+                _.each(scenario.allies, function (member) {
+                  member.in_battle = false;
+                });
+                scenario.battle.allies = {};
               }
 
               // exit out of the turn order
