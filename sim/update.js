@@ -114,11 +114,12 @@ module.exports = function (DQC) {
           }
         });
 
+        // run cleanup functions for the current battle state
         if (scenario.in_battle) {
-          // end of turn cleanup
           battleHelpers.endOfTurn(DQC, scenario);
+          
         } else {
-          // TODO: end of battle cleanup
+          battleHelpers.endOfBattle(DQC, scenario);
           // TODO: if only a few characters/allies used outside/return, remove them from scenario
           // TODO: add characters/allies who fled back to the battle order
         }
