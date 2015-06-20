@@ -82,16 +82,14 @@ module.exports = function (DQC) {
                 battleHelpers.wipeout(DQC, scenario);
 
               } else {
-                // one or more players fled or did not participate in battle.
-
-                // TODO: if only a few characters used outside/return, remove them from scenario
-                // TODO: add players who fled back to the battle order
-
-                // allies who were left behind in battle will disappear
-                _.each(scenario.allies, function (member) {
-                  member.in_battle = false;
+                // one or more characters fled or were otherwise expelled from battle.
+                // allies who were left behind in battle will disappear.
+                _.eachRight(scenario.allies, function (member, index) {
+                  if (member.in_battle) {
+                    battleHelpers.expelFromBattle(scenario, member);
+                    scenario.allies.splice(index, 1);
+                  }
                 });
-                scenario.battle.allies = {};
               }
 
               // exit out of the turn order
@@ -105,7 +103,6 @@ module.exports = function (DQC) {
 
               if (!scenario.battle.enemies.groups.length) {
                 DQC.out('There are no more enemies remaining.');
-                // TODO: all enemies fled or were expelled from battle.
 
               } else {
                 battleHelpers.victory(DQC, scenario);
@@ -120,6 +117,10 @@ module.exports = function (DQC) {
         if (scenario.in_battle) {
           // end of turn cleanup
           battleHelpers.endOfTurn(DQC, scenario);
+        } else {
+          // TODO: end of battle cleanup
+          // TODO: if only a few characters/allies used outside/return, remove them from scenario
+          // TODO: add characters/allies who fled back to the battle order
         }
 
       } else {
