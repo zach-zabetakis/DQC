@@ -121,7 +121,7 @@ module.exports = function (DQC) {
         } else {
           battleHelpers.endOfBattle(DQC, scenario);
           // TODO: if only a few characters/allies used outside/return, remove them from scenario
-          // TODO: add characters/allies who fled back to the battle order
+          // TODO: reset battle formation.
         }
 
       } else {
