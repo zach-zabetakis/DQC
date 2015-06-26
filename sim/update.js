@@ -1,7 +1,8 @@
-var _             = require('lodash');
-var battleHelpers = require(__dirname + '/../lib/battle_helpers');
-var helpers       = require(__dirname + '/../lib/helpers');
-var lottery       = require(__dirname + '/../lib/lottery');
+var _               = require('lodash');
+var battleHelpers   = require(__dirname + '/../lib/battle_helpers');
+var helpers         = require(__dirname + '/../lib/helpers');
+var lottery         = require(__dirname + '/../lib/lottery');
+var scenarioHelpers = require(__dirname + '/../lib/scenario_helpers');
 
 module.exports = function (DQC) {
   DQC.out(helpers.format('~UPDATE!~', true, true));
@@ -26,7 +27,7 @@ module.exports = function (DQC) {
   }
 
   // Update each individual scenario
-  _.each(DQC.scenario.scenarios, function (scenario) {
+  _.each(DQC.scenario.scenarios, function (scenario, scenario_index) {
     if (scenario.update) {
       var message;
 
@@ -121,7 +122,8 @@ module.exports = function (DQC) {
         } else {
           battleHelpers.endOfBattle(DQC, scenario);
           
-          // TODO: if only a few characters/allies used outside/return, remove them from scenario
+          // characters/allies that are warping away are sent to a new scenario
+          scenarioHelpers.warp(DQC, scenario, scenario_index);
 
           // add characters/allies who fled back to the battle order
           battleHelpers.resetFormation(DQC, scenario);
