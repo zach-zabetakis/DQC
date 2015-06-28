@@ -163,8 +163,7 @@ function calculateData (data, type) {
     };
 
     // resist
-    member.resist = {};
-    _.each(member.base_resist, function (base_value, key) {
+    _.each(member.resist, function (base_value, key) {
       member.resist[key] = helpers.calculateStatBoost('resist.' + key, base_value, data, member);
       member.resist[key] = Math.max(member.resist[key], 0);
     });

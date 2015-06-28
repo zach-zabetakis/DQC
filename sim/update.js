@@ -32,12 +32,13 @@ module.exports = function (DQC) {
   while (DQC.scenario.scenarios[scenario_index]) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
-    if (scenario.update) {
-      var message;
+    var message;
 
-      DQC.out(helpers.format(scenario.name, true, true));
-      DQC.out(helpers.format('Location: ' + scenario.location, true, true));
-      DQC.out();
+    DQC.out(helpers.format(scenario.name, true, true));
+    DQC.out(helpers.format('Location: ' + scenario.location, true, true));
+    DQC.out();
+
+    if (scenario.update) {
 
       if (scenario.in_battle) {
         // Each participant in battle will take turns in a randomly generated order.
@@ -122,6 +123,9 @@ module.exports = function (DQC) {
         // run cleanup functions for the current battle state
         if (scenario.in_battle) {
           battleHelpers.endOfTurn(DQC, scenario);
+
+          // characters/allies that are warping away are sent to a new scenario
+          scenarioHelpers.warp(DQC, scenario_index);
           
         } else {
           battleHelpers.endOfBattle(DQC, scenario);
@@ -136,22 +140,22 @@ module.exports = function (DQC) {
       } else {
         // What out of battle actions can be automated...?
       }
-
-      DQC.out();
-
-      // output status lines
-      _.each(scenario.battle.characters.groups, outputAllyStatus);
-      _.each(scenario.battle.allies.groups, outputAllyStatus);
-      if (scenario.in_battle) {
-        var enemy_status = outputEnemyStatus(scenario.battle.enemies);
-        DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
-
-      } else {
-        DQC.out(helpers.format('[Command?]', false, true));
-      }
-      
-      DQC.out();
     }
+
+    DQC.out();
+
+    // output status lines
+    _.each(scenario.battle.characters.groups, outputAllyStatus);
+    _.each(scenario.battle.allies.groups, outputAllyStatus);
+    if (scenario.in_battle) {
+      var enemy_status = outputEnemyStatus(scenario.battle.enemies);
+      DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
+
+    } else {
+      DQC.out(helpers.format('[Command?]', false, true));
+    }
+    
+    DQC.out();
 
     scenario_index++;
   };

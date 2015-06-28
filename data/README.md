@@ -140,29 +140,29 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(T) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(U) base_resist.burn` - resistance (out of 16) for BURN attacks
+`(U) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(V) base_resist.beat` - resistance (out of 16) for instant death spells
+`(V) resist.beat` - resistance (out of 16) for instant death spells
 
-`(W) base_resist.numb` - resistance (out of 16) for paralysis
+`(W) resist.numb` - resistance (out of 16) for paralysis
 
-`(X) base_resist.poison` - resistance (out of 16) for poison
+`(X) resist.poison` - resistance (out of 16) for poison
 
-`(Y) base_resist.sap` - resistance (out of 16) for defense lowering spells
+`(Y) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(Z) base_resist.slow` - resistance (out of 16) for agility lowering spells
+`(Z) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(AA) base_resist.chaos` - resistance (out of 16) for confusion
+`(AA) resist.chaos` - resistance (out of 16) for confusion
 
-`(AB) base_resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(AB) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(AC) base_resist.sleep` - resistance (out of 16) for sleep
+`(AC) resist.sleep` - resistance (out of 16) for sleep
 
-`(AD) base_resist.stopspell` - resistance (out of 16) for stopspell
+`(AD) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AE) base_resist.surround` - resistance (out of 16) for surround
+`(AE) resist.surround` - resistance (out of 16) for surround
 
-`(AF) base_resist.fear` - resistance (out of 16) from being frozen in fear
+`(AF) resist.fear` - resistance (out of 16) from being frozen in fear
 
 `(AG) equip.weapon` - character's equipped weapon
 
