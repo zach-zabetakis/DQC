@@ -27,7 +27,11 @@ module.exports = function (DQC) {
   }
 
   // Update each individual scenario
-  _.each(DQC.scenario.scenarios, function (scenario, scenario_index) {
+  var scenario_index = 0;
+  var scenario;
+  while (DQC.scenario.scenarios[scenario_index]) {
+    scenario = DQC.scenario.scenarios[scenario_index];
+
     if (scenario.update) {
       var message;
 
@@ -123,7 +127,7 @@ module.exports = function (DQC) {
           battleHelpers.endOfBattle(DQC, scenario);
           
           // characters/allies that are warping away are sent to a new scenario
-          scenarioHelpers.warp(DQC, scenario, scenario_index);
+          scenarioHelpers.warp(DQC, scenario_index);
 
           // add characters/allies who fled back to the battle order
           battleHelpers.resetFormation(DQC, scenario);
@@ -148,7 +152,9 @@ module.exports = function (DQC) {
       
       DQC.out();
     }
-  });
+
+    scenario_index++;
+  };
 
   DQC.out('----------');
   DQC.out();
