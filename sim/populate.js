@@ -9,31 +9,28 @@ module.exports = function (data, next) {
   var spell = new Spell();
 
   _.each(data.scenario.scenarios, function (scenario) {
-    // ignore all scenarios that should not be updated (insufficient commands, etc.)
-    if (scenario.update) {
-      _.each(scenario.characters, function (character) {
-        character = findMember(character);
-        character.is_enemy = false;
+    _.each(scenario.characters, function (character) {
+      character = findMember(character);
+      character.is_enemy = false;
+    });
+    _.each(scenario.allies, function (ally) {
+      ally = findMember(ally);
+      ally.is_enemy = false;
+    });
+    _.each(scenario.battle.enemies.groups, function (group, group_index) {
+      _.each(group.members, function (enemy, index) {
+        enemy = findMember(enemy);
+        enemy.group_index = group_index;
+        enemy.is_enemy = true;
+        enemy.in_battle = true;
+        group.members[index] = enemy;
       });
-      _.each(scenario.allies, function (ally) {
-        ally = findMember(ally);
-        ally.is_enemy = false;
-      });
-      _.each(scenario.battle.enemies.groups, function (group, group_index) {
-        _.each(group.members, function (enemy, index) {
-          enemy = findMember(enemy);
-          enemy.group_index = group_index;
-          enemy.is_enemy = true;
-          enemy.in_battle = true;
-          group.members[index] = enemy;
-        });
-        group.active = battleHelpers.isActive(group.members);
-      });
+      group.active = battleHelpers.isActive(group.members);
+    });
 
-      // copy character/ally data into battle object
-      _.each(scenario.battle.characters.groups, copyMembers(scenario, 'characters'));
-      _.each(scenario.battle.allies.groups, copyMembers(scenario, 'allies'));
-    }
+    // copy character/ally data into battle object
+    _.each(scenario.battle.characters.groups, copyMembers(scenario, 'characters'));
+    _.each(scenario.battle.allies.groups, copyMembers(scenario, 'allies'));
   });
 
   return next(null, data);
