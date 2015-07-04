@@ -280,6 +280,18 @@ Items which can be equipped in a character's HELMET slot. Note that description 
 
 `(I) defense` - defense bonus
 
+## Location
+
+The World Map is split up into many different locations. Travel at your own risk.
+
+`(A) map_position` - grid coordinates for this location
+
+`(B) location` - description of this location
+
+`(C) zone` - monsters that inhabit this location
+
+`(D) terrain` - terrain type; affects encounter rate
+
 ## Monster
 
 Monsters you may run into during your travels. Beware! Note that flavor text is for display purposes only.
