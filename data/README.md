@@ -565,3 +565,11 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 `(O) on_hit.effect` - effect produced when this weapon hits
 
 `(P) on_hit.resist` - resistance key against this effect
+
+## Zone
+
+Monster encounters are broken down into the zones they inhabit. Monsters at the beginning of the list are more common encounters than those at the end.
+
+`(A) zone` - zone ID
+
+`(B-F) encounter` - list of possible monster encounters

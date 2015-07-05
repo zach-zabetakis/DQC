@@ -120,19 +120,13 @@ module.exports = function (DQC) {
           }
         });
 
-        // run cleanup functions for the current battle state
-        if (scenario.in_battle) {
-          battleHelpers.endOfTurn(DQC, scenario);
+        // run cleanup function for the current battle state
+        battleHelpers.endOfTurn(DQC, scenario);
+        // characters/allies who are warping away are sent to a new scenario
+        scenarioHelpers.warp(DQC, scenario_index);
 
-          // characters/allies that are warping away are sent to a new scenario
-          scenarioHelpers.warp(DQC, scenario_index);
-          
-        } else {
+        if (!scenario.in_battle) {
           battleHelpers.endOfBattle(DQC, scenario);
-          
-          // characters/allies that are warping away are sent to a new scenario
-          scenarioHelpers.warp(DQC, scenario_index);
-
           // add characters/allies who fled back to the battle order
           battleHelpers.resetFormation(DQC, scenario);
         }

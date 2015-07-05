@@ -19,12 +19,14 @@ module.exports = function (data, next) {
     'experience',
     'heart',
     'helmet',
+    'location',
     'monster',
     'npc',
     'quest',
     'shield',
     'spell',
-    'weapon'
+    'weapon',
+    'zone'
   ];
 
   _.each(initDataKeys, function (key) {
@@ -36,6 +38,7 @@ module.exports = function (data, next) {
   calculateMonsterData(data);
   calculateData(data, 'npc');
   calculateData(data, 'character');
+  attachZoneData(data);
 
   return next(null, data);
 };
@@ -210,6 +213,18 @@ function calculateData (data, type) {
 
     member.displayName = function () {
       return (this.name + (this.symbol || ''));
+    }
+  });
+}
+
+// attach monster encounter list to locations based on zone
+function attachZoneData (data) {
+  _.each(data.location, function (location) {
+    var zone = _.find(data.zone, { zone : location.zone });
+    if (zone) {
+      location.encounter = zone.encounter || [];
+    } else {
+      throw new Error('Zone data for ID: ' + location.zone + ' not found.');
     }
   });
 }

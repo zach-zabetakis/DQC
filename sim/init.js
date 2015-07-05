@@ -35,7 +35,7 @@ module.exports = function (rng, next) {
     shield        : data('shield'),
     spell         : data('spell'),
     weapon        : data('weapon'),
-    zones         : data('zones'),
+    zone          : data('zone'),
     scenario      : loadScenario
   }, function (error, results) {
     if (results) {
