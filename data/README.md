@@ -484,6 +484,36 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 
 `(I) defense` - defense bonus
 
+## Skill
+
+Special skills that can grant the user a variety of abilities.  Note that flavor text is for display purpose only.
+
+`(A) name` - skill name
+
+`(B) flaor` - flavor text for this skill's execution
+
+`(C) type` - classification for this skill's effects
+
+`(D) target` - how many targets does this skill affect?
+
+`(E) minimum` - minimum value of damage/healing for this skill
+
+`(F) range` - range of damage/healing for this skill
+
+`(G) miss` - rate (out of 32) that this skill fails outright
+
+`(H) priority` - priority level for skill (higher = earlier in battle)
+
+`(I) status` - status inflicted if this skil lands on the target
+
+`(J) resist` - resistance type used to defend against this skill
+
+`(K) stat_from` - multiply FROM this stat and add/subtract TO the next one
+
+`(L) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+
+`(M) multiplier` - stat multiplier used for calculation (null if not used)
+
 ## Spell
 
 Magical spells which will be learned at the appropriate experience level. Note that invocation and description are for display purposes only.
