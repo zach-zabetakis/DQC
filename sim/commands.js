@@ -1,5 +1,6 @@
 var battleHelpers = require(__dirname + '/../lib/battle_helpers');
 var Commands      = require(__dirname + '/../lib/commands')(battleHelpers);
+var Skill         = require(__dirname + '/../lib/skills');
 var Spell         = require(__dirname + '/../lib/spells');
 var _             = require('lodash');
 
@@ -61,7 +62,7 @@ module.exports = function (data, next) {
     if (_.includes(['CHARGE', 'PARRY', 'RETREAT', 'SHIFT'], command.type)) {
       command.priority = 2;
     } else if (command.type === 'SKILL') {
-      // TODO: lookup skill priority level
+      command.priority = (new Skill().findSkill(command.name, data.skill || {})).priority || 0;
     } else if (command.type === 'SPELL') {
       command.priority = (new Spell().findSpell(command.name, data.spell) || {}).priority || 0;
     } else {
