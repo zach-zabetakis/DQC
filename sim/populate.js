@@ -1,4 +1,5 @@
 var battleHelpers = require(__dirname + '/../lib/battle_helpers');
+var Skill         = require(__dirname + '/../lib/skills');
 var Spell         = require(__dirname + '/../lib/spells');
 var _             = require('lodash');
 
@@ -6,6 +7,7 @@ var _             = require('lodash');
  * Populate scenario data from the previous update.
  */
 module.exports = function (data, next) {
+  var skill = new Skill();
   var spell = new Spell();
 
   _.each(data.scenario.scenarios, function (scenario) {
@@ -45,7 +47,14 @@ module.exports = function (data, next) {
       var new_member = _.merge(member, match);
       _.each(new_member.effects, function (effect) {
         spell.setSpell(effect, data.spell);
-        spell.applyPreviousEffect(new_member);
+        if (spell.has_spell) {
+          spell.applyPreviousEffect(new_member);
+        } else {
+          skill.setSkill(effect, data.skill);
+          if (skill.has_skill) {
+            skill.applyPreviousEffect(new_member);
+          }
+        }
       });
 
       battleHelpers.checkHP(new_member);

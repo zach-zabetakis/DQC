@@ -116,7 +116,7 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(H) status` - semicolon separated list of status ailments
 
-`(I) effects` - semicolon separated list of current in-battle spell effects
+`(I) effects` - semicolon separated list of current in-battle spell/skill effects
 
 `(J) curr_HP` - current HP value. When HP reaches 0 the character dies
 
@@ -514,6 +514,8 @@ Special skills that can grant the user a variety of abilities.  Note that flavor
 
 `(M) multiplier` - stat multiplier used for calculation (null if not used)
 
+`(V) persist` - does this skill have a persisting effect beyond this turn?
+
 ## Spell
 
 Magical spells which will be learned at the appropriate experience level. Note that invocation and description are for display purposes only.
@@ -559,6 +561,8 @@ Magical spells which will be learned at the appropriate experience level. Note t
 `(T) stat_to` - multiply FROM the previous stat and add/subtract TO this one
 
 `(U) multiplier` - stat multiplier used for calculation (null if not used)
+
+`(V) persist` - does this spell have a persisting effect beyond this turn?
 
 ## Weapon
 
