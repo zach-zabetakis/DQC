@@ -514,7 +514,7 @@ Special skills that can grant the user a variety of abilities.  Note that flavor
 
 `(M) multiplier` - stat multiplier used for calculation (null if not used)
 
-`(V) persist` - does this skill have a persisting effect beyond this turn?
+`(V) persist` - type of persisting effect beyond this turn, otherwise FALSE
 
 ## Spell
 
@@ -562,7 +562,7 @@ Magical spells which will be learned at the appropriate experience level. Note t
 
 `(U) multiplier` - stat multiplier used for calculation (null if not used)
 
-`(V) persist` - does this spell have a persisting effect beyond this turn?
+`(V) persist` - type of persisting effect beyond this turn, otherwise FALSE
 
 ## Weapon
 
