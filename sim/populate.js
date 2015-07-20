@@ -48,11 +48,11 @@ module.exports = function (data, next) {
       _.each(new_member.effects, function (effect) {
         spell.setSpell(effect, data.spell);
         if (spell.has_spell) {
-          spell.applyPreviousEffect(new_member);
+          spell.applyPreviousEffect(new_member, data.RNG);
         } else {
           skill.setSkill(effect, data.skill);
           if (skill.has_skill) {
-            skill.applyPreviousEffect(new_member);
+            skill.applyPreviousEffect(new_member, data.RNG);
           }
         }
       });
