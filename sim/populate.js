@@ -58,9 +58,8 @@ module.exports = function (data, next) {
       });
 
       battleHelpers.checkHP(new_member);
-      new_member.curr_MP = Math.min(new_member.curr_MP, new_member.max_MP);
-      new_member.curr_MP = Math.max(new_member.curr_MP, 0);
-
+      battleHelpers.checkMP(new_member);
+      
       new_member.in_battle  = false;
       new_member.can_act    = (new_member.can_act !== false);
       new_member.can_target = (new_member.can_target !== false);

@@ -49,6 +49,10 @@ function calculateMonsterData (data) {
   var max_stat = nconf.get('max_stat');
   
   _.each(data.monster, function (monster) {
+    monster.max_HP  = Math.max(monster.max_HP, 0);
+
+    monster.max_MP  = Math.max(monster.max_MP, 0);
+
     monster.attack = Math.max(monster.attack, 0);
     monster.attack = Math.min(monster.attack, max_stat['attack']);
     monster.curr_attack = monster.attack;
@@ -66,6 +70,9 @@ function calculateMonsterData (data) {
     monster.adj_critical = monster.critical;
 
     monster.adj_dodge = monster.dodge;
+
+    monster.status = [];
+    monster.effects = [];
 
     monster.run_fac   = Math.max(monster.run_fac, 0);
     monster.run_score = function () {
