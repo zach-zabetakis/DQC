@@ -352,6 +352,8 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(AB) saver.ment` - does this monster have MENT SAVER?
 
+`(AC) ally` - monster ally when calling for help
+
 `(AC) experience` - experience points awarded when the monster is defeated
 
 `(AD) gold` - gold coins awarded when the monster is defeated
