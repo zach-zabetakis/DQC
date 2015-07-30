@@ -165,9 +165,7 @@ module.exports = function (DQC) {
       var message = member.displayName() + ': ';
       message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
       message += 'MP ' + member.curr_MP + '/' + member.max_MP;
-      if (member.status.length) {
-        message += ' ' + member.status.join(',');
-      }
+      message += helpers.displayStatus(member.status);
       message += '.';
       return message;
     });
