@@ -19,6 +19,7 @@ module.exports = function (data, next) {
     'experience',
     'heart',
     'helmet',
+    'item',
     'location',
     'monster',
     'npc',
@@ -40,6 +41,7 @@ module.exports = function (data, next) {
   calculateData(data, 'npc');
   calculateData(data, 'character');
   attachZoneData(data);
+  expandHeartAbilities(data);
 
   return next(null, data);
 };
@@ -211,6 +213,13 @@ function calculateData (data, type) {
       member.effects = [];
     }
 
+    // abilities should be an array
+    if (member.abilities) {
+      member.abilities = _.compact(_.map(member.abilities.split(';'), function (ability) { return ability.trim(); }));
+    } else {
+      member.abilities = [];
+    }
+
     // sanitize lottery tickets
     if (member.loto3) {
       member.loto3 = _.map(member.loto3, function (ticket) { return ticket.replace(/\s/g, ''); });
@@ -234,5 +243,27 @@ function attachZoneData (data) {
     } else {
       throw new Error('Zone data for ID: ' + location.zone + ' not found.');
     }
+  });
+}
+
+// take semicolon separated list of heart abilities
+// and create array detailing name/type of ability
+function expandHeartAbilities (data) {
+  _.each(data.heart, function (heart) {
+    var abilities = [];
+    if (heart.abilities) {
+      _.each(heart.abilities.split(';'), function (ability) {
+        ability = ability.split(':');
+        var type = ability[0].trim();
+        var name = ability[1] && ability[1].trim();
+        if (_.includes(['ITEM', 'SKILL', 'SPELL'], type)) {
+          if (_.findIndex(data[type.toLowerCase()], { name : name }) > -1) {
+            abilities.push({ type : type, name : name });
+          }
+        }
+      });
+    }
+
+    heart.abilities = abilities;
   });
 }

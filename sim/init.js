@@ -28,6 +28,7 @@ module.exports = function (rng, next) {
     experience    : dataArray('experience'),
     heart         : data('heart'),
     helmet        : data('helmet'),
+    item          : data('item'),
     location      : data('location'),
     monster       : data('monster'),
     npc           : data('npc'),

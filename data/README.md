@@ -118,73 +118,75 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(I) effects` - semicolon separated list of current in-battle spell/skill effects
 
-`(J) curr_HP` - current HP value. When HP reaches 0 the character dies
+`(J) abilities` - semicolon separated list of used 1/day heart abilities
 
-`(K) curr_MP` - current MP value. Required to cast spells
+`(K) curr_HP` - current HP value. When HP reaches 0 the character dies
 
-`(L) base_HP` - base maximum HP value.
+`(L) curr_MP` - current MP value. Required to cast spells
 
-`(M) base_MP` - base maximum MP value.
+`(M) base_HP` - base maximum HP value.
 
-`(N) base_strength` - base strength value
+`(N) base_MP` - base maximum MP value.
 
-`(O) base_agility` - base agility value
+`(O) base_strength` - base strength value
 
-`(P) attack` - total attack value, stored for convenience only
+`(P) base_agility` - base agility value
 
-`(Q) defense` - total defense value, stored for convenience only
+`(Q) attack` - total attack value, stored for convenience only
 
-`(R) base_miss` - base rate (out of 32) of failing to land a physical attack
+`(R) defense` - total defense value, stored for convenience only
 
-`(S) base_critical` - base rate (out of 32) of performing a critical hit
+`(S) base_miss` - base rate (out of 32) of failing to land a physical attack
 
-`(T) base_dodge` - base rate (out of 256) of evading a physical attack
+`(T) base_critical` - base rate (out of 32) of performing a critical hit
 
-`(U) resist.burn` - resistance (out of 16) for BURN attacks
+`(U) base_dodge` - base rate (out of 256) of evading a physical attack
 
-`(V) resist.beat` - resistance (out of 16) for instant death spells
+`(V) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(W) resist.numb` - resistance (out of 16) for paralysis
+`(W) resist.beat` - resistance (out of 16) for instant death spells
 
-`(X) resist.poison` - resistance (out of 16) for poison
+`(X) resist.numb` - resistance (out of 16) for paralysis
 
-`(Y) resist.sap` - resistance (out of 16) for defense lowering spells
+`(Y) resist.poison` - resistance (out of 16) for poison
 
-`(Z) resist.slow` - resistance (out of 16) for agility lowering spells
+`(Z) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(AA) resist.chaos` - resistance (out of 16) for confusion
+`(AA) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(AB) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(AB) resist.chaos` - resistance (out of 16) for confusion
 
-`(AC) resist.sleep` - resistance (out of 16) for sleep
+`(AC) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(AD) resist.stopspell` - resistance (out of 16) for stopspell
+`(AD) resist.sleep` - resistance (out of 16) for sleep
 
-`(AE) resist.surround` - resistance (out of 16) for surround
+`(AE) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(AF) resist.fear` - resistance (out of 16) from being frozen in fear
+`(AF) resist.surround` - resistance (out of 16) for surround
 
-`(AG) equip.weapon` - character's equipped weapon
+`(AG) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AH) equip.armor` - character's equipped body armor
+`(AH) equip.weapon` - character's equipped weapon
 
-`(AI) equip.shield` - character's equipped shield
+`(AI) equip.armor` - character's equipped body armor
 
-`(AJ) equip.helmet` - character's equipped helmet
+`(AJ) equip.shield` - character's equipped shield
 
-`(AK) heart.name` - character's equipped monster heart
+`(AK) equip.helmet` - character's equipped helmet
 
-`(AL) heart.experience` - monster heart experience value
+`(AL) heart.name` - character's equipped monster heart
 
-`(AM-AR) inventory` - items in this character's possession. Limit of 6
+`(AM) heart.experience` - monster heart experience value
 
-`(AS-AV) loto3` - Loto3 lottery tickets. Limit of 4
+`(AN-AS) inventory` - items in this character's possession. Limit of 6
 
-`(AW-AZ) bol` - Ball of Light lottery tickets. Limit of 4
+`(AT-AW) loto3` - Loto3 lottery tickets. Limit of 4
 
-`(BA) deaths` - number of times this character has been defeated
+`(AX-BA) bol` - Ball of Light lottery tickets. Limit of 4
 
-`(BB) active` - is this character actively participating in the game?
+`(BB) deaths` - number of times this character has been defeated
+
+`(BC) active` - is this character actively participating in the game?
 
 ## Command
 
@@ -234,6 +236,8 @@ Monster hearts which grant the essence of the defeated monster. Note that descri
 
 `(E) description` - plain text version of the monster heart powers
 
+`(F) abilities` - semicolon separated list of 1/day spell/skill/item abilities
+
 `(F) HP` - bonus to the maximum HP stat
 
 `(G) MP` - bonus to the maximum MP stat
@@ -279,6 +283,38 @@ Items which can be equipped in a character's HELMET slot. Note that description 
 `(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) defense` - defense bonus
+
+## Item
+
+Miscellaneous items that are carried around in a character's inventory and have wide-ranging uses in and out of battle.  Note that description is for display purposes only
+
+`(A) name` - item name
+
+`(B) description` - flavor description for this item
+
+`(C) buy_price` - price of this item if bought from a shop
+
+`(D) type` - classification for this item's effects
+
+`(E) target` - how many targets does this item affect?
+
+`(F) break` - rate (out of 16) that this item is lost after use
+
+`(G) minimum` - minimum value of damage/healing for this item
+
+`(H) range` - range of damage/healing for this item
+
+`(I) status` - status inflicted by this item
+
+`(J) resist` - resistance type used to defend against this item
+
+`(K) stat_from` - multiply FROM this stat and add/subtract TO the next one
+
+`(L) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+
+`(M) multiplier` - stat multiplier used for calculation (null if not used)
+
+`(N) persist` - type of persisting effect beyond this turn, otherwise FALSE
 
 ## Location
 
@@ -506,7 +542,7 @@ Special skills that can grant the user a variety of abilities.  Note that flavor
 
 `(H) priority` - priority level for skill (higher = earlier in battle)
 
-`(I) status` - status inflicted if this skil lands on the target
+`(I) status` - status inflicted if this skill lands on the target
 
 `(J) resist` - resistance type used to defend against this skill
 
@@ -516,7 +552,7 @@ Special skills that can grant the user a variety of abilities.  Note that flavor
 
 `(M) multiplier` - stat multiplier used for calculation (null if not used)
 
-`(V) persist` - type of persisting effect beyond this turn, otherwise FALSE
+`(N) persist` - type of persisting effect beyond this turn, otherwise FALSE
 
 ## Spell
 
