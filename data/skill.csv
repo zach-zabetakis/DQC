@@ -1,6 +1,7 @@
 "name","flavor","type","target","minimum","range","miss","priority","status","resist","stat_from","stat_to","multiplier","persist"
 "Fire Breath","is breathing fire","offensive","all",16,7,0,0,,"burn",,,"null","FALSE"
 "Intense Flames","blasts intense flames","offensive","all",65,7,0,0,,"burn",,,"null","FALSE"
+"Roundhouse","unleashes a roundhouse kick","physical","all",,,0,0,,,,,"null","FALSE"
 "Poison Strike","delivers a toxic blow","physical","single",,,0,0,"PO","poison",,,"null","FALSE"
 "Numb Strike","delivers a numbing blow","physical","single",,,0,0,"NU","numb",,,"null","FALSE"
 "Sleep Strike","delivers a fainting blow","physical","single",,,0,0,"SL","sleep",,,"null","FALSE"
@@ -10,4 +11,4 @@
 "Howl","lets out a hideous, shrieking roar","status","single",,,0,0,"FR","fear",,,"null","FALSE"
 "Charge Up","is building up power","custom ","self",,,0,0,,,,,"null","TRUE"
 "Call Help","calls for help","custom","none",,,0,0,,,,,"null","FALSE"
-"Call Other","calls for help","custom","none",,,0,0,,,,,"null",FALSE
+"Call Other","calls for help","custom","none",,,0,0,,,,,"null","FALSE"

@@ -20,6 +20,7 @@
   },
   "stat_bonus" : 0,
   "status" : {
+    "all": "ALL",
     "barrier" : "BA",
     "bounce" : "BO",
     "chaos" : "CF",
@@ -27,8 +28,10 @@
     "bedragon" : "DR",
     "fear" : "FR",
     "ironize" : "IR",
+    "negative": "NEG",
     "numb" : "NU",
     "poison" : "PO",
+    "positive": "POS",
     "sleep" : "SL",
     "stopspell" : "ST",
     "surround" : "SU"

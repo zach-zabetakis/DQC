@@ -300,21 +300,23 @@ Miscellaneous items that are carried around in a character's inventory and have 
 
 `(F) break` - rate (out of 16) that this item is lost after use
 
-`(G) minimum` - minimum value of damage/healing for this item
+`(G) ability` - spell or skill that this item mimics if used
 
-`(H) range` - range of damage/healing for this item
+`(H) minimum` - minimum value of damage/healing for this item
 
-`(I) status` - status inflicted by this item
+`(I) range` - range of damage/healing for this item
 
-`(J) resist` - resistance type used to defend against this item
+`(J) status` - status inflicted by this item
 
-`(K) stat_from` - multiply FROM this stat and add/subtract TO the next one
+`(K) resist` - resistance type used to defend against this item
 
-`(L) stat_to` - multiply FROM the previous stat and add/subtract TO this one
+`(L) stat_from` - multiply FROM this stat and add/subtract TO the next one
 
-`(M) multiplier` - stat multiplier used for calculation (null if not used)
+`(M) stat_to` - multiply FROM the previous stat and add/subtract TO this one
 
-`(N) persist` - type of persisting effect beyond this turn, otherwise FALSE
+`(N) multiplier` - stat multiplier used for calculation (null if not used)
+
+`(O) persist` - type of persisting effect beyond this turn, otherwise FALSE
 
 ## Location
 
