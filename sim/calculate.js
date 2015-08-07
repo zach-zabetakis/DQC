@@ -42,6 +42,7 @@ module.exports = function (data, next) {
   calculateData(data, 'character');
   attachZoneData(data);
   expandHeartAbilities(data);
+  expandAbilities(data);
 
   return next(null, data);
 };
@@ -266,4 +267,27 @@ function expandHeartAbilities (data) {
 
     heart.abilities = abilities;
   });
+}
+
+// create array detailing name/type of ability for single ability items and equipment
+function expandAbilities (data) {
+  function expand (item) {
+    var ability = (item.ability || '').split(':');
+    item.ability = null;
+
+    var type    = ability[0].trim();
+    var name    = ability[1] && ability[1].trim();
+    if (_.includes(['ITEM', 'SKILL', 'SPELL'], type)) {
+      if (_.findIndex(data[type.toLowerCase()], { name : name }) > -1) {
+        item.ability = { type : type, name : name };
+      }
+    }
+  }
+
+  _.each(data.accessory, expand);
+  _.each(data.armor, expand);
+  _.each(data.helmet, expand);
+  _.each(data.item, expand);
+  _.each(data.shield, expand);
+  _.each(data.weapon, expand);
 }
