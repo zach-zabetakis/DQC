@@ -44,6 +44,8 @@ Multiple ACCESSORY items can be equipped.  All accessories count toward a charac
 
 `(T) is_cursed` - is this accessory cursed?
 
+`(U) ability` - spell or skill that this accessory mimics if used as an item
+
 ## Armor
 
 Items which can be equipped in a character's ARMOR slot. Note that description is used for display purposes only.
@@ -75,6 +77,8 @@ Items which can be equipped in a character's ARMOR slot. Note that description i
 `(M) resist.beat` - resistance against instant death spells
 
 `(N) saver.burn` - does this armor have BURN SAVER?
+
+`(O) ability` - spell or skill that this armor mimics if used as an item
 
 ## Build
 
@@ -283,6 +287,8 @@ Items which can be equipped in a character's HELMET slot. Note that description 
 `(H) equip.wizard` - can this be equipped by Wizards?
 
 `(I) defense` - defense bonus
+
+`(J) ability` - spell or skill that this helmet mimics if used as an item
 
 ## Item
 
@@ -524,6 +530,8 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 
 `(I) defense` - defense bonus
 
+`(J) ability` - spell or skill that this shield mimics if used as an item
+
 ## Skill
 
 Special skills that can grant the user a variety of abilities.  Note that flavor text is for display purpose only.
@@ -639,6 +647,8 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 `(O) on_hit.effect` - effect produced when this weapon hits
 
 `(P) on_hit.resist` - resistance key against this effect
+
+`(Q) ability` - spell or skill that this weapon mimics if used as an item
 
 ## Zone
 

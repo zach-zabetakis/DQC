@@ -1,4 +1,4 @@
-"name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","defense"
-"Small Shield","A small, lightweight shield for novice travelers",90,"true","true","false","true","false",4
-"Large Shield","A larger, sturdier shield with improved defensive capabilities",800,"true","true","false","false","false",10
-"Silver Shield","An impenetrable shield with a silver finish",14800,"true","true","false","true","false",25
+"name","description","buy_price","equip.ranger","equip.soldier","equip.fighter","equip.priest","equip.wizard","defense","ability"
+"Small Shield","A small, lightweight shield for novice travelers",90,"true","true","false","true","false",4,
+"Large Shield","A larger, sturdier shield with improved defensive capabilities",800,"true","true","false","false","false",10,
+"Silver Shield","An impenetrable shield with a silver finish",14800,"true","true","false","true","false",25,
