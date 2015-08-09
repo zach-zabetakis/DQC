@@ -1,11 +1,11 @@
 "name","invocation","description","MP","level","learned.ranger","learned.soldier","learned.fighter","learned.priest","learned.wizard","type","target","minimum","range","miss","priority","status","resist","stat_from","stat_to","multiplier","persist"
-"Heal","Hoimi","Restores a small amount of HP",4,3,"TRUE","TRUE","TRUE","TRUE","TRUE","healing","single",10,7,0,0,,,,,"null",FALSE
-"Healmore","Behoimi","Restores a large amount of HP",10,17,"TRUE","FALSE","FALSE","TRUE","FALSE","healing","single",85,15,0,0,,,,,"null",FALSE
-"Blaze","Mera","Burns an enemy with a small burst of flame",2,4,"TRUE","TRUE","TRUE","TRUE","TRUE","offensive","single",5,7,0,0,,"burn",,,"null",FALSE
-"Blazemore","Merami","Burns an enemy in a large firestorm",5,19,"TRUE","FALSE","FALSE","FALSE","TRUE","offensive","single",58,7,0,0,,"burn",,,"null",FALSE
-"Sleep","Ralihoh","Puts a group of foes to sleep",2,7,"TRUE","FALSE","FALSE","TRUE","FALSE","status","group",0,0,0,0,"SL","sleep",,,"null",FALSE
-"Stopspell","Mahotohn","Prevents spell usage in a group of foes",2,10,"TRUE","FALSE","FALSE","TRUE","FALSE","status","group",0,0,0,0,"ST","stopspell",,,"null",FALSE
-"Radiant","Remihra","Fully illuminate dark places",3,9,"TRUE","FALSE","FALSE","FALSE","FALSE","travel","self",0,0,0,0,,,,,"null",FALSE
-"Outside","Liremito","Exit a cave or structure",3,12,"TRUE","FALSE","FALSE","FALSE","TRUE","travel","custom",0,0,0,0,,,,,"null",FALSE
-"Return","Ruhla","Return to Tantegel",4,13,"TRUE","FALSE","FALSE","FALSE","TRUE","travel","custom",0,0,0,0,,,,,"null",FALSE
-"Repel","Toheroth","Prevents encounters against weak monsters, or makes them flee battle",2,15,"TRUE","TRUE","FALSE","FALSE","FALSE","travel","all",0,0,0,0,,,,,"null",FALSE
+"Heal","Hoimi","Restores a small amount of HP",4,3,"TRUE","TRUE","TRUE","TRUE","TRUE","healing","single",10,7,0,0,,,,,"null","FALSE"
+"Healmore","Behoimi","Restores a large amount of HP",10,17,"TRUE","FALSE","FALSE","TRUE","FALSE","healing","single",85,15,0,0,,,,,"null","FALSE"
+"Blaze","Mera","Burns an enemy with a small burst of flame",2,4,"TRUE","TRUE","TRUE","TRUE","TRUE","offensive","single",5,7,0,0,,"burn",,,"null","FALSE"
+"Blazemore","Merami","Burns an enemy in a large firestorm",5,19,"TRUE","FALSE","FALSE","FALSE","TRUE","offensive","single",58,7,0,0,,"burn",,,"null","FALSE"
+"Sleep","Ralihoh","Puts a group of foes to sleep",2,7,"TRUE","FALSE","FALSE","TRUE","FALSE","status","group",0,0,0,0,"SL","sleep",,,"null","FALSE"
+"Stopspell","Mahotohn","Prevents spell usage in a group of foes",2,10,"TRUE","FALSE","FALSE","TRUE","FALSE","status","group",0,0,0,0,"ST","stopspell",,,"null","FALSE"
+"Radiant","Remihra","Fully illuminate dark places",3,9,"TRUE","FALSE","FALSE","FALSE","FALSE","travel","self",0,0,0,0,,,,,"null","FALSE"
+"Outside","Liremito","Exit a cave or structure",3,12,"TRUE","FALSE","FALSE","FALSE","TRUE","travel","self",0,0,0,0,,,,,"null","FALSE"
+"Return","Ruhla","Return to Tantegel",4,13,"TRUE","FALSE","FALSE","FALSE","TRUE","travel","self",0,0,0,0,,,,,"null","FALSE"
+"Repel","Toheroth","Prevents encounters against weak monsters, or makes them flee battle",2,15,"TRUE","TRUE","FALSE","FALSE","FALSE","travel","all",0,0,0,0,,,,,"null","FALSE"

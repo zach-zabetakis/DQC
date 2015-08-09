@@ -51,20 +51,18 @@ module.exports = function (data, next) {
     }
 
     // Extra custom validation
-    var type = (member.command.type || '').toTitleCase();
-    try {
-      eval('Commands.validate' + type + '(data, command);');
-    } catch (err) {
-      throw new Error(err);
+    var validateFunction = 'validate' + (member.command.type || '').toTitleCase();
+    if (typeof Commands[validateFunction] === 'function') {
+      Commands[validateFunction](data, command);
     }
 
     // Assign priority level to the command
     if (_.includes(['CHARGE', 'PARRY', 'RETREAT', 'SHIFT'], command.type)) {
       command.priority = 2;
     } else if (command.type === 'SKILL') {
-      command.priority = (new Skill().findSkill(command.name, data.skill || {})).priority || 0;
+      command.priority = (new Skill().findSkill(command.name, data) || {}).priority || 0;
     } else if (command.type === 'SPELL') {
-      command.priority = (new Spell().findSpell(command.name, data.spell) || {}).priority || 0;
+      command.priority = (new Spell().findSpell(command.name, data) || {}).priority || 0;
     } else {
       priority = 0;
     }
