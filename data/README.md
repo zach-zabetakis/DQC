@@ -304,7 +304,7 @@ Miscellaneous items that are carried around in a character's inventory and have 
 
 `(E) target` - how many targets does this item affect?
 
-`(F) break` - rate (out of 16) that this item is lost after use
+`(F) durability` - rate (out of 32) that this item is preserved after use
 
 `(G) ability` - spell or skill that this item mimics if used
 
