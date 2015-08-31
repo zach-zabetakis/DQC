@@ -145,6 +145,14 @@ module.exports = function (DQC) {
       var enemy_status = outputEnemyStatus(scenario.battle.enemies);
       DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
 
+      // display characters that are no longer in the battle
+      var out_of_battle = _.filter(scenario.characters, { in_battle : false });
+      if (out_of_battle.length) {
+        DQC.out();
+        DQC.out(helpers.format('Location: outside battle', true));
+        outputAllyStatus({ members : out_of_battle });
+      }
+
     } else {
       DQC.out(helpers.format('[Command?]', false, true));
     }
