@@ -342,89 +342,93 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(A) name` - monster's name
 
-`(B) max_HP` - maximum HP value. When HP reaches 0 the monster is defeated!
+`(B) id` - monster ID value (used to determine relative strength)
 
-`(C) max_MP` - maximum MP value. Required to cast spells
+`(C) max_HP` - maximum HP value. When HP reaches 0 the monster is defeated!
 
-`(D) attack` - attack value, used for physical attacks
+`(D) max_MP` - maximum MP value. Required to cast spells
 
-`(E) defense` - defense value, protection against physical attacks
+`(E) attack` - attack value, used for physical attacks
 
-`(F) agility` - monster's response speed
+`(F) defense` - defense value, protection against physical attacks
 
-`(G) miss` - rate (out of 32) of failing to land a physical attack
+`(G) agility` - monster's response speed
 
-`(H) critical` - rate (out of 32) of performing a critical hit
+`(H) miss` - rate (out of 32) of failing to land a physical attack
 
-`(I) dodge` - rate (out of 256) of evading a physical attack
+`(I) critical` - rate (out of 32) of performing a critical hit
 
-`(J) regen` - does this monster automatically regenerate HP?
+`(J) dodge` - rate (out of 256) of evading a physical attack
 
-`(K) target_group` - does this monster's attacks target an entire group?
+`(K) hits` - number of actions per turn
 
-`(L) target_all` - does this monster's attacks target all opponents?
+`(L) regen` - does this monster automatically regenerate HP?
 
-`(M) run_fac` - factor used for determining player flee chances
+`(M) target_group` - does this monster's attacks target an entire group?
 
-`(N) resist.burn` - resistance (out of 16) for BURN attacks
+`(N) target_all` - does this monster's attacks target all opponents?
 
-`(O) resist.beat` - resistance (out of 16) for instant death spells
+`(O) run_fac` - factor used for determining player flee chances
 
-`(P) resist.numb` - resistance (out of 16) for paralysis
+`(P) resist.burn` - resistance (out of 16) for BURN attacks
 
-`(Q) resist.poison` - resistance (out of 16) for poison
+`(Q) resist.beat` - resistance (out of 16) for instant death spells
 
-`(R) resist.sap` - resistance (out of 16) for defense lowering spells
+`(R) resist.numb` - resistance (out of 16) for paralysis
 
-`(S) resist.slow` - resistance (out of 16) for agility lowering spells
+`(S) resist.poison` - resistance (out of 16) for poison
 
-`(T) resist.chaos` - resistance (out of 16) for confusion
+`(T) resist.sap` - resistance (out of 16) for defense lowering spells
 
-`(U) resist.robmagic` - resistance (out of 16) for MP stealing spells
+`(U) resist.slow` - resistance (out of 16) for agility lowering spells
 
-`(V) resist.sleep` - resistance (out of 16) for sleep
+`(V) resist.chaos` - resistance (out of 16) for confusion
 
-`(W) resist.stopspell` - resistance (out of 16) for stopspell
+`(W) resist.robmagic` - resistance (out of 16) for MP stealing spells
 
-`(X) resist.surround` - resistance (out of 16) for surround
+`(X) resist.sleep` - resistance (out of 16) for sleep
 
-`(Y) resist.fear` - resistance (out of 16) from being frozen in fear
+`(Y) resist.stopspell` - resistance (out of 16) for stopspell
 
-`(Z) saver.burn` - does this monster have BURN SAVER?
+`(Z) resist.surround` - resistance (out of 16) for surround
 
-`(AA) saver.phys` - does this monster have PHYS SAVER?
+`(AA) resist.fear` - resistance (out of 16) from being frozen in fear
 
-`(AB) saver.ment` - does this monster have MENT SAVER?
+`(AB) saver.burn` - does this monster have BURN SAVER?
 
-`(AC) ally` - monster ally when calling for help
+`(AC) saver.phys` - does this monster have PHYS SAVER?
 
-`(AC) experience` - experience points awarded when the monster is defeated
+`(AD) saver.ment` - does this monster have MENT SAVER?
 
-`(AD) gold` - gold coins awarded when the monster is defeated
+`(AE) ally` - monster ally when calling for help
 
-`(AE) drop.common.name` - item name the monster may drop after battle
+`(AF) experience` - experience points awarded when the monster is defeated
 
-`(AF) drop.common.rate` - rate (out of 256) for the common item drop
+`(AG) gold` - gold coins awarded when the monster is defeated
 
-`(AG) drop.rare.name` - item name the monster may rarely drop after battle
+`(AH) drop.common.name` - item name the monster may drop after battle
 
-`(AH) drop.rare.rate` - rate (out of 256) for the rare item drop
+`(AI) drop.common.rate` - rate (out of 256) for the common item drop
 
-`(AI) drop.heart.name` - name of this monster's heart (see HEART data)
+`(AJ) drop.rare.name` - item name the monster may rarely drop after battle
 
-`(AJ) drop.heart.rate` - rate (out of 1024) for a monster heart drop
+`(AK) drop.rare.rate` - rate (out of 256) for the rare item drop
 
-`(AK) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AL) drop.heart.name` - name of this monster's heart (see HEART data)
 
-`(AL-AS) pattern` - monster's attack pattern. Equal chance of each action
+`(AM) drop.heart.rate` - rate (out of 1024) for a monster heart drop
 
-`(AT-BA) flavor.attack` - flavor text for this monster's physical attack
+`(AN) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(BB) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AO-AV) pattern` - monster's attack pattern. Equal chance of each action
 
-`(BC) flavor.confusion` - flavor text when this monster is confused
+`(AW-BD) flavor.attack` - flavor text for this monster's physical attack
 
-`(BD) flavor.idle` - flavor text when this monster is doing nothing
+`(BE) flavor.dodge` - flavor text when this monster dodges a physical attack
+
+`(BF) flavor.confusion` - flavor text when this monster is confused
+
+`(BG) flavor.idle` - flavor text when this monster is doing nothing
 
 ## NPC
 
@@ -490,7 +494,7 @@ Citizens of the land who may help you on your quest.
 
 ## Quest
 
-Perform quests to test your strength or gain a variety of rewards. Note that name and employer are for display purposes only. If a number of battles is omitted then the quest is based on exploration and does not have a fixed progression.
+Perform quests to test your strength or gain a variety of rewards. Note that name and employer are for display purposes only. If a number of battles is omitted then the quest is based on exploration and does not have a fixed progression. Level caps indicate the optimal level range for completing the quest. Characters below the minimum will not get easier battles, and characters above the maximum will not get harder battles.
 
 `(A) id` - unique quest identifier
 
@@ -501,6 +505,10 @@ Perform quests to test your strength or gain a variety of rewards. Note that nam
 `(D) employer` - who is offering this quest
 
 `(E) battles` - (optional) total number of battles in this quest
+
+`(F) level.min` - minimum level cap (used for difficulty scaling)
+
+`(G) level.max` - maximum level cap (used for difficulty scaling)
 
 `(F) reward.experience` - experience reward upon quest completion
 
