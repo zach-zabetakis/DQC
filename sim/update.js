@@ -32,6 +32,7 @@ module.exports = function (DQC) {
   while (DQC.scenario.scenarios[scenario_index]) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
+    var battleMessages = [];
     var message;
 
     DQC.out(helpers.format(scenario.name, true, true));
@@ -65,13 +66,16 @@ module.exports = function (DQC) {
           if (!active_member.is_dead) {
             switch (active_member.type) {
               case 'character' :
-                battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
+                message = battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
+                battleMessages.push(message);
                 break;
               case 'npc' :
-                battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
+                message = battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
+                battleMessages.push(message);
                 break;
               case 'monster' :
-                battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+                message = battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+                battleMessages.push(message);
                 break;
               default :
                 throw new Error('Unknown type ' + type);
@@ -81,6 +85,8 @@ module.exports = function (DQC) {
             // check if the battle has ended
             if (!battleHelpers.isRemaining(scenario, 'characters')) {
               scenario.in_battle = false;
+
+              _.each(battleMessages, DQC.out);
               _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
 
@@ -103,6 +109,8 @@ module.exports = function (DQC) {
 
             } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
               scenario.in_battle = false;
+
+              _.each(battleMessages, DQC.out);
               _.each(scenario.characters, battleHelpers.clearBattleEffects);
               _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
@@ -119,6 +127,11 @@ module.exports = function (DQC) {
             }
           }
         });
+
+        // output battle messages (scenarios out of battle have been taken care of above)
+        if (scenario.in_battle) {
+          _.each(battleMessages, DQC.out);
+        }
 
         // run cleanup function for the current battle state
         battleHelpers.endOfTurn(DQC, scenario);
