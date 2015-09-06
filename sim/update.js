@@ -32,7 +32,6 @@ module.exports = function (DQC) {
   while (DQC.scenario.scenarios[scenario_index]) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
-    var battleMessages = [];
     var message;
 
     DQC.out(helpers.format(scenario.name, true, true));
@@ -50,7 +49,7 @@ module.exports = function (DQC) {
         _.each(scenario.battle.enemies.groups, function (group) {
           _.each(group.members, function (enemy) {
             if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
-              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy);
+              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, group.front);
             }
           });
         });
@@ -67,15 +66,15 @@ module.exports = function (DQC) {
             switch (active_member.type) {
               case 'character' :
                 message = battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
-                battleMessages.push(message);
+                DQC.out(message);
                 break;
               case 'npc' :
                 message = battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
-                battleMessages.push(message);
+                DQC.out(message);
                 break;
               case 'monster' :
                 message = battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
-                battleMessages.push(message);
+                DQC.out(message);
                 break;
               default :
                 throw new Error('Unknown type ' + type);
@@ -85,8 +84,6 @@ module.exports = function (DQC) {
             // check if the battle has ended
             if (!battleHelpers.isRemaining(scenario, 'characters')) {
               scenario.in_battle = false;
-
-              _.each(battleMessages, DQC.out);
               _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
 
@@ -109,8 +106,6 @@ module.exports = function (DQC) {
 
             } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
               scenario.in_battle = false;
-
-              _.each(battleMessages, DQC.out);
               _.each(scenario.characters, battleHelpers.clearBattleEffects);
               _.each(scenario.allies, battleHelpers.clearBattleEffects);
               DQC.out();
@@ -127,11 +122,6 @@ module.exports = function (DQC) {
             }
           }
         });
-
-        // output battle messages (scenarios out of battle have been taken care of above)
-        if (scenario.in_battle) {
-          _.each(battleMessages, DQC.out);
-        }
 
         // run cleanup function for the current battle state
         battleHelpers.endOfTurn(DQC, scenario);
@@ -152,23 +142,7 @@ module.exports = function (DQC) {
     DQC.out();
 
     // output status lines
-    _.each(scenario.battle.characters.groups, outputAllyStatus);
-    _.each(scenario.battle.allies.groups, outputAllyStatus);
-    if (scenario.in_battle) {
-      var enemy_status = outputEnemyStatus(scenario.battle.enemies);
-      DQC.out(helpers.format('[' + enemy_status.join(', ') + ' remain. Command?]', false, true));
-
-      // display characters that are no longer in the battle
-      var out_of_battle = _.filter(scenario.characters, { in_battle : false });
-      if (out_of_battle.length) {
-        DQC.out();
-        DQC.out(helpers.format('Location: outside battle', true));
-        outputAllyStatus({ members : out_of_battle });
-      }
-
-    } else {
-      DQC.out(helpers.format('[Command?]', false, true));
-    }
+    scenarioHelpers.outputStatusLines(DQC, scenario);
     
     DQC.out();
 
@@ -179,40 +153,4 @@ module.exports = function (DQC) {
   DQC.out();
   DQC.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
 
-
-  // outputs current HP/MP values of the group provided
-  function outputAllyStatus (group) {
-    var members = _.map(group.members, function (member) {
-      var message = member.displayName() + ': ';
-      message += 'HP ' + member.curr_HP + '/' + member.max_HP + ', ';
-      message += 'MP ' + member.curr_MP + '/' + member.max_MP;
-      message += helpers.displayStatus(member.status);
-      message += '.';
-      return message;
-    });
-    DQC.out(helpers.format('[' + members.join(' ') + ']', false, true));
-  }
-
-  // outputs the names of the remaining foes in battle
-  function outputEnemyStatus (enemies) {
-    var remaining = _.map(enemies.groups, function (group) {
-      // groups can only contain a single species of enemy
-      var firstEnemyName = (group.members[0] && group.members[0].name) || 'Missingno';
-      var enemySymbols   = '';
-      var display_group  = false;
-
-      _.each(group.members, function (member) {
-        if (!member.is_dead) {
-          enemySymbols += member.symbol || '';
-          display_group = true;
-        }
-      });
-
-      if (display_group) {
-        return (firstEnemyName + enemySymbols);
-      }
-    });
-
-    return _.compact(remaining);
-  }
 };
