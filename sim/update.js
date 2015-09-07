@@ -33,6 +33,7 @@ module.exports = function (DQC) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
     var message;
+    var front;
 
     DQC.out(helpers.format(scenario.name, true, true));
     DQC.out(helpers.format('Location: ' + scenario.location, true, true));
@@ -49,7 +50,8 @@ module.exports = function (DQC) {
         _.each(scenario.battle.enemies.groups, function (group) {
           _.each(group.members, function (enemy) {
             if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
-              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, group.front);
+              front = scenario.battle.has_fronts ? group.front : null;
+              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, front);
             }
           });
         });
