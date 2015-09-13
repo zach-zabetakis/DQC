@@ -204,13 +204,21 @@ In battle player commands are recorded in this file. Commands must be entered fo
 
 `(D) name` - for certain commands, a more specific command name
 
-`(E) flavor_prefix` - flavor text (prefix) for physical attacks
+`(E) extra` - any extra info which is required for this command (uncommon)
 
-`(F) target.type` - target type. One of 'characters', 'allies', 'enemies'
+`(F) flavor_prefix` - flavor text (prefix) for physical attacks
 
-`(G) target.name` - name of the target who is receiving this command
+`(G) target.type` - target type. One of 'characters', 'allies', 'enemies'
 
-`(H) flavor_suffix` - flavor text (suffix) for physical attacks
+`(H) target.name` - name of the target who is receiving this command
+
+`(I) flavor_suffix` - flavor text (suffix) for physical attacks
+
+#### extra
+The following commands make use of the `extra` field:
+SPELL - Outside: specify map position for warp
+SPELL - Return: specify map position for warp
+SHIFT: specify front if applicable
 
 ## Experience
 

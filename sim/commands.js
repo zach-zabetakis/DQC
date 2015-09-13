@@ -10,7 +10,7 @@ var _             = require('lodash');
 module.exports = function (data, next) {
   _.each(data.command, function (command) {
     // Make sure command is valid
-    var validCommands = ['ATTACK', 'CHARGE', 'HEART', 'ITEM', 'MOVE', 'NONE', 'PARRY', 'RETREAT', 'RUN', 'SHIFT', 'SKILL', 'SPELL'];
+    var validCommands = ['ATTACK', 'CHARGE', 'HEART', 'ITEM', 'NONE', 'PARRY', 'RETREAT', 'RUN', 'SHIFT', 'SKILL', 'SPELL'];
     if (!_.includes(validCommands, command.type)) {
       throw new Error('Command ' + command.type + ' is not valid.');
     }
@@ -57,7 +57,7 @@ module.exports = function (data, next) {
     }
 
     // Assign priority level to the command
-    if (_.includes(['CHARGE', 'MOVE', 'PARRY', 'RETREAT', 'SHIFT'], command.type)) {
+    if (_.includes(['CHARGE', 'PARRY', 'RETREAT', 'SHIFT'], command.type)) {
       command.priority = 2;
     } else if (command.type === 'SKILL') {
       command.priority = (new Skill().findSkill(command.name, data) || {}).priority || 0;
