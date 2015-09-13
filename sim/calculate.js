@@ -102,73 +102,11 @@ function calculateData (data, type) {
     member.experience = Math.max(member.experience, 0);
     member.gold = Math.max(member.gold, 0);
 
-    // max_HP
-    member.max_HP = helpers.calculateStatBoost('HP', member.base_HP, data, member);
-    member.max_HP = Math.max(member.max_HP, 0);
-
-    // max_MP
-    member.max_MP = helpers.calculateStatBoost('MP', member.base_MP, data, member);
-    member.max_MP = Math.max(member.max_MP, 0);
-
-    // base_strength
+    // make sure base STR/AGI are in-bounds
     member.base_strength = Math.min(member.base_strength, max_stat['base_strength']);
-
-    // adj_strength
-    member.adj_strength = helpers.calculateStatBoost('strength', member.base_strength, data, member);
-    member.adj_strength = Math.max(member.adj_strength, 0);
-    member.adj_strength = Math.min(member.adj_strength, max_stat['adj_strength']);
-
-    // curr_strength
-    member.curr_strength = member.adj_strength;
-
-    // base_agility
     member.base_agility = Math.min(member.base_agility, max_stat['base_agility']);
 
-    // adj_agility
-    member.adj_agility = helpers.calculateStatBoost('agility', member.base_agility, data, member);
-    member.adj_agility = Math.max(member.adj_agility, 0);
-    member.adj_agility = Math.min(member.adj_agility, max_stat['adj_agility']);
-
-    // curr_agility
-    member.curr_agility = member.adj_agility;
-
-    // attack
-    member.attack = helpers.calculateStatBoost('attack', member.adj_strength, data, member);
-    member.attack = Math.max(member.attack, 0);
-    member.attack = Math.min(member.attack, max_stat['attack']);
-
-    member.curr_attack = member.attack;
-
-    // defense
-    // base defense is agility / 2
-    var base_defense = parseInt(member.adj_agility / 2, 10);
-    member.defense = helpers.calculateStatBoost('defense', base_defense, data, member);
-    member.defense = Math.max(member.defense, 0);
-    member.defense = Math.min(member.defense, max_stat['defense']);
-
-    member.curr_defense = member.defense;
-
-    // miss
-    member.adj_miss = helpers.calculateStatBoost('miss', member.base_miss, data, member);
-    member.adj_miss = Math.max(member.adj_miss, 0);
-
-    // adj_critical
-    // 'fighter' job gets a level-based critical bonus
-    var base_critical = member.base_critical;
-    if (member.job === 'fighter') {
-      base_critical += parseInt(member.level / 4, 10);
-    }
-    member.adj_critical = helpers.calculateStatBoost('critical', base_critical, data, member);
-    member.adj_critical = Math.max(member.adj_critical, 0);
-
-    // adj_dodge
-    // 'fighter' job gets an agility-based dodge bonus
-    var base_dodge = member.base_dodge;
-    if (member.job === 'fighter') {
-      base_dodge += parseInt(member.adj_agility / 16, 10);
-    }
-    member.adj_dodge = helpers.calculateStatBoost('dodge', base_dodge, data, member);
-    member.adj_dodge = Math.max(member.adj_dodge, 0);
+    helpers.recalculateStats(data, member);
 
     // run_fac (only used for PvP)
     member.run_fac   = 1;
