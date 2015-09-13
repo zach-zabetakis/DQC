@@ -216,8 +216,11 @@ In battle player commands are recorded in this file. Commands must be entered fo
 
 #### extra
 The following commands make use of the `extra` field:
+
 SPELL - Outside: specify map position for warp
+
 SPELL - Return: specify map position for warp
+
 SHIFT: specify front if applicable
 
 ## Experience
