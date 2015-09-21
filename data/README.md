@@ -253,29 +253,31 @@ Monster hearts which grant the essence of the defeated monster. Note that descri
 
 `(F) abilities` - semicolon separated list of 1/day spell/skill/item abilities
 
-`(F) HP` - bonus to the maximum HP stat
+`(G) HP` - bonus to the maximum HP stat
 
-`(G) MP` - bonus to the maximum MP stat
+`(H) MP` - bonus to the maximum MP stat
 
-`(H) strength` - bonus to the strength stat
+`(I) strength` - bonus to the strength stat
 
-`(I) agility` - bonus to the agility stat
+`(J) agility` - bonus to the agility stat
 
-`(J) critical` - bonus to the critical stat
+`(K) critical` - bonus to the critical stat
 
-`(K) dodge` - bonus to the dodge stat
+`(L) dodge` - bonus to the dodge stat
 
-`(L) saver.burn` - does this heart grant BURN saver?
+`(M) saver.burn` - does this heart grant BURN saver?
 
-`(M) saver.phys` - does this heart grant PHYS saver?
+`(N) saver.phys` - does this heart grant PHYS saver?
 
-`(N) saver.ment` - does this heart grant MENT saver?
+`(O) saver.ment` - does this heart grant MENT saver?
 
-`(O) on_hit.chance` - rate (out of 32) to proc an on-hit effect
+`(P) on_hit.chance` - rate (out of 32) to proc an on-hit effect
 
-`(P) on_hit.effect` - effect produced on physical attacks
+`(Q) on_hit.effect` - effect produced on physical attacks
 
-`(Q) on_hit.resist` - resistance key against this effect
+`(R) on_hit.resist` - resistance key against this effect
+
+`(S) on_hit.message` - optional display message for this effect
 
 ## Helmet
 
@@ -667,7 +669,9 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 
 `(P) on_hit.resist` - resistance key against this effect
 
-`(Q) ability` - spell or skill that this weapon mimics if used as an item
+`(Q) on_hit.message` - optional display message for this effect
+
+`(R) ability` - spell or skill that this weapon mimics if used as an item
 
 ## Zone
 

@@ -1,9 +1,9 @@
-"name","can_transform","transform.experience","transform.name","description","abilities","HP","MP","strength","agility","critical","dodge","saver.burn","saver.phys","saver.ment"
-"Slime","TRUE",100,"Red Slime","Dodge + 4; Eau de Slime once per day","ITEM:Eau de Slime",0,0,0,0,0,4,"FALSE","FALSE","FALSE"
-"Red Slime","TRUE",400,"???","Dodge + 4; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,4,"FALSE","FALSE","FALSE"
-"Snaily","FALSE",0,,"Dodge + 4; AGI + 1; Upper once per day; Eau de Uberslime once per day","ITEM:Eau de Uberslime; SPELL:Upper",0,0,0,1,0,4,"FALSE","FALSE","FALSE"
-"Fangslime","FALSE",0,,"Dodge + 4; STR + 1; Critical + 1; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,1,0,1,4,"FALSE","FALSE","FALSE"
-"Boxslime","FALSE",0,,"Dodge + 4; HP + 1; PHYS SAVER; Eau de Uberslime once per day","ITEM:Eau de Uberslime",1,0,0,0,0,4,"FALSE","TRUE","FALSE"
-"Drakslime","FALSE",0,,"Dodge + 12; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,12,"FALSE","FALSE","FALSE"
-"Spotslime","FALSE",0,,"Dodge + 4; HP + 1; Permanent Slimes; Eau de Uberslime once per day","ITEM:Eau de Uberslime",1,0,0,0,0,4,"FALSE","FALSE","FALSE"
-"Ghostslime","FALSE",0,,"Dodge + 4; MP + 1; MENT SAVER; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,0,"FALSE","FALSE","TRUE"
+"name","can_transform","transform.experience","transform.name","description","abilities","HP","MP","strength","agility","critical","dodge","saver.burn","saver.phys","saver.ment","on_hit.chance","on_hit.effect","on_hit.resist","on_hit.message"
+"Slime","TRUE",100,"Red Slime","Dodge + 4; Eau de Slime once per day","ITEM:Eau de Slime",0,0,0,0,0,4,"FALSE","FALSE","FALSE",,,,
+"Red Slime","TRUE",400,"???","Dodge + 4; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,4,"FALSE","FALSE","FALSE",,,,
+"Snaily","FALSE",0,,"Dodge + 4; AGI + 1; Upper once per day; Eau de Uberslime once per day","ITEM:Eau de Uberslime; SPELL:Upper",0,0,0,1,0,4,"FALSE","FALSE","FALSE",,,,
+"Fangslime","FALSE",0,,"Dodge + 4; STR + 1; Critical + 1; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,1,0,1,4,"FALSE","FALSE","FALSE",,,,
+"Boxslime","FALSE",0,,"Dodge + 4; HP + 1; PHYS SAVER; Eau de Uberslime once per day","ITEM:Eau de Uberslime",1,0,0,0,0,4,"FALSE","TRUE","FALSE",,,,
+"Drakslime","FALSE",0,,"Dodge + 12; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,12,"FALSE","FALSE","FALSE",,,,
+"Spotslime","FALSE",0,,"Dodge + 4; HP + 1; Permanent Slimes; Eau de Uberslime once per day","ITEM:Eau de Uberslime",1,0,0,0,0,4,"FALSE","FALSE","FALSE",,,,
+"Ghostslime","FALSE",0,,"Dodge + 4; MP + 1; MENT SAVER; Eau de Uberslime once per day","ITEM:Eau de Uberslime",0,0,0,0,0,0,"FALSE","FALSE","TRUE",,,,
