@@ -431,17 +431,19 @@ Monsters you may run into during your travels. Beware! Note that flavor text is 
 
 `(AM) drop.heart.rate` - rate (out of 1024) for a monster heart drop
 
-`(AN) behavior` - battle AI behavior (one of: fixed, random, custom)
+`(AN) is_aware` - determines when a monster chooses its command during a battle
 
-`(AO-AV) pattern` - monster's attack pattern. Equal chance of each action
+`(AO) behavior` - battle AI behavior (one of: fixed, random, custom)
 
-`(AW-BD) flavor.attack` - flavor text for this monster's physical attack
+`(AP-AW) pattern` - monster's attack pattern. Equal chance of each action
 
-`(BE) flavor.dodge` - flavor text when this monster dodges a physical attack
+`(AX-BE) flavor.attack` - flavor text for this monster's physical attack
 
-`(BF) flavor.confusion` - flavor text when this monster is confused
+`(BF) flavor.dodge` - flavor text when this monster dodges a physical attack
 
-`(BG) flavor.idle` - flavor text when this monster is doing nothing
+`(BG) flavor.confusion` - flavor text when this monster is confused
+
+`(BH) flavor.idle` - flavor text when this monster is doing nothing
 
 ## NPC
 
