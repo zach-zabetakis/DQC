@@ -1,4 +1,5 @@
 var _               = require('lodash');
+var AI              = require(__dirname + '/../lib/ai_helpers');
 var battleHelpers   = require(__dirname + '/../lib/battle_helpers');
 var helpers         = require(__dirname + '/../lib/helpers');
 var lottery         = require(__dirname + '/../lib/lottery');
@@ -45,8 +46,6 @@ module.exports = function (DQC) {
         // Each participant in battle will take turns in a randomly generated order.
         battleHelpers.generateTurnOrder(DQC, scenario);
 
-        // TODO: some (all?) enemies choose actions at the beginning of each turn
-
         // Enemy units choose a target at the beginning of each turn
         _.each(scenario.battle.enemies.groups, function (group) {
           _.each(group.members, function (enemy) {
@@ -54,8 +53,8 @@ module.exports = function (DQC) {
               front = scenario.battle.has_fronts ? group.front : null;
               enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, front);
               // TODO: some enemies choose actions at the beginning of each turn
-              if (!enemy.is_aware) {
-
+              if (enemy.is_aware === false) {
+                enemy.command = AI.chooseCommand(DQC, scenario, enemy, front);
               }
             }
           });
