@@ -52,7 +52,7 @@ module.exports = function (DQC) {
             if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
               front = scenario.battle.has_fronts ? group.front : null;
               enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, front);
-              // TODO: some enemies choose actions at the beginning of each turn
+              // Some enemies choose actions at the beginning of each turn
               if (enemy.is_aware === false) {
                 enemy.command = AI.chooseCommand(DQC, scenario, enemy, front);
               }
