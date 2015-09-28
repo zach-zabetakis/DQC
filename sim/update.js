@@ -54,7 +54,7 @@ module.exports = function (DQC) {
               enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, front);
               // Some enemies choose actions at the beginning of each turn
               if (enemy.is_aware === false) {
-                enemy.command = AI.chooseCommand(DQC, scenario, enemy, front);
+                AI.chooseCommand(DQC, scenario, enemy, front);
               }
             }
           });
