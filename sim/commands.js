@@ -1,5 +1,4 @@
 var battleHelpers = require(__dirname + '/../lib/battle_helpers');
-var Commands      = require(__dirname + '/../lib/commands')(battleHelpers);
 var Skill         = require(__dirname + '/../lib/skills');
 var Spell         = require(__dirname + '/../lib/spells');
 var _             = require('lodash');
@@ -8,6 +7,9 @@ var _             = require('lodash');
  * Verify/Sanitize commands and attach them to the appropriate member.
  */
 module.exports = function (data, next) {
+  // bypass circular dependency issue with dependency injection
+  var Commands = require(__dirname + '/../lib/commands')(battleHelpers);
+  
   _.each(data.command, function (command) {
     // Make sure command is valid
     var validCommands = ['ATTACK', 'CHARGE', 'HEART', 'ITEM', 'NONE', 'PARRY', 'RETREAT', 'RUN', 'SHIFT', 'SKILL', 'SPELL'];
@@ -57,16 +59,7 @@ module.exports = function (data, next) {
     }
 
     // Assign priority level to the command
-    if (_.includes(['CHARGE', 'PARRY', 'RETREAT', 'SHIFT'], command.type)) {
-      command.priority = 2;
-    } else if (command.type === 'SKILL') {
-      command.priority = (new Skill().findSkill(command.name, data) || {}).priority || 0;
-    } else if (command.type === 'SPELL') {
-      command.priority = (new Spell().findSpell(command.name, data) || {}).priority || 0;
-    } else {
-      priority = 0;
-    }
-
+    Commands.setPriority(data, command);
   });
 
   return next(null, data);
