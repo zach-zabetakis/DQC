@@ -1,6 +1,6 @@
 "player","name","build","job","level","experience","gold","status","effects","abilities","curr_HP","curr_MP","base_HP","base_MP","base_strength","base_agility","attack","defense","base_miss","base_critical","base_dodge","resist.burn","resist.beat","resist.numb","resist.poison","resist.sap","resist.slow","resist.chaos","resist.robmagic","resist.sleep","resist.stopspell","resist.surround","resist.fear","equip.weapon","equip.armor","equip.shield","equip.helmet","heart.name","heart.experience","inventory[0]","inventory[1]","inventory[2]","inventory[3]","inventory[4]","inventory[5]","loto3[0]","loto3[1]","loto3[2]","loto3[3]","bol[0]","bol[1]","bol[2]","bol[3]","deaths","active"
 "zenithian66","Zephyr",5,"ranger",1,0,120,,,,15,0,15,0,4,4,4,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"
 "royal_soldier","Ragnar",1,"soldier",1,0,120,,,,15,0,15,0,4,3,4,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"
-"princess_santeem","Alena",7,"fighter",1,0,120,,,,14,0,15,0,4,4,4,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"
+"princess_santeem","Alena",7,"fighter",1,0,120,,,,15,0,15,0,4,4,4,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"
 "chancellor_kiryl","Cristo",4,"priest",1,0,120,,,,15,0,15,0,4,4,4,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"
 "dancer_maya","Mara",2,"wizard",1,0,120,,,,13,0,13,0,3,4,3,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,,,,,,,,,,,,0,"TRUE"

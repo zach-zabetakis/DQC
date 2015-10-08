@@ -1,6 +1,6 @@
 var _               = require('lodash');
-var AI              = require(__dirname + '/../lib/ai_helpers');
 var battleHelpers   = require(__dirname + '/../lib/battle_helpers');
+var AI              = require(__dirname + '/../lib/ai_helpers')(battleHelpers);
 var helpers         = require(__dirname + '/../lib/helpers');
 var lottery         = require(__dirname + '/../lib/lottery');
 var scenarioHelpers = require(__dirname + '/../lib/scenario_helpers');
