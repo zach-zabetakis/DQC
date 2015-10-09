@@ -46,16 +46,11 @@ module.exports = function (DQC) {
         // Each participant in battle will take turns in a randomly generated order.
         battleHelpers.generateTurnOrder(DQC, scenario);
 
-        // Enemy units choose a target at the beginning of each turn
+        // Some enemies choose commands at the beginning of each turn
         _.each(scenario.battle.enemies.groups, function (group) {
           _.each(group.members, function (enemy) {
-            if (enemy.can_act && !battleHelpers.isIncapacitated(enemy)) {
-              front = scenario.battle.has_fronts ? group.front : null;
-              enemy.target = battleHelpers.chooseEnemyTarget(DQC, scenario, enemy, front);
-              // Some enemies choose actions at the beginning of each turn
-              if (enemy.is_aware === false) {
-                AI.chooseCommand(DQC, scenario, enemy);
-              }
+            if (enemy.can_act && !battleHelpers.isIncapacitated(enemy) && enemy.is_aware === false) {
+              AI.chooseCommand(DQC, scenario, enemy);
             }
           });
         });
