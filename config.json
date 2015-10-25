@@ -22,6 +22,7 @@
   "status" : {
     "all": "ALL",
     "barrier" : "BA",
+    "bikill" : "BK",
     "bounce" : "BO",
     "chaos" : "CF",
     "death" : "DE",
