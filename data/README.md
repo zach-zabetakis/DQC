@@ -184,6 +184,10 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(AN-AS) inventory` - items in this character's possession. Limit of 6
 
+`(AT) has_bag` - does this character have a bag to carry extra items?
+
+`(AU-AX) bag` - items in this character's bag. Limit of 4
+
 `(AT-AW) loto3` - Loto3 lottery tickets. Limit of 4
 
 `(AX-BA) bol` - Ball of Light lottery tickets. Limit of 4

@@ -1,4 +1,5 @@
 {
+  "bag_limit" : 4,
   "data" : "data",
   "scenario" : "current",
   "file" : "",
