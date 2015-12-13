@@ -33,6 +33,7 @@ module.exports = function (rng, next) {
     monster       : data('monster'),
     npc           : data('npc'),
     quest         : data('quest'),
+    recruit       : data('recruit'),
     shield        : data('shield'),
     skill         : data('skill'),
     spell         : data('spell'),

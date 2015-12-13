@@ -24,6 +24,7 @@ module.exports = function (data, next) {
     'monster',
     'npc',
     'quest',
+    'recruit',
     'shield',
     'skill',
     'spell',

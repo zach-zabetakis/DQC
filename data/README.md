@@ -561,7 +561,7 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 
 `(J) ability` - spell or skill that this shield mimics if used as an item
 
-## Recruits
+## Recruit
 
 Monster recruits that may fight alongside you if you gain their trust and have in your possession a token of control.
 
