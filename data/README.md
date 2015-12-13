@@ -561,6 +561,24 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 
 `(J) ability` - spell or skill that this shield mimics if used as an item
 
+## Recruits
+
+Monster recruits that may fight alongside you if you gain their trust and have in your possession a token of control.
+
+`(A) name` - nickname given to this monster
+
+`(B) species` - monster type, corresponds with name in monster file
+
+`(C) owner` - player controller, corresponds with name in character file
+
+`(D) status` - semicolon separated list of status ailments
+
+`(E) effects` - semicolon separated list of current in-battle spell/skill effects
+
+`(F) curr_HP` - current HP value. When HP reaches 0 the recruit is lost forever
+
+`(G) curr_MP` - current MP value. Required to cast spells
+
 ## Skill
 
 Special skills that can grant the user a variety of abilities.  Note that flavor text is for display purpose only.
