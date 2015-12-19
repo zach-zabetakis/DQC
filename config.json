@@ -1,9 +1,9 @@
 {
-  "bag_limit" : 4,
   "data" : "data",
-  "scenario" : "current",
   "file" : "",
   "html" : false,
+  "scenario" : "current",
+  "bag_limit" : 4,
   "attack_decay" : false,
   "experience_penalty" : 10,
   "inventory_limit" : 6,

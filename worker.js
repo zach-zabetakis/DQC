@@ -1,7 +1,8 @@
-var sim   = require(__dirname + '/sim');
-var async = require('async');
-var nconf = require('nconf');
-var fs    = require('fs');
+var prompt = require(__dirname + '/prompt');
+var sim    = require(__dirname + '/sim');
+var async  = require('async');
+var nconf  = require('nconf');
+var fs     = require('fs');
 
 module.exports = function () {
   async.waterfall([
@@ -31,6 +32,9 @@ module.exports = function () {
     if (file) {
       DQC.file = fs.createWriteStream(file, { encoding : 'utf8' });
       DQC.out = function (message) {
+        message = message || '';
+        console.log(message);
+
         message = message ? (message + "\n") : "\n";
         DQC.file.write(message);
       };
@@ -49,5 +53,17 @@ module.exports = function () {
     sim.update(DQC);
 
     DQC.close();
+
+    // save the update
+    prompt('Save results? (yes/no): ', function (input) {
+      if (input === 'yes') {
+        sim.save(DQC, function () {
+          process.exit();
+        });
+      } else {
+        process.exit();
+      }
+
+    });
   });
 };
