@@ -39,10 +39,12 @@ module.exports = function (data, next) {
   // match up data with scenario
   function findMember (member) {
     var type  = member.type || 'character';
-    var match = _.find(data[type], { name : member.name });
-    match = _.cloneDeep(match);
+    var index = _.findIndex(data[type], { name : member.name });
+    var match;
 
-    if (match) {
+    if (index > -1) {
+      match = _.cloneDeep(data[type][index]);
+
       var new_member = _.merge(member, match);
       _.each(new_member.effects, function (effect) {
         action.set(effect, data);
@@ -57,6 +59,11 @@ module.exports = function (data, next) {
       new_member.in_battle  = false;
       new_member.can_act    = (new_member.can_act !== false);
       new_member.can_target = (new_member.can_target !== false);
+
+      // copy characters back into game data (for ease of saving later)
+      if (type === 'character') {
+        data[type][index] = new_member;
+      }
 
       return new_member;
     } else {
