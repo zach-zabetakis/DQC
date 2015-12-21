@@ -188,13 +188,13 @@ The brave heroes fighting to free the world from evil's grasp. All base values c
 
 `(AU-AX) bag` - items in this character's bag. Limit of 4
 
-`(AT-AW) loto3` - Loto3 lottery tickets. Limit of 4
+`(AY-BB) loto3` - Loto3 lottery tickets. Limit of 4
 
-`(AX-BA) bol` - Ball of Light lottery tickets. Limit of 4
+`(BC-BF) bol` - Ball of Light lottery tickets. Limit of 4
 
-`(BB) deaths` - number of times this character has been defeated
+`(BG) deaths` - number of times this character has been defeated
 
-`(BC) active` - is this character actively participating in the game?
+`(BH) active` - is this character actively participating in the game?
 
 ## Command
 
