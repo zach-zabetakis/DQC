@@ -1,11 +1,19 @@
 var async = require('async');
+var nconf = require('nconf');
 var csv   = require('csv-stringify');
+var fs    = require('fs');
 var _     = require('lodash');
 
 /*
  * Save results of the update to the appropriate file(s)
  */
 module.exports = function (DQC, next) {
+  // PATH TO DATA FILES
+  var path = nconf.get('data');
+  if (path === 'data') {
+    path = __dirname + '/../' + path;
+  }
+
   async.parallel([
     writeCharacterData(DQC.data.character),
     writeScenarioData(DQC.scenario)
@@ -120,9 +128,22 @@ module.exports = function (DQC, next) {
         input.push(row);
       });
 
+      // Generate CSV output, save previous version of character data file, then write new character data.
       csv(input, { quotedEmpty : false, quotedString : true }, function (err, output) {
-        console.log(output);
-        return callback();
+        if (err) { return callback('Failed to generate CSV from character data.'); }
+
+        var characterFile = path + '/character.csv';
+        var charFilePrev  = path + '/character-prev.csv';
+
+        fs.rename(characterFile, charFilePrev, function (err) {
+          if (err) { return callback('Failed to rename previous character file.'); }
+
+          fs.writeFile(characterFile, output, function (err) {
+            if (err) { return callback('Failed to write character data to output file.'); }
+
+            return callback();
+          })
+        });
       });
     };
   }
