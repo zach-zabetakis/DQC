@@ -15,7 +15,7 @@ module.exports = function (DQC, next) {
   }
 
   async.parallel([
-    writeCharacterData(DQC.data.character),
+    //writeCharacterData(DQC.data.character),
     writeScenarioData(DQC.scenario)
   ], function (error, results) {
     if (error) { throw new Error(error); }
@@ -149,7 +149,47 @@ module.exports = function (DQC, next) {
   }
 
   function writeScenarioData(data) {
+    data = _.cloneDeep(data);
     return function (callback) {
+      _.each(data.scenarios, function (scenario) {
+        scenario.characters = _.map(scenario.characters, function (character) {
+          var saved     = {};
+          var essential = [
+            'name'
+          ];
+          
+          // remove all nonessential data
+          _.each(essential, function (key) {
+            saved[key] = character[key];
+          });
+
+          return saved;
+        });
+        scenario.allies = _.map(scenario.allies, function (ally) {
+          var saved     = {};
+          var essential = [
+            'type',
+            'name',
+            'curr_HP',
+            'curr_MP',
+            'status',
+            'effects',
+            'can_target',
+            'can_act'
+          ];
+
+          // remove all nonessential data
+          _.each(essential, function (key) {
+            saved[key] = ally[key];
+          });
+
+          return saved;
+        });
+
+        // TODO: clean up battle data        
+      });
+
+      
       // TODO: Save scenario data to an external file
       return callback();
     };
