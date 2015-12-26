@@ -150,45 +150,81 @@ module.exports = function (DQC, next) {
 
   function writeScenarioData(data) {
     data = _.cloneDeep(data);
+
+    // iterator function for returning essential member data
+    function cleanMemberData (essential) {
+      return function (member) {
+        var saved = {};
+
+        _.each(essential, function (key) {
+          if (typeof member[key] !== 'undefined') {
+            saved[key] = member[key];
+          }
+        });
+
+        return saved;
+      }
+    }
+
+    // iterator function for returning essential group data
+    function cleanGroupData (essential) {
+      return function (group) {
+        var saved_group = {};
+
+        saved_group.front   = group.front || null;
+        saved_group.members = _.map(group.members, cleanMemberData(essential));
+
+        return saved_group;
+      }
+    }
+
     return function (callback) {
       _.each(data.scenarios, function (scenario) {
-        scenario.characters = _.map(scenario.characters, function (character) {
-          var saved     = {};
-          var essential = [
-            'name'
-          ];
-          
-          // remove all nonessential data
-          _.each(essential, function (key) {
-            saved[key] = character[key];
-          });
+        var essential_character = [
+          'name',
+          'can_act',
+          'can_target'
+        ];
+        scenario.characters = _.map(scenario.characters, cleanMemberData(essential_character));
+        
+        var essential_ally = [
+          'type',
+          'name',
+          'curr_HP',
+          'curr_MP',
+          'status',
+          'effects',
+          'can_act',
+          'can_target'
+        ];
+        scenario.allies = _.map(scenario.allies, cleanMemberData(essential_ally));
 
-          return saved;
-        });
-        scenario.allies = _.map(scenario.allies, function (ally) {
-          var saved     = {};
-          var essential = [
-            'type',
-            'name',
-            'curr_HP',
-            'curr_MP',
-            'status',
-            'effects',
-            'can_target',
-            'can_act'
-          ];
+        var essential_character_battle = [
+          'name'
+        ];
+        scenario.battle.characters.groups = _.map(scenario.battle.characters.groups, cleanGroupData(essential_character_battle));
 
-          // remove all nonessential data
-          _.each(essential, function (key) {
-            saved[key] = ally[key];
-          });
-
-          return saved;
-        });
-
-        // TODO: clean up battle data        
+        var essential_ally_battle = [
+          'type',
+          'name'
+        ];
+        scenario.battle.allies.groups = _.map(scenario.battle.allies.groups, cleanGroupData(essential_ally_battle));
+        
+        var essential_enemy_battle = [
+          'type',
+          'name',
+          'symbol',
+          'curr_HP',
+          'curr_MP',
+          'status',
+          'effects',
+          'can_act',
+          'can_target',
+          'can_cast',
+          'defeated_by'
+        ];
+        scenario.battle.enemies.groups = _.map(scenario.battle.enemies.groups, cleanGroupData(essential_enemy_battle));
       });
-
       
       // TODO: Save scenario data to an external file
       return callback();
