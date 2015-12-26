@@ -42,9 +42,11 @@ Multiple ACCESSORY items can be equipped.  All accessories count toward a charac
 
 `(S) saver.ment` - does this accessory have MENT SAVER?
 
-`(T) is_cursed` - is this accessory cursed?
+`(T) double_hit` - does this accessory grant double physical attacks?
 
 `(U) ability` - spell or skill that this accessory mimics if used as an item
+
+`(V) is_cursed` - is this accessory cursed?
 
 ## Armor
 
@@ -685,19 +687,21 @@ Items which can be equipped in a character's WEAPON slot. Note that description 
 
 `(K) critical` - critical hit bonus
 
-`(L) target_all` - does this weapon target all enemies?
+`(L) double_hit` - does this weapon grant double physical attacks?
 
-`(M) target_group` - does this weapon attack an entire group?
+`(M) target_all` - does this weapon target all enemies?
 
-`(N) on_hit.chance` - rate (out of 32) to proc an on-hit effect
+`(N) target_group` - does this weapon attack an entire group?
 
-`(O) on_hit.effect` - effect produced when this weapon hits
+`(O) on_hit.chance` - rate (out of 32) to proc an on-hit effect
 
-`(P) on_hit.resist` - resistance key against this effect
+`(P) on_hit.effect` - effect produced when this weapon hits
 
-`(Q) on_hit.message` - optional display message for this effect
+`(Q) on_hit.resist` - resistance key against this effect
 
-`(R) ability` - spell or skill that this weapon mimics if used as an item
+`(R) on_hit.message` - optional display message for this effect
+
+`(S) ability` - spell or skill that this weapon mimics if used as an item
 
 ## Zone
 

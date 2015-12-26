@@ -133,6 +133,8 @@ function calculateData (data, type) {
     member.target_group = helpers.calculateStatBoost('target_group', false, data, member);
     // target_all
     member.target_all = helpers.calculateStatBoost('target_all', false, data, member);
+    // hits (minimum of 1 and maximum of 2)
+    member.hits = helpers.calculateStatBoost('double_hit', false, data, member) ? 2 : 1;
   
     // status should be an array
     if (member.status) {
