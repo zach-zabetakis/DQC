@@ -9,13 +9,15 @@ var _     = require('lodash');
  */
 module.exports = function (DQC, next) {
   // PATH TO DATA FILES
-  var path = nconf.get('data');
+  var scenario = nconf.get('scenario');
+  var path     = nconf.get('data');
+
   if (path === 'data') {
     path = __dirname + '/../' + path;
   }
 
   async.parallel([
-    //writeCharacterData(DQC.data.character),
+    writeCharacterData(DQC.data.character),
     writeScenarioData(DQC.scenario)
   ], function (error, results) {
     if (error) { throw new Error(error); }
@@ -134,6 +136,7 @@ module.exports = function (DQC, next) {
 
         var characterFile = path + '/character.csv';
         var charFilePrev  = path + '/character-prev.csv';
+        var charFileTest  = path + '/character-test.csv';
 
         fs.rename(characterFile, charFilePrev, function (err) {
           if (err) { return callback('Failed to rename previous character file.'); }
@@ -179,55 +182,68 @@ module.exports = function (DQC, next) {
     }
 
     return function (callback) {
+      var essential = {
+        characters : [
+          'name',
+          'can_act',
+          'can_target'
+        ],
+        allies : [
+          'type',
+          'name',
+          'curr_HP',
+          'curr_MP',
+          'status',
+          'effects',
+          'can_act',
+          'can_target'
+        ],
+        battle : {
+          characters : [
+            'name'
+          ],
+          allies : [
+            'type',
+            'name'
+          ],
+          enemies : [
+            'type',
+            'name',
+            'symbol',
+            'curr_HP',
+            'curr_MP',
+            'status',
+            'effects',
+            'can_act',
+            'can_target',
+            'can_cast',
+            'defeated_by'
+          ]
+        }
+      };
+
       _.each(data.scenarios, function (scenario) {
-        var essential_character = [
-          'name',
-          'can_act',
-          'can_target'
-        ];
-        scenario.characters = _.map(scenario.characters, cleanMemberData(essential_character));
-        
-        var essential_ally = [
-          'type',
-          'name',
-          'curr_HP',
-          'curr_MP',
-          'status',
-          'effects',
-          'can_act',
-          'can_target'
-        ];
-        scenario.allies = _.map(scenario.allies, cleanMemberData(essential_ally));
-
-        var essential_character_battle = [
-          'name'
-        ];
-        scenario.battle.characters.groups = _.map(scenario.battle.characters.groups, cleanGroupData(essential_character_battle));
-
-        var essential_ally_battle = [
-          'type',
-          'name'
-        ];
-        scenario.battle.allies.groups = _.map(scenario.battle.allies.groups, cleanGroupData(essential_ally_battle));
-        
-        var essential_enemy_battle = [
-          'type',
-          'name',
-          'symbol',
-          'curr_HP',
-          'curr_MP',
-          'status',
-          'effects',
-          'can_act',
-          'can_target',
-          'can_cast',
-          'defeated_by'
-        ];
-        scenario.battle.enemies.groups = _.map(scenario.battle.enemies.groups, cleanGroupData(essential_enemy_battle));
+        scenario.characters = _.map(scenario.characters, cleanMemberData(essential.characters));
+        scenario.allies     = _.map(scenario.allies, cleanMemberData(essential.allies));
+        scenario.battle.characters.groups = _.map(scenario.battle.characters.groups, cleanGroupData(essential.battle.characters));
+        scenario.battle.allies.groups     = _.map(scenario.battle.allies.groups, cleanGroupData(essential.battle.allies));
+        scenario.battle.enemies.groups    = _.map(scenario.battle.enemies.groups, cleanGroupData(essential.battle.enemies));
       });
+
+      var output           = JSON.stringify(data, null, 2);
+      var scenarioFile     = path + '/scenario/' + scenario + '.json';
+      var scenarioFilePrev = path + '/scenario/' + scenario + '-prev.json';
+      var scenarioFileTest = path + '/scenario/' + scenario + '-test.json';
       
-      // TODO: Save scenario data to an external file
-      return callback();
+      fs.rename(scenarioFile, scenarioFilePrev, function (err) {
+        if (err) { return callback('Failed to rename previous scenario file.'); }
+
+        fs.writeFile(scenarioFile, output, function (err) {
+          if (err) { return callback('Failed to write scenario data to output file.'); }
+
+          return callback();
+        });
+      });
     };
   }
 };
