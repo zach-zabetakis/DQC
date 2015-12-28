@@ -53,7 +53,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "",
-                  "curr_HP" : "3",
+                  "curr_HP" : "4",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
@@ -117,7 +117,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "",
-                  "curr_HP" : "3",
+                  "curr_HP" : "4",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
@@ -181,7 +181,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "",
-                  "curr_HP" : "3",
+                  "curr_HP" : "4",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
@@ -245,7 +245,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "",
-                  "curr_HP" : "3",
+                  "curr_HP" : "4",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
@@ -309,7 +309,7 @@
                   "type" : "monster",
                   "name" : "Red Slime",
                   "symbol" : "",
-                  "curr_HP" : "3",
+                  "curr_HP" : "4",
                   "curr_MP" : "0",
                   "status" : [],
                   "effects" : []
