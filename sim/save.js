@@ -196,7 +196,8 @@ module.exports = function (DQC, next) {
           'status',
           'effects',
           'can_act',
-          'can_target'
+          'can_target',
+          'position'
         ],
         battle : {
           characters : [
@@ -217,6 +218,7 @@ module.exports = function (DQC, next) {
             'can_act',
             'can_target',
             'can_cast',
+            'position',
             'defeated_by'
           ]
         }
