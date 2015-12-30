@@ -12,7 +12,7 @@ module.exports = function (data, next) {
   
   _.each(data.command, function (command) {
     // Make sure command is valid
-    var validCommands = ['ATTACK', 'CHARGE', 'HEART', 'ITEM', 'NONE', 'PARRY', 'RETREAT', 'RUN', 'SHIFT', 'SKILL', 'SPELL'];
+    var validCommands = ['ATTACK', 'CHARGE', 'DISMISS', 'HEART', 'ITEM', 'NONE', 'PARRY', 'RECALL', 'RETREAT', 'RUN', 'SHIFT', 'SKILL', 'SPELL'];
     if (!_.includes(validCommands, command.type)) {
       throw new Error('Command ' + command.type + ' is not valid.');
     }
