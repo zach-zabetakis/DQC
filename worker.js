@@ -55,15 +55,15 @@ module.exports = function () {
     DQC.close();
 
     // save the update
-    prompt('Save results? (yes/no): ', function (input) {
-      if (input === 'yes') {
-        sim.save(DQC, function () {
-          process.exit();
-        });
-      } else {
-        process.exit();
-      }
+    // prompt('Save results? (yes/no): ', function (input) {
+    //   if (input === 'yes') {
+    //     sim.save(DQC, function () {
+    //       process.exit();
+    //     });
+    //   } else {
+    //     process.exit();
+    //   }
 
-    });
+    // });
   });
 };
