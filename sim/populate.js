@@ -39,11 +39,15 @@ module.exports = function (data, next) {
   // match up data with scenario
   function findMember (member) {
     var type  = member.type || 'character';
-    var index = _.findIndex(data[type], { name : member.name });
+    var name  = member.species || member.name;
+    var index = _.findIndex(data[type], { name : name });
     var match;
 
     if (index > -1) {
       match = _.cloneDeep(data[type][index]);
+
+      // do not allow the name of monster recruits to be overwritten
+      delete match.name;
 
       var new_member = _.merge(member, match);
       _.each(new_member.effects, function (effect) {
