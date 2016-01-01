@@ -18,6 +18,7 @@ module.exports = function (DQC, next) {
 
   async.parallel([
     writeCharacterData(DQC.data.character),
+    writeRecruitData(DQC.data.recruit),
     writeScenarioData(DQC.scenario)
   ], function (error, results) {
     if (error) { throw new Error(error); }
@@ -25,7 +26,74 @@ module.exports = function (DQC, next) {
     return next();
   });
 
-  function writeCharacterData(characters) {
+  function writeRecruitData (recruits) {
+    return function (callback) {
+      var input = [];
+
+      // add header row, which must match columns from CSV file (and row ordering below) exactly
+      input.push([
+        'name', 'species', 'owner', 'status', 'effects', 'curr_HP', 'curr_MP'
+      ]);
+
+      _.each(recruits, function (recruit) {
+        // perform simple validate and ensure data is in a format that will easily convert to readable CSV results.
+        function validate (key, type) {
+          var value = _.findValue(recruit, key);
+          switch (type) {
+            case 'bool':
+              return value ? true : false;
+              break;
+            case 'int':
+              value = parseInt(value || 0, 10);
+              if (_.isNaN(value) || value < 0) {
+                return callback('Possible data error detected. Recruit ' + recruit.name + ' has ' + key + ' value of ' + recruit[key]);
+              }
+              return value;
+              break;
+            case 'string':
+              return value || '';
+              break;
+            default:
+              return value;
+              break;
+          }
+        }
+
+        var row = [
+          validate('name', 'string'),
+          validate('species', 'string'),
+          validate('owner', 'string'),
+          validate('status', 'string'),
+          validate('effects', 'string'),
+          validate('curr_HP', 'int'),
+          validate('curr_MP', 'int')
+        ];
+
+        input.push(row);
+      });
+
+      // Generate CSV output, save previous version of recruit data file, then write new recruit data.
+      csv(input, { quotedEmpty : false, quotedString : true }, function (err, output) {
+        if (err) { return callback('Failed to generate CSV from recruit data.'); }
+
+        var recruitFile     = path + '/recruit.csv';
+        var recruitFilePrev = path + '/recruit-prev.csv';
+        var recruitFileTest = path + '/recruit-test.csv';
+
+        fs.rename(recruitFile, recruitFilePrev, function (err) {
+          if (err) { return callback('Failed to rename previous recruit file.'); }
+
+          fs.writeFile(recruitFile, output, function (err) {
+            if (err) { return callback('Failed to write recruit data to output file.'); }
+
+            return callback();
+          });
+        });
+      });
+    };
+  }
+
+  function writeCharacterData (characters) {
     return function (callback) {
       var input = [];
 
@@ -42,7 +110,7 @@ module.exports = function (DQC, next) {
 
       _.each(characters, function (character) {
         // perform simple validation and ensure data is in a format that will easily convert to readable CSV results.
-        function validate(key, type) {
+        function validate (key, type) {
           var value = _.findValue(character, key);
           switch (type) {
             case 'bool':
@@ -151,7 +219,7 @@ module.exports = function (DQC, next) {
     };
   }
 
-  function writeScenarioData(data) {
+  function writeScenarioData (data) {
     data = _.cloneDeep(data);
 
     // iterator function for returning essential member data
