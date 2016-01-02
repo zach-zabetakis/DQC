@@ -254,11 +254,13 @@ module.exports = function (DQC, next) {
         characters : [
           'name',
           'can_act',
-          'can_target'
+          'can_target',
+          'recruit'
         ],
         allies : [
           'type',
           'name',
+          'species',
           'curr_HP',
           'curr_MP',
           'status',
