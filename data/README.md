@@ -539,6 +539,22 @@ Perform quests to test your strength or gain a variety of rewards. Note that nam
 
 `(H) reward.item` - item reward upon quest completion
 
+## Recruit
+
+Monster recruits that may fight alongside you if you gain their trust and have in your possession a token of control.
+
+`(A) name` - nickname given to this monster
+
+`(B) species` - monster type, corresponds with name in monster file
+
+`(C) owner` - player controller, corresponds with name in character file
+
+`(D) status` - semicolon separated list of status ailments
+
+`(E) curr_HP` - current HP value. When HP reaches 0 the recruit is lost forever
+
+`(F) curr_MP` - current MP value. Required to cast spells
+
 ## Shield
 
 Items which can be equipped in a character's SHIELD slot. Note that description is for display purposes only.
@@ -562,24 +578,6 @@ Items which can be equipped in a character's SHIELD slot. Note that description 
 `(I) defense` - defense bonus
 
 `(J) ability` - spell or skill that this shield mimics if used as an item
-
-## Recruit
-
-Monster recruits that may fight alongside you if you gain their trust and have in your possession a token of control.
-
-`(A) name` - nickname given to this monster
-
-`(B) species` - monster type, corresponds with name in monster file
-
-`(C) owner` - player controller, corresponds with name in character file
-
-`(D) status` - semicolon separated list of status ailments
-
-`(E) effects` - semicolon separated list of current in-battle spell/skill effects
-
-`(F) curr_HP` - current HP value. When HP reaches 0 the recruit is lost forever
-
-`(G) curr_MP` - current MP value. Required to cast spells
 
 ## Skill
 

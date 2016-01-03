@@ -39,6 +39,7 @@ module.exports = function (data, next) {
   });
 
   calculateMonsterData(data);
+  calculateRecruitData(data);
   calculateData(data, 'npc');
   calculateData(data, 'character');
   attachZoneData(data);
@@ -92,10 +93,29 @@ function calculateMonsterData (data) {
   });
 }
 
+// calculated/additional data attached to each recruit
+function calculateRecruitData (data) {
+  var monster;
+
+  data.recruit = _.map(data.recruit, function (recruit) {
+    // attach monster data for this recruit
+    monster = _.find(data.monster, { name : recruit.species });
+
+    if (monster) {
+      recruit = _.merge({}, monster, recruit);
+      recruit.status = helpers.fixStatus(recruit.status);
+
+      return recruit;
+
+    } else {
+      throw new Error('Unable to find monster data for recruit ' + recruit.name + ', species: ' + recruit.species);
+    }
+  });
+}
+
 // calculated/additional data attached to each character or NPC.
 function calculateData (data, type) {
   var max_stat = nconf.get('max_stat');
-  var statuses = nconf.get('status');
 
   _.each(data[type], function (member) {
     member.type = type;
@@ -137,16 +157,7 @@ function calculateData (data, type) {
     member.hits = helpers.calculateStatBoost('double_hit', false, data, member) ? 2 : 1;
   
     // status should be an array
-    if (member.status) {
-      member.status = _.compact(_.map(member.status.split(';'), function (status) {
-        status = status.trim();
-        if (_.includes(statuses, status)) {
-          return status;
-        }
-      }));
-    } else {
-      member.status = [];
-    }
+    member.status = helpers.fixStatus(member.status);
 
     // effects should be an array
     if (member.effects) {
