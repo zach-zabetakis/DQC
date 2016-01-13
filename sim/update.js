@@ -62,7 +62,9 @@ module.exports = function (DQC) {
           return order;
         }).reverse();
 
-        _.each(scenario.battle.turn_order, function (active_member) {
+        var active_member;
+        while (scenario.battle.turn_order.length) {
+          active_member = scenario.battle.turn_order.shift();
           if (!active_member.is_dead) {
             switch (active_member.type) {
               case 'character' :
@@ -122,7 +124,7 @@ module.exports = function (DQC) {
               return false;
             }
           }
-        });
+        }
 
         // run cleanup function for the current battle state
         battleHelpers.endOfTurn(DQC, scenario);
