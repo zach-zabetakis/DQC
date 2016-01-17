@@ -21,7 +21,7 @@
   },
   "recruit_levels" : [1.75, 12, 25, 51],
   "recruit_limit" : 8,
-  "stat_bonus" : 0,
+  "stat_bonus" : true,
   "status" : {
     "all": "ALL",
     "barrier" : "BA",
