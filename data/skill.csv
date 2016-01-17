@@ -9,6 +9,7 @@
 "Numb Breath","emits gales of scorching breath","status","group",,,0,0,"NU","numb",,,"null","FALSE"
 "Sleep Breath","emits gales of sweet scented breath","status","group",,,0,0,"SL","sleep",,,"null","FALSE"
 "Howl","lets out a hideous, shrieking roar","status","single",,,0,0,"FR","fear",,,"null","FALSE"
-"Charge Up","is building up power","custom ","self",,,0,0,,,,,"null","TRUE"
+"Charge Up","is building up power","buff","self",,,0,0,,,,,"null","TRUE"
+"Freezing Waves","shoots freezing waves","debuff","all",,,0,0,,,,,"null","FALSE"
 "Call Help","calls for help","custom","none",,,0,0,,,,,"null","FALSE"
 "Call Other","calls for help","custom","none",,,0,0,,,,,"null","FALSE"
