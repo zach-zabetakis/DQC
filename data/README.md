@@ -223,6 +223,8 @@ In battle player commands are recorded in this file. Commands must be entered fo
 #### extra
 The following commands make use of the `extra` field:
 
+RECALL: specify position (before|after) relative to target
+
 SPELL - Outside: specify map position for warp
 
 SPELL - Return: specify map position for warp

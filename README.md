@@ -66,3 +66,125 @@ Dragon Quest Cosmos (DQC) is a board-based game drawing from the original Dragon
 
 ## How to Run DQC
 
+Once all players have put in one or more commands for the upcoming turn, these commands will need to be recorded in the appropriate commands file, which is stored with the rest of the game data files. Commands will be differentiated between in-battle and out-of-battle actions. The sim will run all of these commands in the proper order and once finished will save the game state and output the results. These results constitute the game update and will be shared with all players, which initiates the next turn of gameplay.
+
+##### In-Battle Commands
+
+There are 13 different commands that can be input during a battle. Only one command per player can be accepted. See the README for an explanation of the commands file.
+
+* ATTACK: Perform a physical attack with the equipped weapon against a target.
+  * Required: `member.type`, `member.name`, `type`, `target.type`, `target.name`
+  * Optional: `flavor.prefix`, `flavor.suffix`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | ATTACK | | | turns | enemies | SlimeA | into goo
+
+* CHARGE: Move in front of another member in the group ordering. Coupled with PARRY command.
+  * Required: `member.type`, `member.name`, `type`, `target.type`, `target.name`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | CHARGE | | | | characters | Anduin | 
+
+* DISMISS: Send away an allied monster recruit from battle.
+  * Required: `member.type`, `member.name`, `type`, `target.type`, `target.name`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | DISMISS | | | | allies | Healie | 
+
+* HEART: Use an ability imbued by a monster heart.
+  * Required: `member.type`, `member.name`, `type`, `name`, `target.type`, `target.name`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | HEART | Eau de Slime | | | enemies | SlimeA | 
+
+* ITEM: Use an inventory item. Note that most items require a target.
+  * Required: `member.type`, `member.name`, `type`, `name`
+  * Optional: `target.type`, `target.name`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | Item | Herb | | | characters | Zephyr | 
+
+* NONE: Do nothing
+  * Required: `member.type`, `member.name`, `type`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | NONE | | | | | | 
+
+* PARRY: Assume a defensive stance, halving incoming damage for the turn.
+  * Required: `member.type`, `member.name`, `type`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | PARRY | | | | | | 
+
+* RECALL: Summon a monster recruit into battle. Incoming recruit will PARRY for the turn.
+  * Required: `member.type`, `member.name`, `type`, `name`, `target.type`, `target.name`
+  * Optional: `extra`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | RECALL | Slib | after | | allies | Healie | 
+
+* RETREAT: Move behind another member in the group ordering. Coupled with PARRY command.
+  * Required: `member.type`, `member.name`, `type`, `target.type`, `target.name`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | RETREAT | | | | characters | Anduin | 
+
+* RUN: Attempt to flee from the battle.
+  * Required: `member.type`, `member.name`, `type`
+  * Optional: none
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | RUN | | | | | | 
+
+* SHIFT: Switch between two different groups in battle, or form a new group.
+  * Required: `member.type`, `member.name`, `type`, `name`
+  * Optional: `extra`, `target.type`, `target.name`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | SHIFT | new | North Front | | | | 
+
+* SKILL: Use a skill. Note that most skills require a target.
+  * Required: `member.type`, `member.name`, `type`, `name`
+  * Optional: `target.type`, `target.name`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | SKILL | Fire Breath | | | enemies | SlimeA | 
+
+* SPELL: Cast a spell.  Note that most spells require a target.
+  * Required: `member.type`, `member.name`, `type`, `name`
+  * Optional: `target.type`, `target.name`
+  * Example:
+
+member.type | member.name | type | name | extra | flavor.prefix | target.type | target.name | flavor.suffix
+-------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------
+characters | Zephyr | SPELL | Heal | | | characters | Anduin | 
