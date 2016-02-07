@@ -252,21 +252,21 @@ module.exports = function (DQC, next) {
       var essential = {
         characters : [
           'name',
-          'can_act',
-          'can_target',
-          'recruit'
+          'can_act',      // is able to take a turn during battle
+          'can_target',   // is able to be targeted by the opposing side
+          'recruit'       // monster recruit to be awarded after battle
         ],
         allies : [
           'type',
           'name',
-          'species',
+          'species',      // species name for monsters
           'curr_HP',
           'curr_MP',
           'status',
           'effects',
-          'can_act',
-          'can_target',
-          'position'
+          'can_act',      // is able to take a turn during battle
+          'can_target',   // is able to be targeted by the opposing side
+          'position'      // for fixed AI patterns, position in pattern sequence
         ],
         battle : {
           characters : [
@@ -279,16 +279,16 @@ module.exports = function (DQC, next) {
           enemies : [
             'type',
             'name',
-            'symbol',
+            'symbol',     // single character identifier for groups of enemies
             'curr_HP',
             'curr_MP',
             'status',
             'effects',
-            'can_act',
-            'can_target',
-            'can_cast',
-            'position',
-            'defeated_by'
+            'can_act',    // is able to take a turn during battle
+            'can_target', // is able to be targeted by the opposing side
+            'can_cast',   // is aware that MP is low and/or spells are sealed
+            'position',   // for fixed AI patterns, position in pattern sequence
+            'defeated_by' // which character killed this enemy
           ]
         }
       };
