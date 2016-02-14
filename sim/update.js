@@ -42,6 +42,12 @@ module.exports = function (DQC) {
 
     if (scenario.update) {
 
+      // 1) PRE-BATTLE commands
+      if (!scenario.in_battle || scenario.battle.turn === 0) {
+        // TODO: all of this
+      }
+
+      // 2) BATTLE commands
       if (scenario.in_battle) {
         // Each participant in battle will take turns in a randomly generated order.
         battleHelpers.generateTurnOrder(DQC, scenario);
@@ -137,8 +143,11 @@ module.exports = function (DQC) {
           battleHelpers.resetFormation(DQC, scenario);
         }
 
-      } else {
-        // What out of battle actions can be automated...?
+      }
+
+      // 3) POST-BATTLE commands
+      if (!scenario.in_battle) {
+        // TODO: all of this
       }
     }
 
