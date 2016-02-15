@@ -33,21 +33,28 @@ module.exports = function (DQC) {
   while (DQC.scenario.scenarios[scenario_index]) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
-    var message;
-    var front;
+    if (scenario.update) {
+      // PRE-BATTLE commands are run first, but the messages are stored for later
+      if (!scenario.in_battle || scenario.battle.turn === 0) {
+        // TODO: all of this
+      }
+    }
+
+    scenario_index++;
+  }
+
+  scenario_index = 0;
+  while (DQC.scenario.scenarios[scenario_index]) {
+    scenario = DQC.scenario.scenarios[scenario_index];
 
     DQC.out(helpers.format(scenario.name, true, true));
     DQC.out(helpers.format('Location: ' + scenario.location, true, true));
     DQC.out();
 
     if (scenario.update) {
+      // TODO: print out PRE-BATTLE commands here
 
-      // 1) PRE-BATTLE commands
-      if (!scenario.in_battle || scenario.battle.turn === 0) {
-        // TODO: all of this
-      }
-
-      // 2) BATTLE commands
+      // BATTLE commands
       if (scenario.in_battle) {
         // Each participant in battle will take turns in a randomly generated order.
         battleHelpers.generateTurnOrder(DQC, scenario);
@@ -69,6 +76,7 @@ module.exports = function (DQC) {
         }).reverse();
 
         var active_member;
+        var message;
         while (scenario.battle.turn_order.length) {
           active_member = scenario.battle.turn_order.shift();
           if (!active_member.is_dead) {
@@ -145,7 +153,7 @@ module.exports = function (DQC) {
 
       }
 
-      // 3) POST-BATTLE commands
+      // POST-BATTLE commands
       if (!scenario.in_battle) {
         // TODO: all of this
       }
