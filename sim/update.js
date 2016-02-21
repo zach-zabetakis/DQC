@@ -36,6 +36,7 @@ module.exports = function (DQC) {
     if (scenario.update) {
       // PRE-BATTLE commands are run first, but the messages are stored for later
       if (!scenario.in_battle || scenario.battle.turn === 0) {
+        scenario.messages = [];
         // TODO: all of this
       }
     }
@@ -52,7 +53,8 @@ module.exports = function (DQC) {
     DQC.out();
 
     if (scenario.update) {
-      // TODO: print out PRE-BATTLE commands here
+      // print out PRE-BATTLE commands
+      _.each(scenario.messages, DQC.out);
 
       // BATTLE commands
       if (scenario.in_battle) {
