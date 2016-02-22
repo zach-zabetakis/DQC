@@ -11,40 +11,12 @@ module.exports = function (DQC) {
   DQC.out();
 
   // LOTTERY
-  var loto3 = lottery.loto3(DQC);
-  var bol   = lottery.bol(DQC);
+  runLottery(DQC);
 
-  if (loto3.length || bol.length) {
-    DQC.out(helpers.format('OFFICIAL LOTTERY DRAWINGS', true));
-    if (loto3.length) {
-      DQC.out();
-      _.each(loto3, DQC.out);
-    }
-    if (bol.length) {
-      DQC.out();
-      _.each(bol, DQC.out);
-    }
-    DQC.out();
-  }
+  // PRE-BATTLE commands are run first, but the messages are stored for later
+  performPreBattleCommands(DQC);
 
-  // Update each individual scenario
   var scenario_index = 0;
-  var scenario;
-  while (DQC.scenario.scenarios[scenario_index]) {
-    scenario = DQC.scenario.scenarios[scenario_index];
-
-    if (scenario.update) {
-      // PRE-BATTLE commands are run first, but the messages are stored for later
-      if (!scenario.in_battle || scenario.battle.turn === 0) {
-        scenario.messages = [];
-        // TODO: all of this
-      }
-    }
-
-    scenario_index++;
-  }
-
-  scenario_index = 0;
   while (DQC.scenario.scenarios[scenario_index]) {
     scenario = DQC.scenario.scenarios[scenario_index];
 
@@ -58,106 +30,12 @@ module.exports = function (DQC) {
 
       // BATTLE commands
       if (scenario.in_battle) {
-        // Each participant in battle will take turns in a randomly generated order.
-        battleHelpers.generateTurnOrder(DQC, scenario);
-
-        // Some enemies choose commands at the beginning of each turn
-        _.each(scenario.battle.enemies.groups, function (group) {
-          _.each(group.members, function (enemy) {
-            if (enemy.can_act && !battleHelpers.isIncapacitated(enemy) && enemy.is_aware === false) {
-              AI.chooseCommand(DQC, scenario, enemy);
-            }
-          });
-        });
-
-        // Re-sort turn order based on priority levels of each command
-        scenario.battle.turn_order = _.sortBy(scenario.battle.turn_order, function (member) {
-          var priority = (member.command && member.command.priority) || 0;
-          var order    = (priority * 1000) + member.order;
-          return order;
-        }).reverse();
-
-        var active_member;
-        var message;
-        while (scenario.battle.turn_order.length) {
-          active_member = scenario.battle.turn_order.shift();
-          if (!active_member.is_dead) {
-            switch (active_member.type) {
-              case 'character' :
-                message = battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
-                DQC.out(message);
-                break;
-              case 'npc' :
-                message = battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
-                DQC.out(message);
-                break;
-              case 'monster' :
-                message = battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
-                DQC.out(message);
-                break;
-              default :
-                throw new Error('Unknown type ' + type);
-                break;
-            }
-
-            // check if the battle has ended
-            if (!battleHelpers.isRemaining(scenario, 'characters')) {
-              scenario.in_battle = false;
-              _.each(scenario.allies, battleHelpers.clearBattleEffects);
-              DQC.out();
-
-              if (battleHelpers.isPlayerWipeout(scenario)) {
-                battleHelpers.wipeout(DQC, scenario);
-
-              } else {
-                // one or more characters fled or were otherwise expelled from battle.
-                // allies who were left behind in battle will disappear.
-                _.eachRight(scenario.allies, function (member, index) {
-                  if (member.in_battle) {
-                    battleHelpers.expelFromBattle(scenario, member);
-                    scenario.allies.splice(index, 1);
-                  }
-                });
-              }
-
-              // exit out of the turn order
-              return false;
-
-            } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
-              scenario.in_battle = false;
-              _.each(scenario.characters, battleHelpers.clearBattleEffects);
-              _.each(scenario.allies, battleHelpers.clearBattleEffects);
-              DQC.out();
-
-              if (!scenario.battle.enemies.groups.length) {
-                DQC.out('There are no more enemies remaining.');
-
-              } else {
-                battleHelpers.victory(DQC, scenario);
-              }
-
-              // exit out of the turn order
-              return false;
-            }
-          }
-        }
-
-        // run cleanup function for the current battle state
-        battleHelpers.endOfTurn(DQC, scenario);
-        // characters/allies who are warping away are sent to a new scenario
-        scenarioHelpers.warp(DQC, scenario_index);
-
-        if (!scenario.in_battle) {
-          battleHelpers.endOfBattle(DQC, scenario);
-          // add characters/allies who fled back to the battle order
-          battleHelpers.resetFormation(DQC, scenario);
-        }
-
+        performBattleCommands(DQC, scenario_index);
       }
 
       // POST-BATTLE commands
       if (!scenario.in_battle) {
-        // TODO: all of this
+        performPostBattleCommands(DQC, scenario_index);
       }
     }
 
@@ -176,3 +54,142 @@ module.exports = function (DQC) {
   DQC.out('CURRENT BALL OF LIGHT JACKPOT: ' + helpers.format(DQC.scenario.jackpot, true));
 
 };
+
+function runLottery (DQC) {
+  var loto3 = lottery.loto3(DQC);
+  var bol   = lottery.bol(DQC);
+
+  if (loto3.length || bol.length) {
+    DQC.out(helpers.format('OFFICIAL LOTTERY DRAWINGS', true));
+    if (loto3.length) {
+      DQC.out();
+      _.each(loto3, DQC.out);
+    }
+    if (bol.length) {
+      DQC.out();
+      _.each(bol, DQC.out);
+    }
+    DQC.out();
+  }
+}
+
+function performPreBattleCommands (DQC) {
+  var scenario_index = 0;
+  var scenario;
+
+  // Update each individual scenario
+  while (DQC.scenario.scenarios[scenario_index]) {
+    scenario = DQC.scenario.scenarios[scenario_index];
+
+    // commands can only be accepted if this scenario is being updated, and if players are not in a battle (past the first turn)
+    if (scenario.update && (!scenario.in_battle || scenario.battle.turn === 0)) {
+      scenario.messages = [];
+    }
+
+    scenario_index++;
+  }
+}
+
+function performBattleCommands (DQC, scenario_index) {
+  var scenario = DQC.scenario.scenarios[scenario_index];
+
+  // Each participant in battle will take turns in a randomly generated order.
+  battleHelpers.generateTurnOrder(DQC, scenario);
+
+  // Some enemies choose commands at the beginning of each turn
+  _.each(scenario.battle.enemies.groups, function (group) {
+    _.each(group.members, function (enemy) {
+      if (enemy.can_act && !battleHelpers.isIncapacitated(enemy) && enemy.is_aware === false) {
+        AI.chooseCommand(DQC, scenario, enemy);
+      }
+    });
+  });
+
+  // Re-sort turn order based on priority levels of each command
+  scenario.battle.turn_order = _.sortBy(scenario.battle.turn_order, function (member) {
+    var priority = (member.command && member.command.priority) || 0;
+    var order    = (priority * 1000) + member.order;
+    return order;
+  }).reverse();
+
+  var active_member;
+  var message;
+  while (scenario.battle.turn_order.length) {
+    active_member = scenario.battle.turn_order.shift();
+    if (!active_member.is_dead) {
+      switch (active_member.type) {
+        case 'character' :
+          message = battleHelpers.simulateCharacterTurn(DQC, scenario, active_member);
+          DQC.out(message);
+          break;
+        case 'npc' :
+          message = battleHelpers.simulateNPCTurn(DQC, scenario, active_member);
+          DQC.out(message);
+          break;
+        case 'monster' :
+          message = battleHelpers.simulateMonsterTurn(DQC, scenario, active_member);
+          DQC.out(message);
+          break;
+        default :
+          throw new Error('Unknown type ' + type);
+          break;
+      }
+
+      // check if the battle has ended
+      if (!battleHelpers.isRemaining(scenario, 'characters')) {
+        scenario.in_battle = false;
+        _.each(scenario.allies, battleHelpers.clearBattleEffects);
+        DQC.out();
+
+        if (battleHelpers.isPlayerWipeout(scenario)) {
+          battleHelpers.wipeout(DQC, scenario);
+
+        } else {
+          // one or more characters fled or were otherwise expelled from battle.
+          // allies who were left behind in battle will disappear.
+          _.eachRight(scenario.allies, function (member, index) {
+            if (member.in_battle) {
+              battleHelpers.expelFromBattle(scenario, member);
+              scenario.allies.splice(index, 1);
+            }
+          });
+        }
+
+        // exit out of the turn order
+        return false;
+
+      } else if (!battleHelpers.isRemaining(scenario, 'enemies')) {
+        scenario.in_battle = false;
+        _.each(scenario.characters, battleHelpers.clearBattleEffects);
+        _.each(scenario.allies, battleHelpers.clearBattleEffects);
+        DQC.out();
+
+        if (!scenario.battle.enemies.groups.length) {
+          DQC.out('There are no more enemies remaining.');
+
+        } else {
+          battleHelpers.victory(DQC, scenario);
+        }
+
+        // exit out of the turn order
+        return false;
+      }
+    }
+  }
+
+  // run cleanup function for the current battle state
+  battleHelpers.endOfTurn(DQC, scenario);
+  // characters/allies who are warping away are sent to a new scenario
+  scenarioHelpers.warp(DQC, scenario_index);
+
+  if (!scenario.in_battle) {
+    battleHelpers.endOfBattle(DQC, scenario);
+    // add characters/allies who fled back to the battle order
+    battleHelpers.resetFormation(DQC, scenario);
+  }
+}
+
+function performPostBattleCommands (DQC, scenario_index) {
+  var scenario = DQC.scenario.scenarios[scenario_index];
+  // TODO: all of this
+}
