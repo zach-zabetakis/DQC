@@ -84,6 +84,15 @@ function performPreBattleCommands (DQC) {
     // commands can only be accepted if this scenario is being updated, and if players are not in a battle (past the first turn)
     if (scenario.update && (!scenario.in_battle || scenario.battle.turn === 0)) {
       scenario.messages = [];
+
+      var members = [].concat(scenario.characters, scenario.allies);
+      var message;
+      _.each(members, function (member) {
+        _.each(member.pre_battle, function (command) {
+          message = scenarioHelpers.performPreBattleCommand(DQC, scenario, command);
+          scenario.messages.push(message);
+        });
+      });
     }
 
     scenario_index++;
