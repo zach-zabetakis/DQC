@@ -89,13 +89,18 @@ function performPreBattleCommands (DQC) {
       var message;
       _.each(members, function (member) {
         _.each(member.pre_battle, function (command) {
-          message = scenarioHelpers.performPreBattleCommand(DQC, scenario, command);
+          message = battleHelpers.performCommand(DQC, scenario, command);
           scenario.messages.push(message);
         });
+        if (member.pre_battle) { scenario.messages.push(''); }
       });
     }
 
     scenario_index++;
+  }
+
+  if (scenario.messages.length) {
+    scenario.messages.unshift(helpers.format('Pre-Battle:', true));
   }
 }
 
