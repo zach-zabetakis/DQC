@@ -1,23 +1,26 @@
 {
-  "name" : "DragonQuestCosmos",
-  "version" : "0.0.1",
-  "description" : "Dragon Quest Cosmos Battle Simulator",
-  "author" : "zenithian66",
-  "contributors" : [
-    { "name" : "x_loto" },
-    { "name" : "Voltgloss" },
-    { "name" : "Dastari" }
+  "name": "DragonQuestCosmos",
+  "version": "0.0.1",
+  "description": "Dragon Quest Cosmos Battle Simulator",
+  "author": "zenithian66",
+  "contributors": [
+    { "name": "x_loto" },
+    { "name": "Voltgloss" },
+    { "name": "Dastari" }
   ],
-  "repository" : {
-    "type" : "git",
-    "url"  : "https://github.com/zach-zabetakis/DQC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zach-zabetakis/DQC"
+  },
+  "engines": {
+    "node": "0.10.40"
   },
   "dependencies" : {
-    "async" : "0.9.0",
-    "csv-stringify" : "0.0.8",
-    "csvtojson" : "0.3.17",
-    "lodash" : "3.2.0",
-    "nconf" : "0.7.1",
-    "random-js" : "1.0.4"
+    "async": "0.9.0",
+    "csv-stringify": "0.0.8",
+    "csvtojson": "0.3.17",
+    "lodash": "3.2.0",
+    "nconf": "0.7.1",
+    "random-js": "1.0.4"
   }
 }
